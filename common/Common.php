@@ -46,6 +46,8 @@ class Common
     public function createStudent(){
 
     }
+
+    
     public function getAllStudent(){
 
     }

@@ -6,4 +6,4 @@
  * Time: 2:04 PM
  */
 
-header('Location:/views/home.php');
+header('Location:views/home.php');
