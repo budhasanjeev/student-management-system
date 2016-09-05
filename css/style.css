@@ -13,3 +13,23 @@
     position: relative;
     width: 40%;
 }
+
+.option-box{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #000000;
+    background-color: #245269;
+    color: #ffffff;
+}
+
+.option-box:hover{
+
+    background-color: #4e5469;
+    color: #ffff00;
+}
+
+.col-space{
+    padding: 10px;
+}
