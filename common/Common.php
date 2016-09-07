@@ -9,6 +9,8 @@
 
 require('../config/databaseConnection.php');
 
+include '../PHPExcel/Classes/PHPExcel/IOFactory.php';
+
 class Common
 {
 
@@ -43,25 +45,80 @@ class Common
 
     }
 
-    public function createStudent(){
+    public function createStudentList($file_name,$student_record_temp){
 
+        global $connection;
+
+        $data = array();
+
+        try{
+            $objPHPExcel = PHPExcel_IOFactory::load("../excel_files/$file_name");
+        }catch (Exception $e) {
+            die('Error loading file "' . pathinfo($student_record_temp, PATHINFO_BASENAME) . '": ' . $e->getMessage());
+        }
+
+        $allDataInSheet = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
+
+        $arrayCount = count($allDataInSheet);
+
+        for($i = 2; $i <= $arrayCount; $i++){
+            $student_id = trim($allDataInSheet[$i]['A']);
+            $first_name = trim($allDataInSheet[$i]['B']);
+            $last_name = trim($allDataInSheet[$i]['C']);
+            $dob = trim($allDataInSheet[$i]['D']);
+            $address = trim($allDataInSheet[$i]['E']);
+            $contact_number = trim($allDataInSheet[$i]['F']);
+            $father_name = trim($allDataInSheet[$i]['G']);
+            $mother_name = trim($allDataInSheet[$i]['H']);
+            $roll_number = trim($allDataInSheet[$i]['I']);
+            $grade = trim($allDataInSheet[$i]['J']);
+            $section = trim($allDataInSheet[$i]['K']);
+
+            $duplicate_check_query = "select student_id from student where student_id = '$student_id'";
+
+            $result = mysqli_query($connection,$duplicate_check_query);
+
+            $row = mysqli_fetch_assoc($result);
+
+            $std_id = $row['student_id'];
+
+            if($std_id == ''){
+                $created_date = date("Y-m-d");
+
+                $insert_query = "insert into student(student_id,first_name,last_name,dob,address,contact_number,father_name,mother_name,roll_number,grade,section,created_date) values('$student_id','$first_name','$last_name','$dob','$address','$contact_number','$father_name','$mother_name','$roll_number','$grade','$section','$created_date')";
+
+                if(mysqli_query($connection,$insert_query)>0){
+                    $data['message'] = 'success';
+                }
+            }
+            else{
+                $data['message'] = 'fail';
+            }
+        }
+
+        return $data;
     }
 
-    
-    public function getAllStudent(){
+    public function createStudent($std_id,$fname,$lname,$dob,$address,$contact,$rollNumber,$grade,$section,$fatherName,$motherName,$photo){
 
-    }
+        global $connection;
 
-    public function editStudent(){
+        $created_date = date('Y-m-d');
 
-    }
+        $insert_student = "insert into student(student_id,first_name,last_name,dob,address,contact_number,father_name,mother_name,roll_number,grade,section,photo,created_date)
+                            values('$std_id','$fname','$lname','$dob','$address','$contact','$fatherName','$motherName','$rollNumber','$grade','$section','$photo','$created_date')";
 
-    public function updateStudent(){
+        $result = mysqli_query($connection,$insert_student);
 
-    }
+        $data = array();
 
-    public function terminateStudent(){
+        if($result){
+            $data['message'] = 'success';
+        }else{
+            $data['message'] = 'fail';
+        }
 
+        return $data;
     }
     
 }
