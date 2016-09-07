@@ -5,50 +5,74 @@
  * Date: 8/31/2016
  * Time: 7:17 PM
  */
-include '../PHPExcel/Classes/PHPExcel/IOFactory.php';
-include '../config/databaseConnection.php';
+
+include '../common/Common.php';
+
+$objCommon = new Common();
 
 if(isset($_POST['submit'])){
+
+    if($_POST['mode']=='excel'){
 
         $student_record = $_FILES['student_excel']['name'];
         $student_record_temp = $_FILES['student_excel']['tmp_name'];
 
-        move_uploaded_file($student_record_temp, "../excel_files/$student_record");
+        $ext = pathinfo($student_record, PATHINFO_EXTENSION);
 
-    echo $student_record;
+        $file_name = rand(0,9).'.'.$ext;
+        move_uploaded_file($student_record_temp, "../excel_files/$file_name");
 
-        try{
-            $objPHPExcel = PHPExcel_IOFactory::load($student_record);
-        }catch (Exception $e) {
-            die('Error loading file "' . pathinfo($student_record_temp, PATHINFO_BASENAME) . '": ' . $e->getMessage());
+        $result = $objCommon->createStudentList($file_name,$student_record_temp);
+
+        if($result['message']=='success'){
+
+            echo '<script>
+                    alert("successfully added");
+                  </script>';
+        }
+        else{
+            echo '<script>
+                    alert("already inserted");
+                </script>';
+        }
+    } else if($_POST['mode']=='add'){
+
+        $std_id = $_POST['student_id'];
+        $fname  = $_POST['firstName'];
+        $lname  = $_POST['lastName'];
+        $dob    = $_POST['dob'];
+        $address = $_POST['address'];
+        $contact = $_POST['contact'];
+        $rollNumber = $_POST['rollNumber'];
+        $grade   = $_POST['grade'];
+        $section = $_POST['section'];
+        $fatherName = $_POST['fatherName'];
+        $motherName = $_POST['motherName'];
+
+        $photo = $_FILES['photo']['name'];
+        $photo_tmp = $_FILES['photo']['tmp_name'];
+        
+        move_uploaded_file($photo_tmp,"../images/$photo");
+
+        $result = array();
+
+        $result = $objCommon->createStudent($std_id,$fname,$lname,$dob,$address,$contact,$rollNumber,$grade,$section,$fatherName,$motherName,$photo);
+        
+        if($result['message']=='success'){
+            echo '<script>
+                    alert("Successfully created");
+                  </script>';
+
+        }else{
+            echo '<script>
+                    alert("Unsuccessful");
+                  </script>';
         }
 
-        $allDataInSheet = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
+    } else if(isset($_POST['mode'])=='edit'){
 
-        $arrayCount = count($allDataInSheet);
+    } else if(isset($_POST['mode'])=='edit'){
 
-        for($i = 2; $i <= $arrayCount; $i++){
-            $student_id = trim($allDataInSheet[$i]['id']);
-            $first_name = trim($allDataInSheet[$i]['first_name']);
+    }
 
-            $duplicate_check_query = "select student_id from student where student_id = '$student_id'";
-
-            $result = mysqli_query($connection,$duplicate_check_query);
-
-            $row = mysqli_fetch_assoc($result);
-
-            $std_id = $row['student_id'];
-
-            if($std_id == ''){
-                $insert_query = "insert into student(student_id,first_name) values('$student_id','$first_name')";
-
-                $result1 = mysqli_query($connection,$insert_query);
-
-                $msg = 'Record has been added';
-            }
-            else{
-                $msg = 'Record already exist';
-            }
-        }
-    echo $msg;
 }
