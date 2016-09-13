@@ -13,12 +13,12 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Student Management</title>
-    <script src="../../js/jquery-1.12.4.min.js"></script>
-    <script src="../../js/jquery.noty.packaged.min.js"></script>
-    <script src="../../js/custom.js"></script>
-    <script src="../../js/bootstrap.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="../../css/style.css"/>
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="../js/jquery.noty.packaged.min.js"></script>
+    <script src="../js/custom.js"></script>
+    <script src="../js/bootstrap.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../css/style.css"/>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="border-radius: 0px;">

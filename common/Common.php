@@ -6,7 +6,7 @@
  * Date: 8/31/2016
  * Time: 7:08 PM
  */
-
+include '../config/databaseConnection.php';
 //include '/PHPExcel/Classes/PHPExcel/IOFactory.php';
 
 class Common
@@ -169,7 +169,9 @@ class Common
 
     }
 
-    public function createUser($username,$role,$emailAddress,$student_id,$image,$connection){
+    public function createUser($username,$role,$emailAddress,$student_id,$image){
+
+        global $connection;
 
         $created_date = date("Y-m-d");
         $password = md5('123');
@@ -183,6 +185,7 @@ class Common
 
 
     public function editUser($id){
+
         global $connection;
 
         $select_query = "SELECT *FROM user WHERE id ='$id'; ";
@@ -251,7 +254,7 @@ class Common
     public function getUser(){
 
         global $connection;
-        
+
         $select_user = "SELECT *FROM user";
 
         $result = mysqli_query($connection,$select_user);

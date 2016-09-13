@@ -19,7 +19,7 @@
 <?php include'../layout/header.php'; ?>
 <div class="container">
 
-    <a href="user.php">
+    <a href="../user.php">
         <div class="col-lg-8 col-space">
             <div class="btn btn-block option-box">
                 <h4>User</h4>

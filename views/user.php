@@ -6,7 +6,7 @@
  * Time: 3:52 PM
  */
 session_start();
-include  '../../common/Common.php';
+include '../common/Common.php';
 ?>
 
 <!DOCTYPE html>
@@ -15,10 +15,10 @@ include  '../../common/Common.php';
     <meta charset="UTF-8">
     <title>Student Management</title>
 
-    <script src="../../js/user.js" type="text/javascript"></script>
+    <script src="../js/user.js" type="text/javascript"></script>
 </head>
 <body>
-<?php include '../layout/header.php'; ?>
+<?php include 'layout/header.php'; ?>
 
 
 <!-- Add user Modal -->
@@ -32,7 +32,7 @@ include  '../../common/Common.php';
                 <h4 class="modal-title">Modal Header</h4>
             </div>
             <div class="modal-body">
-                <form action="../../controller/userController.php" method="post" id="user-form" class="form form-horizontal" enctype="multipart/form-data">
+                <form action="../controller/userController.php" method="post" id="user-form" class="form form-horizontal" enctype="multipart/form-data">
                     <input type="hidden" id="modes" name="mode" value="add">
                     <div class="form-group">
                         <label class="col-md-4">Username</label>
@@ -133,7 +133,7 @@ include  '../../common/Common.php';
 
                 ?>
                 <tr>
-                    <td><img src="../../images/<?php echo $user['photo'] ?>" style="height: 50px" class="img-circle"></td>
+                    <td><img src="../images/<?php echo $user['photo'] ?>" style="height: 50px" class="img-circle"></td>
                     <td><?php echo $user['username'] ?></td>
                     <td><?php echo $user['email'] ?></td>
                     <td><?php echo $user['role'] ?></td>

@@ -6,7 +6,6 @@
  * Time: 3:11 PM
  */
 include  '../common/Common.php';
-include  '../config/databaseConnection.php';
 
 $objCommon = new Common();
 
@@ -26,7 +25,7 @@ if(isset($_POST['mode'])){
 
         move_uploaded_file($image_tmp,"../images/$image");
         
-        $result = $objCommon->createUser($username,$role,$emailAddress,$student_id,$image,$connection);
+        $result = $objCommon->createUser($username,$role,$emailAddress,$student_id,$image);
         
         if($result){
             $_SESSION['create_user'] = 'success';
@@ -52,7 +51,7 @@ if(isset($_POST['mode'])){
 
         $result = array();
 
-        $result = $objCommon->deleteUser($id,$connection);
+        $result = $objCommon->deleteUser($id);
 
         return 'dada';
     }
