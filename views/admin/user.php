@@ -7,7 +7,6 @@
  */
 session_start();
 include  '../../common/Common.php';
-include  '../../config/databaseConnection.php';
 ?>
 
 <!DOCTYPE html>
@@ -128,7 +127,7 @@ include  '../../config/databaseConnection.php';
             <?php
             $objCommon = new Common();
 
-            $userList = $objCommon->getUser($connection);
+            $userList = $objCommon->getUser();
 
             foreach ($userList as $user) {
 

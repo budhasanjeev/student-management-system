@@ -229,7 +229,9 @@ class Common
         return $data;
     }
 
-    public function deleteUser($id,$connection){
+    public function deleteUser($id){
+
+        global $connection;
 
         $delete_user = "DELETE FROM user WHERE id='$id' ";
 
@@ -246,8 +248,10 @@ class Common
         return $data;
     }
 
-    public function getUser($connection){
+    public function getUser(){
 
+        global $connection;
+        
         $select_user = "SELECT *FROM user";
 
         $result = mysqli_query($connection,$select_user);
