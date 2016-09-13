@@ -7,9 +7,7 @@
  * Time: 7:08 PM
  */
 
-require('../config/databaseConnection.php');
-
-include '../PHPExcel/Classes/PHPExcel/IOFactory.php';
+//include '/PHPExcel/Classes/PHPExcel/IOFactory.php';
 
 class Common
 {
@@ -171,9 +169,7 @@ class Common
 
     }
 
-    public function createUser($username,$role,$emailAddress,$student_id,$image){
-
-        global $connection;
+    public function createUser($username,$role,$emailAddress,$student_id,$image,$connection){
 
         $created_date = date("Y-m-d");
         $password = md5('123');
@@ -181,16 +177,8 @@ class Common
         $create_user = "INSERT INTO user(username, password, role, email, student_id, photo, created_date) VALUES('$username','$password','$role','$emailAddress','$student_id','$image','$created_date')";
 
         $result = mysqli_query($connection,$create_user);
-        $data = array();
-
-        if($result){
-            $data['password']=$password;
-            $data['message']='success';
-        }else{
-            $data['message']='fail';
-        }
-
-        return $data;
+    
+        return $result;    
     }
 
 
@@ -241,9 +229,7 @@ class Common
         return $data;
     }
 
-    public function deleteUser($id){
-
-        global $connection;
+    public function deleteUser($id,$connection){
 
         $delete_user = "DELETE FROM user WHERE id='$id' ";
 
@@ -258,6 +244,30 @@ class Common
         }
 
         return $data;
+    }
+
+    public function getUser($connection){
+
+        $select_user = "SELECT *FROM user";
+
+        $result = mysqli_query($connection,$select_user);
+
+        $data = array();
+
+        $i = 0;
+
+        while($row = mysqli_fetch_assoc($result))
+        {
+            $data[$i]['id'] = $row["id"];
+            $data[$i]['username'] = $row["username"];
+            $data[$i]['role'] = $row["role"];
+            $data[$i]['email'] = $row["email"];
+            $data[$i]['photo'] = $row["photo"];
+            $i++;
+        }
+
+        return $data;
+
     }
 
 

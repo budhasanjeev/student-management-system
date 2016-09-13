@@ -16,7 +16,7 @@ function deleteUser(id){
                 n.close();
                 $.ajax({
                     type:"POST",
-                    url:'../controller/userHandler.php',
+                    url:'../controller/userController.php',
                     data:"mode="+mode+"&id="+id,
                     success:function(data){
                         var data = JSON.parse(data);
@@ -48,7 +48,7 @@ function editUser(id) {
 
     $.ajax({
         type:"POST",
-        url:'../controller/userHandler.php',
+        url:'../controller/userController.php',
         data:"mode="+mode+"&id="+id,
         success:function(data){
             var data = JSON.parse(data);
@@ -90,7 +90,7 @@ function resetPassword(id) {
 
     $.ajax({
         type:"POST",
-        url:'../controller/userHandler.php',
+        url:'../controller/userController.php',
         data:"mode="+mode+"&id="+id,
         success:function(data){
 
@@ -110,8 +110,9 @@ function resetPassword(id) {
 }
 
 function createUser() {
-    var formData = new FormData($(this)[0]);
 
-    alert(formData);
+    var data = $('#user-form').serialize();
+
+    alert(data);
     
 }

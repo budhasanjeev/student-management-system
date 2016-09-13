@@ -14,6 +14,8 @@
     <meta charset="UTF-8">
     <title>Student Management</title>
     <script src="../../js/jquery-1.12.4.min.js"></script>
+    <script src="../../js/jquery.noty.packaged.min.js"></script>
+    <script src="../../js/custom.js"></script>
     <script src="../../js/bootstrap.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../../css/style.css"/>
