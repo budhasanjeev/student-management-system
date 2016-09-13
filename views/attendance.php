@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="container">
-    <?php include '../layout/header.php' ?>
+    <?php include 'layout/header.php' ?>
 
 
     <form action="../controller/attendanceController.php" method="post" enctype="multipart/form-data">

@@ -12,11 +12,12 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Student Management</title>
+    <script src="../js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../css/style.css"/>
 </head>
 <body>
-<?php include '../layout/header.php'; ?>
+<?php include 'layout/header.php'; ?>
 <div class="container" style="padding: 10px;">
     <div class="col-lg-3">
         <div class="info-box" style="background-color: #a07789">

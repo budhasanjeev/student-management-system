@@ -24,7 +24,7 @@ if (isset($_POST['login'])){
 
     if($password == $stored_password){
         if($role == "admin"){
-            header("Location: admin/index.php");
+            header("Location: admin.php");
         }else{
             echo "student";
         }

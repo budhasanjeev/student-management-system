@@ -14,10 +14,7 @@
     <title>Student Management</title>
 </head>
 <body>
-<?php include '../layout/header.php'; ?>
-
-
-
+<?php include 'layout/header.php'; ?>
 
 <!-- Add user Modal -->
 <div id="addUser" class="modal fade" role="dialog">
