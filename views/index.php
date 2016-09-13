@@ -16,10 +16,8 @@
     <link rel="stylesheet" href="../css/style.css"/>
 </head>
 <body>
-<?php include'../layout/header.php'; ?>
-<div class="row" style="padding: 10px;">
-
-
+<?php include '../layout/header.php'; ?>
+<div class="container" style="padding: 10px;">
     <div class="col-lg-3">
         <div class="info-box" style="background-color: #a07789">
             <div class="col-md-4" style="font-size: 50px;"><span class="glyphicon glyphicon-user"></span></div>
@@ -49,9 +47,9 @@
             <div class="col-md-4" style="font-size: 50px;"><span class="glyphicon glyphicon-user"></span></div>
             <div class="col-md-8">
                 <div class="row" style="font-size: 20px;">
-                    Total Students
+                    Birthday today
                 </div>
-                <div class="row" style="font-size: 18px;">100</div>
+                <div class="row" style="font-size: 18px;">5</div>
             </div>
         </div>
     </div>
@@ -61,62 +59,15 @@
             <div class="col-md-4" style="font-size: 50px;"><span class="glyphicon glyphicon-user"></span></div>
             <div class="col-md-8">
                 <div class="row" style="font-size: 20px;">
-                    Total Students
+                    Appoints today
                 </div>
-                <div class="row" style="font-size: 18px;">100</div>
+                <div class="row" style="font-size: 18px;">14</div>
             </div>
         </div>
     </div>
-</div>
-<div class="container">
-    <div class="row">
-    <a href="user.php">
-        <div class="col-lg-8 col-space">
-            <div class="btn btn-block option-box">
-                <h4>User</h4>
-            </div>
-        </div>
-    </a>
 
-    <a href="student.php">
-    <div class="col-lg-4 col-space">
-        <div class="btn btn-block option-box">
-            <h4>Students</h4>
-        </div>
-    </div>
-    </a>
-
-    <a href="routine.php">
-    <div class="col-lg-4 col-space">
-        <div class="btn btn-block option-box">
-            <h4>Routine</h4>
-        </div>
-    </div>
-    </a>
-
-    <a href="fee.php">
-    <div class="col-lg-8 col-space">
-        <div class="btn btn-block option-box">
-            <h4>Fee</h4>
-        </div>
-    </div>
-    </a>
-
-    <a href="attendance.php">
-    <div class="col-lg-8 col-space">
-        <div class="btn btn-block option-box">
-            <h4>Attendance</h4>
-        </div>
-    </div>
-    </a>
-
-    <a href="attendance.php">
-        <div class="col-lg-4 col-space">
-            <div class="btn btn-block option-box">
-                <h4>Attendance</h4>
-            </div>
-        </div>
-    </a>
+    <div class="row" style="padding: 20px; margin-top: 120px;">
+        <img src="../img/graph.jpg" width="100%" height="500px" alt=""/>
     </div>
 </div>
 

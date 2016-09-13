@@ -69,10 +69,11 @@
     color: #ffffff;
 }
 
-.header{
-
-}
-
-.header div{
-    text-align: center;
+.dropdown-div div{
+    height: 50px;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
 }
