@@ -120,5 +120,145 @@ class Common
 
         return $data;
     }
-    
+
+    public function editStudent($id){
+        global $connection;
+
+        $select_student = "select *from student where student_id = '$id' ";
+
+        $data = array();
+
+        $result = mysqli_query($connection,$select_student);
+
+        while ($row = mysqli_fetch_assoc($result)){
+
+            $data['id'] = $row['id'];
+            $data['student_id'] = $row['student_id'];
+            $data['first_name'] = $row['first_name'];
+            $data['last_name'] = $row['last_name'];
+            $data['dob'] = $row['dob'];
+            $data['address'] = $row['address'];
+            $data['contact_number'] = $row['contact_number'];
+            $data['father_name'] = $row['father_name'];
+            $data['mother_name'] = $row['mother_name'];
+            $data['roll_number'] = $row['roll_number'];
+            $data['grade'] = $row['grade'];
+            $data['section'] = $row['section'];
+            $data['photo'] = $row['photo'];
+        }
+
+        return $data;
+    }
+
+    public function updateStudent($std_id,$fname,$lname,$dob,$address,$contact,$rollNumber,$grade,$section,$fatherName,$motherName,$id){
+        global $connection;
+
+        $update_student = "update student set student_id = '$std_id',first_name = '$fname',last_name='$lname',dob = '$dob',address='$address',contact_number='$contact',father_name='$fatherName',mother_name='$motherName',roll_number='$rollNumber',grade='$grade',section='$section' where id = '$id' ";
+
+        $result = mysqli_query($connection,$update_student);
+
+        return $result;
+    }
+
+    public function deleteStudent($id){
+        global $connection;
+
+        $delete_student = "delete from student where id = '$id'";
+
+        $result = mysqli_query($connection,$delete_student);
+
+        return $result;
+
+    }
+
+    public function createUser($username,$role,$emailAddress,$student_id,$image){
+
+        global $connection;
+
+        $created_date = date("Y-m-d");
+        $password = md5('123');
+
+        $create_user = "INSERT INTO user(username, password, role, email, student_id, photo, created_date) VALUES('$username','$password','$role','$emailAddress','$student_id','$image','$created_date')";
+
+        $result = mysqli_query($connection,$create_user);
+        $data = array();
+
+        if($result){
+            $data['password']=$password;
+            $data['message']='success';
+        }else{
+            $data['message']='fail';
+        }
+
+        return $data;
+    }
+
+
+    public function editUser($id){
+        global $connection;
+
+        $select_query = "SELECT *FROM user WHERE id ='$id'; ";
+
+        $result = mysqli_query($connection,$select_query);
+
+        $data = array();
+
+        while($row = mysqli_fetch_assoc($result))
+        {
+            $data['id'] = $row["id"];
+            $data['first_name'] = $row["first_name"];
+            $data['last_name'] = $row["last_name"];
+            $data['city'] = $row["city"];
+            $data['zone'] = $row["zone"];
+            $data['district'] = $row["district"];
+            $data['mobile_number'] = $row["mobile_number"];
+            $data['email_address'] = $row["email_address"];
+            $data['role'] = $row["role"];
+            $data['image'] = $row["image"];
+        }
+        return $data;
+
+    }
+
+    public function updateUser($firstName, $lastName, $mobileNumber, $emailAddress, $city, $zone, $district, $role, $image,$id){
+
+        global $connection;
+
+        $updated_date = date("Y-m-d");
+
+        $create_user = "update user set first_name = '$firstName',last_name='$lastName',city='$city',zone='$zone',district='$district',mobile_number='$mobileNumber',email_address='$emailAddress',role = '$role',image='$image',updated_date='$updated_date' WHERE id = '$id'";
+
+        $result = mysqli_query($connection,$create_user);
+
+        $data = array();
+
+        if($result){
+            $data['message']='success';
+        }else{
+            $data['message']='fail';
+        }
+
+        return $data;
+    }
+
+    public function deleteUser($id){
+
+        global $connection;
+
+        $delete_user = "DELETE FROM user WHERE id='$id' ";
+
+        $result = mysqli_query($connection,$delete_user);
+
+        $data = array();
+
+        if($result){
+            $data['message']='success';
+        }else{
+            $data['message']='error';
+        }
+
+        return $data;
+    }
+
+
 }
