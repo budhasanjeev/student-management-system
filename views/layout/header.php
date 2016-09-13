@@ -71,7 +71,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Add New<b class="caret"></b></a>
 
                 <div class="dropdown-menu ">
-                    <a href="../user.php">
+                    <a href="user.php">
                         <div class="col-md-6" style="padding: 5px;">
                             <div class="dropdown-div" style="background-color: #47666b;">
                                 <div>User</div>
@@ -79,7 +79,7 @@
                         </div>
                     </a>
 
-                    <a href="../student.php">
+                    <a href="student.php">
                         <div class="col-md-6" style="padding: 5px;">
                             <div class="dropdown-div" style="background-color: #aba992;">
                                 <div>Student</div>
@@ -87,7 +87,7 @@
                         </div>
                     </a>
 
-                    <a href="../admin/routine.php.php">
+                    <a href="routine.php">
                         <div class="col-md-6" style="padding: 5px;">
                             <div class="dropdown-div" style="background-color: #533443;">
                                 <div>Routine</div>
@@ -95,7 +95,7 @@
                         </div>
                     </a>
 
-                    <a href="../fee.php">
+                    <a href="fee.php">
                         <div class="col-md-6" style="padding: 5px;">
                             <div class="dropdown-div" style="background-color: #a07789;">
                                 <div>Fee</div>
