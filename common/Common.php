@@ -169,14 +169,14 @@ class Common
 
     }
 
-    public function createUser($username,$role,$emailAddress,$student_id,$image){
+    public function createUser($firstName,$lastName,$username,$role,$emailAddress,$student_id,$image){
 
         global $connection;
 
         $created_date = date("Y-m-d");
         $password = md5('123');
 
-        $create_user = "INSERT INTO user(username, password, role, email, student_id, photo, created_date) VALUES('$username','$password','$role','$emailAddress','$student_id','$image','$created_date')";
+        $create_user = "INSERT INTO user(first_name, last_name, username, password, role, email, student_id, photo, created_date) VALUES('$firstName','$lastName','$username','$password','$role','$emailAddress','$student_id','$image','$created_date')";
 
         $result = mysqli_query($connection,$create_user);
     
@@ -199,37 +199,27 @@ class Common
             $data['id'] = $row["id"];
             $data['first_name'] = $row["first_name"];
             $data['last_name'] = $row["last_name"];
-            $data['city'] = $row["city"];
-            $data['zone'] = $row["zone"];
-            $data['district'] = $row["district"];
-            $data['mobile_number'] = $row["mobile_number"];
-            $data['email_address'] = $row["email_address"];
+            $data['username'] = $row["username"];
             $data['role'] = $row["role"];
-            $data['image'] = $row["image"];
+            $data['email'] = $row["email"];
+            $data['photo'] = $row["photo"];
+            $data['student_id'] = $row["student_id"];
         }
-        return $data;
 
+        return $data;
     }
 
-    public function updateUser($firstName, $lastName, $mobileNumber, $emailAddress, $city, $zone, $district, $role, $image,$id){
+    public function updateUser($firstName,$lastName,$username,$role,$emailAddress,$student_id,$image,$user_id){
 
         global $connection;
 
         $updated_date = date("Y-m-d");
 
-        $create_user = "update user set first_name = '$firstName',last_name='$lastName',city='$city',zone='$zone',district='$district',mobile_number='$mobileNumber',email_address='$emailAddress',role = '$role',image='$image',updated_date='$updated_date' WHERE id = '$id'";
+        $create_user = "update user set first_name = '$firstName',last_name='$lastName',username='$username', role ='$role',email='$emailAddress',student_id='$student_id',photo='$image',updated_date='$updated_date' WHERE id = '$user_id'";
 
         $result = mysqli_query($connection,$create_user);
-
-        $data = array();
-
-        if($result){
-            $data['message']='success';
-        }else{
-            $data['message']='fail';
-        }
-
-        return $data;
+        
+        return $result;
     }
 
     public function deleteUser($id){
@@ -266,6 +256,8 @@ class Common
         while($row = mysqli_fetch_assoc($result))
         {
             $data[$i]['id'] = $row["id"];
+            $data[$i]['first_name'] = $row["first_name"];
+            $data[$i]['last_name'] = $row["last_name"];
             $data[$i]['username'] = $row["username"];
             $data[$i]['role'] = $row["role"];
             $data[$i]['email'] = $row["email"];

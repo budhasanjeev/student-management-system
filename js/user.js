@@ -19,6 +19,7 @@ function deleteUser(id){
                     url:'../controller/userController.php',
                     data:"mode="+mode+"&id="+id,
                     success:function(data){
+
                         var data = JSON.parse(data);
 
                         if(data.message=='success'){
@@ -51,26 +52,25 @@ function editUser(id) {
         url:'../controller/userController.php',
         data:"mode="+mode+"&id="+id,
         success:function(data){
+            
             var data = JSON.parse(data);
 
-            var s_id = data['id'];
-            $("#image").attr('value',data['image']);
-            $("#first_name").val(data['first_name']);
-            $('#last_name').val(data['last_name']);
-            $('#mobile_number').val(data['mobile_number']);
-            $('#email_address').val(data['email_address']);
-            $('#city').val(data['city']);
-            $('#zone').val(data['zone']);
-            $('#district').val(data['district']);
+            var u_id = data['id'];
+            $("#firstName").val(data['first_name']);
+            $('#lastName').val(data['last_name']);
+            $('#username').val(data['username']);
+            $('#email').val(data['email']);
             $('#role').val(data['role']);
+            $('#student_id').val(data['student_id']);
+            $('#photo').attr('value',data['photo']);
 
 
-            $('#insert-user').modal('show');
-            $('#insert-user .modal-title').html("प्रयोगकर्ता परिमार्जन गर्नुहोस्");
-            $('#insert-user button[type=submit]').html("पेश गर्नुहोस्");
-            $('#user-form').attr('action','../controller/userHandler.php');
+            $('#addUser').modal('show');
+            $('#addUser .modal-title').html("EDIT USER");
+            $('#addUser button[type=submit]').html("save changes");
+            $('#user-form').attr('action','../controller/userController.php');
             $('#modes').attr('value','update');
-            $('#user_id').attr('value',s_id);
+            $('#user_id').attr('value',u_id);
 
             $('.modal').on('hidden.bs.modal', function(){
                 $(this).find('form')[0].reset();

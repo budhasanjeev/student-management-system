@@ -19,10 +19,6 @@
     <script src="../js/bootstrap.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="../css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../css/style.css"/>
-    <script src="../../js/jquery-1.12.4.min.js"></script>
-    <script src="../../js/bootstrap.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="../../css/style.css"/>
     <style>
         .icon-bar {
             width: 100%;
