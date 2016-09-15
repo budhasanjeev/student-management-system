@@ -42,7 +42,11 @@
                 </span>
     </div>
 </div>
-
+<form action="../controller/routineController.php" method="post" enctype="multipart/form-data">
+    Grade <input type="text" name="grade">
+    <input type="file" name="file" />
+    <button type="submit" name="btn-upload">upload</button>
+</form>
 
 </body>
 </html>
