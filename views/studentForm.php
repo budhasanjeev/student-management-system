@@ -59,11 +59,11 @@
             <input type="text" name="motherName" class="form-control form-group" placeholder="Mother Name" id="motherName"/>
         </div>
         <h4>Photo</h4>
-        <div class="col-md-4">
+        <div class="col-md-4 row">
             <input type="file" name="photo" class="form-group" id="studentPhoto"/>
         </div>
-        <div class="col-md-12">
-            <input class="btn btn-primary btn-block" name="submit" type="submit" value="Add"/>
+        <div class="row" style="text-align: right;">
+            <input class="btn btn-primary" name="submit" type="submit" value="Add"/>
         </div>
     </form>
 </div>

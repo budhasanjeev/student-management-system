@@ -88,7 +88,9 @@ include '../common/Common.php';
                             </div>
                         </div>
 
-                        <input class="btn btn-primary" type="submit" id="user-save"/>
+                        <div style="text-align: right;">
+                            <input class="btn btn-primary" type="submit" id="user-save"/>
+                        </div>
                     </form>
             </div>
             <div class="modal-footer">
@@ -101,8 +103,8 @@ include '../common/Common.php';
 
 
 <div class="container">
-<div style="text-align: right;">
-    <button type="button" id="add-user" class="btn btn-primary glyphicon glyphicon-plus">  New</button>
+<div class="add-btn-div">
+    <button type="button" id="add-user" class="btn btn-primary btn-block glyphicon glyphicon-plus">  New</button>
 </div>
 
     <?php

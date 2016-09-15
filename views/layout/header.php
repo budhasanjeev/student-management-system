@@ -19,8 +19,9 @@
     <script src="../js/bootstrap.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="../css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../css/style.css"/>
+<!--    <link rel="stylesheet" href="../css/easydropdown.css"/>-->
 
-    <link href="https://fonts.googleapis.com/css?family=David+Libre" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=David+Libre|Raleway" rel="stylesheet">
     <style>
         .icon-bar {
             width: 100%;
@@ -68,7 +69,7 @@
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Add New<b class="caret"></b></a>
 
-                <div class="dropdown-menu ">
+                <div class="dropdown-menu">
                     <a href="user.php">
                         <div class="col-md-6" style="padding: 5px;">
                             <div class="dropdown-div" style="background-color: #47666b;">

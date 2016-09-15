@@ -1,6 +1,41 @@
 body{
-    font-family: 'David Libre', serif;
-    font-size: 20px;
+    /*font-family: 'David Libre', serif;*/
+    font-size: 16px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.navbar a{
+    color: #782d3e;
+}
+
+.add-btn-div{
+    margin-bottom: 70px;
+}
+
+.form-control{
+    border-radius: 0px;
+}
+
+.btn{
+    border-radius: 0px;
+}
+
+.btn-primary{
+    background-color: #5f3b4c;
+}
+
+.btn-primary:hover{
+    background-color: #482c39;
+}
+
+.modal-header{
+    background-color: #a07789;
+    color: #ffffff;
+}
+
+.modal-footer{
+    background-color: #a07789;
+    color: #ffffff;
 }
 
 .login-glyphicon{

@@ -23,11 +23,14 @@ include 'layout/header.php';
 ?>
 
 <div class="container">
+
+    <div class="add-btn-div">
     <div class="col-md-6">
         <a href="studentForm.php" class="btn btn-block btn-primary">Form to add student</a>
     </div>
     <div class="col-md-6">
         <a href="" class="btn btn-block btn-primary">Excell to add student</a>
+    </div>
     </div>
 
     <?php
