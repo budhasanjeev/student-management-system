@@ -8,5 +8,5 @@
 ?>
 <form action="../../controller/routineController.php" method="post" enctype="multipart/form-data">
         <input type="file" name="file">
-        <input type="submit" value="upload">
+        <button type="submit" name ="btn-upload">upload</button>
     </form>
