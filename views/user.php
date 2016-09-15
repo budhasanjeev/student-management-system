@@ -121,7 +121,6 @@ include '../common/Common.php';
 
 
         session_unset();
-        session_destroy();
     ?>
 
     <div>

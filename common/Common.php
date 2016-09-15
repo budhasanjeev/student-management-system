@@ -97,6 +97,36 @@ class Common
         return $data;
     }
 
+    public function getStudent(){
+        global $connection;
+
+        $select_student = "select *from student";
+
+        $result = mysqli_query($connection,$select_student);
+
+        $data = array();
+
+        $i = 0;
+
+        while ($row = mysqli_fetch_assoc($result)){
+            $data[$i]['id'] = $row['id'];
+            $data[$i]['first_name'] = $row['first_name'];
+            $data[$i]['last_name'] = $row['last_name'];
+            $data[$i]['dob'] = $row['dob'];
+            $data[$i]['address'] = $row['address'];
+            $data[$i]['contact_number'] = $row['contact_number'];
+            $data[$i]['father_name'] = $row['father_name'];
+            $data[$i]['mother_name'] = $row['mother_name'];
+            $data[$i]['roll_number'] = $row['roll_number'];
+            $data[$i]['grade'] = $row['grade'];
+            $data[$i]['section'] = $row['section'];
+            $data[$i]['photo'] = $row['photo'];
+            $i++;
+        }
+
+        return $data;
+    }
+
     public function createStudent($std_id,$fname,$lname,$dob,$address,$contact,$rollNumber,$grade,$section,$fatherName,$motherName,$photo){
 
         global $connection;
@@ -108,15 +138,8 @@ class Common
 
         $result = mysqli_query($connection,$insert_student);
 
-        $data = array();
-
-        if($result){
-            $data['message'] = 'success';
-        }else{
-            $data['message'] = 'fail';
-        }
-
-        return $data;
+        return $result;
+        
     }
 
     public function editStudent($id){

@@ -5,7 +5,7 @@
  * Date: 8/31/2016
  * Time: 7:17 PM
  */
-
+session_start();
 include '../common/Common.php';
 
 $objCommon = new Common();
@@ -24,17 +24,7 @@ if(isset($_POST['submit'])){
 
         $result = $objCommon->createStudentList($file_name,$student_record_temp);
 
-        if($result['message']=='success'){
-
-            echo '<script>
-                    alert("successfully added");
-                  </script>';
-        }
-        else{
-            echo '<script>
-                    alert("already inserted");
-                </script>';
-        }
+        
     } else if($_POST['mode']=='add'){
 
         $std_id = $_POST['student_id'];
@@ -57,17 +47,16 @@ if(isset($_POST['submit'])){
         $result = array();
 
         $result = $objCommon->createStudent($std_id,$fname,$lname,$dob,$address,$contact,$rollNumber,$grade,$section,$fatherName,$motherName,$photo);
-        
-        if($result['message']=='success'){
-            echo '<script>
-                    alert("Successfully created");
-                  </script>';
 
-        }else{
-            echo '<script>
-                    alert("Unsuccessful");
-                  </script>';
+        if($result){
+            $_SESSION['create_student'] = 'success';
         }
+        else{
+            $_SESSION['create_student'] = 'error';
+        }
+
+        header('Location:../views/student.php');
+
 
     } else if(isset($_POST['mode'])=='edit'){
 
