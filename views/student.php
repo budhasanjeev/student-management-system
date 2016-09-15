@@ -15,6 +15,7 @@ include '../common/Common.php'
 <head lang="en">
     <meta charset="UTF-8">
     <title>Student Management</title>
+    <script src="../js/student.js"></script>
 </head>
 <body>
 <?php
@@ -33,12 +34,12 @@ include 'layout/header.php';
     if(isset($_SESSION['create_student'])){
         if($_SESSION['create_student'] == 'success'){
             echo '<script>
-                    displayMessage("Successful","success");
+                    displayMessage("Successfully completed","success");
                 </script>';
         }
         else if($_SESSION['create_student'] == 'error'){
             echo '<script>
-                    displayMessage("Failed","error");
+                    displayMessage("failed to complete","error");
                 </script>';
         }
     }
@@ -73,20 +74,24 @@ include 'layout/header.php';
             ?>
 
             <tr>
-                <td><img src="../images/<?php echo $student['photo'] ?>" style="width: 40px;" class="img-circle">
+                <td style="vertical-align: middle"><img src="../images/<?php echo $student['photo'] ?>" style="width: 40px;" class="img-circle">
                 </td>
-                <td><?php echo $student['id'] ?></td>
-                <td><?php echo $student['first_name'] . ' ' . $student['last_name'] ?></td>
-                <td><?php echo $student['dob'] ?></td>
-                <td><?php echo $student['address'] ?></td>
-                <td><?php echo $student['contact_number'] ?></td>
-                <td><?php echo $student['roll_number'] ?></td>
-                <td><?php echo $student['grade'] ?></td>
-                <td><?php echo $student['section'] ?></td>
-                <td><?php echo $student['father_name'] ?></td>
-                <td><?php echo $student['mother_name'] ?></td>
-                <td>
-                    <button class="btn btn-default" onclick="editStudent(<?php echo $student['id'] ?>)"><span class="glyphicon glyphicon-edit"></span></button>
+                <td style="vertical-align: middle"><?php echo $student['student_id'] ?></td>
+                <td style="vertical-align: middle"><?php echo $student['first_name'] . ' ' . $student['last_name'] ?></td>
+                <td style="vertical-align: middle"><?php echo $student['dob'] ?></td>
+                <td style="vertical-align: middle"><?php echo $student['address'] ?></td>
+                <td style="vertical-align: middle"><?php echo $student['contact_number'] ?></td>
+                <td style="vertical-align: middle"><?php echo $student['roll_number'] ?></td>
+                <td style="vertical-align: middle"><?php echo $student['grade'] ?></td>
+                <td style="vertical-align: middle"><?php echo $student['section'] ?></td>
+                <td style="vertical-align: middle"><?php echo $student['father_name'] ?></td>
+                <td style="vertical-align: middle"><?php echo $student['mother_name'] ?></td>
+                <td style="vertical-align: middle">
+                    <form action="../controller/studentController.php" method="post">
+                        <input type="hidden" name="mode" value="edit">
+                        <input type="hidden" name="id" value="<?php echo $student['id'] ?>">
+                        <button class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></button>
+                    </form>
                     <button class="btn btn-default" onclick="deleteStudent(<?php echo $student['id'] ?>)"><span class="glyphicon glyphicon-trash"></span></button>
                 </td>
             </tr>

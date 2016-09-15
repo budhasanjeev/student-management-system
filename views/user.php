@@ -109,12 +109,12 @@ include '../common/Common.php';
         if(isset($_SESSION['create_user'])){
             if($_SESSION['create_user'] == 'success'){
                 echo '<script>
-                    displayMessage("Successful","success");
+                    displayMessage("Successfully completed","success");
                 </script>';
             }
             else if($_SESSION['create_user'] == 'error'){
                 echo '<script>
-                    displayMessage("Failed","error");
+                    displayMessage("failed to complete","error");
                 </script>';
             }
         }
