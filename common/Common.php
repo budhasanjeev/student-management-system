@@ -6,10 +6,8 @@
  * Date: 8/31/2016
  * Time: 7:08 PM
  */
-
-require('../config/databaseConnection.php');
-
-include '../PHPExcel/Classes/PHPExcel/IOFactory.php';
+include '../config/databaseConnection.php';
+//include '/PHPExcel/Classes/PHPExcel/IOFactory.php';
 
 class Common
 {
@@ -120,5 +118,156 @@ class Common
 
         return $data;
     }
+
+    public function editStudent($id){
+        global $connection;
+
+        $select_student = "select *from student where student_id = '$id' ";
+
+        $data = array();
+
+        $result = mysqli_query($connection,$select_student);
+
+        while ($row = mysqli_fetch_assoc($result)){
+
+            $data['id'] = $row['id'];
+            $data['student_id'] = $row['student_id'];
+            $data['first_name'] = $row['first_name'];
+            $data['last_name'] = $row['last_name'];
+            $data['dob'] = $row['dob'];
+            $data['address'] = $row['address'];
+            $data['contact_number'] = $row['contact_number'];
+            $data['father_name'] = $row['father_name'];
+            $data['mother_name'] = $row['mother_name'];
+            $data['roll_number'] = $row['roll_number'];
+            $data['grade'] = $row['grade'];
+            $data['section'] = $row['section'];
+            $data['photo'] = $row['photo'];
+        }
+
+        return $data;
+    }
+
+    public function updateStudent($std_id,$fname,$lname,$dob,$address,$contact,$rollNumber,$grade,$section,$fatherName,$motherName,$id){
+        global $connection;
+
+        $update_student = "update student set student_id = '$std_id',first_name = '$fname',last_name='$lname',dob = '$dob',address='$address',contact_number='$contact',father_name='$fatherName',mother_name='$motherName',roll_number='$rollNumber',grade='$grade',section='$section' where id = '$id' ";
+
+        $result = mysqli_query($connection,$update_student);
+
+        return $result;
+    }
+
+    public function deleteStudent($id){
+        global $connection;
+
+        $delete_student = "delete from student where id = '$id'";
+
+        $result = mysqli_query($connection,$delete_student);
+
+        return $result;
+
+    }
+
+    public function createUser($firstName,$lastName,$username,$role,$emailAddress,$student_id,$image){
+
+        global $connection;
+
+        $created_date = date("Y-m-d");
+        $password = md5('123');
+
+        $create_user = "INSERT INTO user(first_name, last_name, username, password, role, email, student_id, photo, created_date) VALUES('$firstName','$lastName','$username','$password','$role','$emailAddress','$student_id','$image','$created_date')";
+
+        $result = mysqli_query($connection,$create_user);
     
+        return $result;    
+    }
+
+
+    public function editUser($id){
+
+        global $connection;
+
+        $select_query = "SELECT *FROM user WHERE id ='$id'; ";
+
+        $result = mysqli_query($connection,$select_query);
+
+        $data = array();
+
+        while($row = mysqli_fetch_assoc($result))
+        {
+            $data['id'] = $row["id"];
+            $data['first_name'] = $row["first_name"];
+            $data['last_name'] = $row["last_name"];
+            $data['username'] = $row["username"];
+            $data['role'] = $row["role"];
+            $data['email'] = $row["email"];
+            $data['photo'] = $row["photo"];
+            $data['student_id'] = $row["student_id"];
+        }
+
+        return $data;
+    }
+
+    public function updateUser($firstName,$lastName,$username,$role,$emailAddress,$student_id,$image,$user_id){
+
+        global $connection;
+
+        $updated_date = date("Y-m-d");
+
+        $create_user = "update user set first_name = '$firstName',last_name='$lastName',username='$username', role ='$role',email='$emailAddress',student_id='$student_id',photo='$image',updated_date='$updated_date' WHERE id = '$user_id'";
+
+        $result = mysqli_query($connection,$create_user);
+        
+        return $result;
+    }
+
+    public function deleteUser($id){
+
+        global $connection;
+
+        $delete_user = "DELETE FROM user WHERE id='$id' ";
+
+        $result = mysqli_query($connection,$delete_user);
+
+        $data = array();
+
+        if($result){
+            $data['message']='success';
+        }else{
+            $data['message']='error';
+        }
+
+        return $data;
+    }
+
+    public function getUser(){
+
+        global $connection;
+
+        $select_user = "SELECT *FROM user";
+
+        $result = mysqli_query($connection,$select_user);
+
+        $data = array();
+
+        $i = 0;
+
+        while($row = mysqli_fetch_assoc($result))
+        {
+            $data[$i]['id'] = $row["id"];
+            $data[$i]['first_name'] = $row["first_name"];
+            $data[$i]['last_name'] = $row["last_name"];
+            $data[$i]['username'] = $row["username"];
+            $data[$i]['role'] = $row["role"];
+            $data[$i]['email'] = $row["email"];
+            $data[$i]['photo'] = $row["photo"];
+            $i++;
+        }
+
+        return $data;
+
+    }
+
+
 }

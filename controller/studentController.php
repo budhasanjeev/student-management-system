@@ -71,6 +71,12 @@ if(isset($_POST['submit'])){
 
     } else if(isset($_POST['mode'])=='edit'){
 
+        $std_id = $_POST['id'];
+        
+        $result = array();
+        
+        $result = $objCommon->editStudent($std_id);
+        
     } else if(isset($_POST['mode'])=='edit'){
 
     }

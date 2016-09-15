@@ -15,10 +15,10 @@
 
 </head>
 <body>
-<?php include '../layout/header.php' ?>
+<?php include 'layout/header.php' ?>
 <div class="container">
     <legend>Add Student</legend>
-    <form action="../../controller/studentController.php" method="post" enctype="multipart/form-data">
+    <form action="../controller/studentController.php" method="post" enctype="multipart/form-data">
 
         <fieldset>
             <h4>Students Detail</h4>

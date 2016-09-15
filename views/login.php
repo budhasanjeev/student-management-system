@@ -24,7 +24,7 @@ if (isset($_POST['login'])){
 
     if($password == $stored_password){
         if($role == "admin"){
-            header("Location: admin/index.php");
+            header("Location: admin.php");
         }else{
             echo "student";
         }
@@ -46,11 +46,21 @@ if (isset($_POST['login'])){
     <link rel="stylesheet" href="../css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../css/style.css"/>
 </head>
-<body style="display: flex; justify-content: center; align-items: center;">
+<body>
+<div class="login-body"></div>
 
+<br/><br/>
+<div class="container" style="text-align: center;">
+    <div style="height: 200px;"></div>
+<!--    <img height="200px" width="50%" src="../img/banner.jpg" alt=""/>-->
+    <h3>Student Management Portal</h3>
+</div>
+
+
+<div style="display: flex; justify-content: center; align-items: center;">
 <div class="highlight login-div">
     <form class="form-horizontal"  method="post" action="">
-        <legend><h2>System Login</h2></legend>
+<!--        <legend><h2>System Login</h2></legend>-->
         <div class="form-group">
             <label class="glyphicon glyphicon-envelope col-md-2 login-glyphicon"></label>
             <div class="col-md-10">
@@ -68,6 +78,6 @@ if (isset($_POST['login'])){
         <input class="btn btn-primary btn-block" name="login" type="submit" value="login"/>
     </form>
 </div>
-
+</div>
 </body>
 </html>

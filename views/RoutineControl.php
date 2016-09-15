@@ -6,7 +6,7 @@
  * Time: 9:28 AM
  */
 ?>
-<form action="../../controller/routineController.php" method="post" enctype="multipart/form-data">
+<form action="../controller/routineController.php" method="post" enctype="multipart/form-data">
         <input type="file" name="file">
         <button type="submit" name ="btn-upload">upload</button>
     </form>
