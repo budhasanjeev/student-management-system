@@ -1,3 +1,8 @@
+body{
+    font-family: 'David Libre', serif;
+    font-size: 20px;
+}
+
 .login-glyphicon{
     font-size: 23px;
 }
