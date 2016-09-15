@@ -28,7 +28,7 @@ include '../common/Common.php';
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Modal Header</h4>
+                <h4 class="modal-title" style="text-align: center;">Modal Header</h4>
             </div>
             <div class="modal-body">
                     <form id="user-form" action="" method="post" enctype="multipart/form-data" class="form form-horizontal">
@@ -88,7 +88,9 @@ include '../common/Common.php';
                             </div>
                         </div>
 
-                        <input class="btn btn-primary" type="submit" id="user-save"/>
+                        <div style="text-align: right;">
+                            <input class="btn btn-primary" type="submit" id="user-save"/>
+                        </div>
                     </form>
             </div>
             <div class="modal-footer">
@@ -101,27 +103,26 @@ include '../common/Common.php';
 
 
 <div class="container">
-<div style="text-align: right;">
-    <button type="button" id="add-user" class="btn btn-primary glyphicon glyphicon-plus">  New</button>
+<div class="add-btn-div">
+    <button type="button" id="add-user" class="btn btn-primary btn-block glyphicon glyphicon-plus">  New</button>
 </div>
 
     <?php
         if(isset($_SESSION['create_user'])){
             if($_SESSION['create_user'] == 'success'){
                 echo '<script>
-                    displayMessage("Successful","success");
+                    displayMessage("Successfully completed","success");
                 </script>';
             }
             else if($_SESSION['create_user'] == 'error'){
                 echo '<script>
-                    displayMessage("Failed","error");
+                    displayMessage("failed to complete","error");
                 </script>';
             }
         }
 
 
         session_unset();
-        session_destroy();
     ?>
 
     <div>

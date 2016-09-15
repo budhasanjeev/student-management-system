@@ -5,12 +5,12 @@
  * Date: 8/31/2016
  * Time: 7:17 PM
  */
-
+session_start();
 include '../common/Common.php';
 
 $objCommon = new Common();
 
-if(isset($_POST['submit'])){
+if(isset($_POST['mode'])){
 
     if($_POST['mode']=='excel'){
 
@@ -24,17 +24,7 @@ if(isset($_POST['submit'])){
 
         $result = $objCommon->createStudentList($file_name,$student_record_temp);
 
-        if($result['message']=='success'){
-
-            echo '<script>
-                    alert("successfully added");
-                  </script>';
-        }
-        else{
-            echo '<script>
-                    alert("already inserted");
-                </script>';
-        }
+        
     } else if($_POST['mode']=='add'){
 
         $std_id = $_POST['student_id'];
@@ -57,27 +47,74 @@ if(isset($_POST['submit'])){
         $result = array();
 
         $result = $objCommon->createStudent($std_id,$fname,$lname,$dob,$address,$contact,$rollNumber,$grade,$section,$fatherName,$motherName,$photo);
-        
-        if($result['message']=='success'){
-            echo '<script>
-                    alert("Successfully created");
-                  </script>';
 
-        }else{
-            echo '<script>
-                    alert("Unsuccessful");
-                  </script>';
+        if($result){
+            $_SESSION['create_student'] = 'success';
+        }
+        else{
+            $_SESSION['create_student'] = 'error';
         }
 
-    } else if(isset($_POST['mode'])=='edit'){
+        header('Location:../views/student.php');
+
+
+    } else if($_POST['mode']=='edit'){
 
         $std_id = $_POST['id'];
         
         $result = array();
         
         $result = $objCommon->editStudent($std_id);
-        
-    } else if(isset($_POST['mode'])=='edit'){
+
+        $_SESSION['student'] = $result;
+
+        header("Location:../views/editStudent.php");
+
+    } else if($_POST['mode']=='delete'){
+
+        $student_id = $_POST['id'];
+
+        $result = array();
+
+        $result = $objCommon->deleteStudent($student_id);
+
+        echo json_encode($result);
+
+    }
+    else if($_POST['mode']=='update'){
+
+        $_SESSION['student'] = null;
+
+        $id     = $_POST['std_id'];
+        $std_id = $_POST['student_id'];
+        $fname  = $_POST['firstName'];
+        $lname  = $_POST['lastName'];
+        $dob    = $_POST['dob'];
+        $address = $_POST['address'];
+        $contact = $_POST['contact'];
+        $rollNumber = $_POST['rollNumber'];
+        $grade   = $_POST['grade'];
+        $section = $_POST['section'];
+        $fatherName = $_POST['fatherName'];
+        $motherName = $_POST['motherName'];
+
+        $photo = $_FILES['photo']['name'];
+        $photo_tmp = $_FILES['photo']['tmp_name'];
+
+        move_uploaded_file($photo_tmp,"../images/$photo");
+
+        $result = array();
+
+        $result = $objCommon->updateStudent($std_id,$fname,$lname,$dob,$address,$contact,$rollNumber,$grade,$section,$fatherName,$motherName,$photo,$id);
+
+        if($result){
+            $_SESSION['create_student'] = 'success';
+        }
+        else{
+            $_SESSION['create_student'] = 'error';
+        }
+
+        header('Location:../views/student.php');
 
     }
 
