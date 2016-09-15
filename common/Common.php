@@ -110,6 +110,7 @@ class Common
 
         while ($row = mysqli_fetch_assoc($result)){
             $data[$i]['id'] = $row['id'];
+            $data[$i]['student_id'] = $row['student_id'];
             $data[$i]['first_name'] = $row['first_name'];
             $data[$i]['last_name'] = $row['last_name'];
             $data[$i]['dob'] = $row['dob'];
@@ -139,13 +140,14 @@ class Common
         $result = mysqli_query($connection,$insert_student);
 
         return $result;
-        
+
     }
 
     public function editStudent($id){
+
         global $connection;
 
-        $select_student = "select *from student where student_id = '$id' ";
+        $select_student = "select *from student where id = '$id' ";
 
         $data = array();
 
@@ -171,25 +173,36 @@ class Common
         return $data;
     }
 
-    public function updateStudent($std_id,$fname,$lname,$dob,$address,$contact,$rollNumber,$grade,$section,$fatherName,$motherName,$id){
+    public function updateStudent($std_id,$fname,$lname,$dob,$address,$contact,$rollNumber,$grade,$section,$fatherName,$motherName,$photo,$id){
         global $connection;
 
-        $update_student = "update student set student_id = '$std_id',first_name = '$fname',last_name='$lname',dob = '$dob',address='$address',contact_number='$contact',father_name='$fatherName',mother_name='$motherName',roll_number='$rollNumber',grade='$grade',section='$section' where id = '$id' ";
+        $updated_date = date('Y-m-d');
+
+        $update_student = "update student set 'student_id' = '$std_id','first_name' = '$fname','last_name'='$lname','dob' = '$dob','address'='$address','contact_number'='$contact','father_name'='$fatherName','mother_name'='$motherName','roll_number'='$rollNumber','grade'='$grade','section'='$section','photo'='$photo','updated_date'='$updated_date' where id = '$id' ";
 
         $result = mysqli_query($connection,$update_student);
 
-        return $result;
+        return $update_student;
     }
 
     public function deleteStudent($id){
+
         global $connection;
 
         $delete_student = "delete from student where id = '$id'";
 
         $result = mysqli_query($connection,$delete_student);
 
-        return $result;
-
+        $data = array();
+        
+        if($result){
+            $data['message'] = 'success';
+        }
+        else{
+            $data['message'] = 'fail';
+        }
+        
+        return $data;
     }
 
     public function createUser($firstName,$lastName,$username,$role,$emailAddress,$student_id,$image){

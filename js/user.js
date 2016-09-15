@@ -108,11 +108,3 @@ function resetPassword(id) {
 
     return false;
 }
-
-function createUser() {
-
-    var data = $('#user-form').serialize();
-
-    alert(data);
-    
-}
