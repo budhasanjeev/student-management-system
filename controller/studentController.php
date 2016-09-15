@@ -113,10 +113,9 @@ if(isset($_POST['mode'])){
         else{
             $_SESSION['create_student'] = 'error';
         }
-        echo $result;
-//        header('Location:../views/student.php');
 
-        echo $id;
+        header('Location:../views/student.php');
+
     }
 
 }

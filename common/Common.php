@@ -174,15 +174,16 @@ class Common
     }
 
     public function updateStudent($std_id,$fname,$lname,$dob,$address,$contact,$rollNumber,$grade,$section,$fatherName,$motherName,$photo,$id){
+
         global $connection;
 
         $updated_date = date('Y-m-d');
 
-        $update_student = "update student set 'student_id' = '$std_id','first_name' = '$fname','last_name'='$lname','dob' = '$dob','address'='$address','contact_number'='$contact','father_name'='$fatherName','mother_name'='$motherName','roll_number'='$rollNumber','grade'='$grade','section'='$section','photo'='$photo','updated_date'='$updated_date' where id = '$id' ";
+        $update_student = "update student set student_id = '$std_id',first_name = '$fname',last_name='$lname',dob = '$dob',address='$address',contact_number='$contact',father_name='$fatherName',mother_name='$motherName',roll_number='$rollNumber',grade='$grade',section='$section',photo='$photo',updated_date='$updated_date' where id = '$id' ";
 
         $result = mysqli_query($connection,$update_student);
 
-        return $update_student;
+        return $result;
     }
 
     public function deleteStudent($id){
