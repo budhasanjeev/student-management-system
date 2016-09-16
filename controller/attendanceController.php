@@ -1,24 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Sanjeev
- * Date: 8/31/2016
- * Time: 7:18 PM
- */
+    include '../common/Common.php';
 
-$uploads_dir = '../views';
+$objCommon = new Common();
 
-if(isset($_FILES['file']))
+if(isset($_FILES['file'])) {
 
-{
-    echo "asdf";
     $file = $_FILES['file']['name'];
     $file_tmp = $_FILES['file']['tmp_name'];
+    move_uploaded_file($file_tmp, "../excelFiles/attendance/$file");
 
-    print_r($file);
 
-    move_uploaded_file($file_tmp,"../views/$file");
+    $result = $objCommon->attendanceExcel($file,$file_tmp);
 
 }
-?>
-
