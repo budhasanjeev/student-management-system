@@ -8,7 +8,7 @@
 
 $server_name = "localhost"; 
 $username    = "root"; /* database username */
-$password    = ""; /* database password */
+$password    = "Happycoding"; /* database password */
 $db_name     = "student_ims"; /* database name */
 
 /*Create Connection*/
