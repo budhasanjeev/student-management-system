@@ -64,12 +64,12 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-            <li><a href="#">Link</a></li>
+            <li><a href="a_class.php">Student</a></li>
             <li><a href="#">Link</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Add New<b class="caret"></b></a>
 
-                <div class="dropdown-menu">
+                <div class="dropdown-menu" style="padding: 4px;">
                     <a href="user.php">
                         <div class="col-md-6" style="padding: 5px;">
                             <div class="dropdown-div" style="background-color: #47666b;">
@@ -98,6 +98,14 @@
                         <div class="col-md-6" style="padding: 5px;">
                             <div class="dropdown-div" style="background-color: #a07789;">
                                 <div>Fee</div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="fee.php">
+                        <div class="col-md-12" style="padding: 5px;">
+                            <div class="dropdown-div" style="background-color: #a07789;">
+                                <div>Teacher</div>
                             </div>
                         </div>
                     </a>
