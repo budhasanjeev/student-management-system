@@ -10,6 +10,6 @@ if(isset($_FILES['file'])) {
     move_uploaded_file($file_tmp, "../Examples/excelFiles/Fee/$file");
 
 
-    $result = $objCommon->FeeExcel($file,$file_tmp);
+    $result =  $objCommon->FeeExcel($file,$file_tmp);
 
 }
