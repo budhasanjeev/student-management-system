@@ -45,6 +45,7 @@ class Common
 
     public function createStudentList($file_name,$student_record_temp){
 
+
         global $connection;
 
         $data = array();
@@ -56,6 +57,7 @@ class Common
         }
 
         $allDataInSheet = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
+
 
         $arrayCount = count($allDataInSheet);
 
@@ -102,6 +104,7 @@ class Common
         global $connection;
 
         $data = array();
+        print("test");
 
         try{
             $objPHPExcel = PHPExcel_IOFactory::load("../excelFiles/attendance/$file_name");
@@ -114,6 +117,7 @@ class Common
         $arrayCount = count($allDataInSheet);
 
         for($i = 2; $i <= $arrayCount; $i++){
+            print("loop");
 
             $subject = trim($allDataInSheet[$i]['A']);
 
@@ -125,8 +129,8 @@ class Common
             $created_date = date("Y-m-d");
 
             $insert_query = "insert into attendance(subject,present_days,absent_days,student_id,created_date) values('$subject','$present_days','$absent_days','$student_id','$created_date')";
-
-            if(mysqli_query($connection,$insert_query)>0){
+            print("sql");
+            if(mysqli_query($connection,$insert_query)){
                 $data['message'] = 'success';
             }
     else{
@@ -352,7 +356,7 @@ public function getUser(){
         $data = array();
 
         try{
-            $objPHPExcel = PHPExcel_IOFactory::load("..Examples/excelFiles/Fee/$file_name");
+            $objPHPExcel = PHPExcel_IOFactory::load("../excelFiles/Fee/$file_name");
         }catch (Exception $e) {
             die('Error loading file "' . pathinfo($file_temp, PATHINFO_BASENAME) . '": ' . $e->getMessage());
         }
