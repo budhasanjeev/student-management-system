@@ -133,7 +133,7 @@
 
                 <ul class="dropdown-menu ">
                     <li><a href="">Change Password</a></li>
-                    <li><a href="">Logout</a></li>
+                    <li><a href="logout.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
