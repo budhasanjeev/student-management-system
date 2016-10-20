@@ -5,7 +5,11 @@
  * Date: 9/18/2016
  * Time: 11:05 AM
  */
+session_start();
 
+if(!isset($_SESSION["email"])){
+    header("Location: login.php");
+}
 ?>
 <!DOCTYPE html>
 <html>

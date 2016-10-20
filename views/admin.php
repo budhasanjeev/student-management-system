@@ -5,6 +5,11 @@
  * Date: 9/4/2016
  * Time: 2:03 PM
  */
+session_start();
+
+if(!isset($_SESSION["email"])){
+    header("Location: login.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +73,7 @@
     </div>
 
     <div class="row" style="padding: 20px; margin-top: 120px;">
-        <img src="../img/graph.jpg" width="100%" height="500px" alt=""/>
+        <img src="../images/graph.jpg" width="100%" height="500px" alt=""/>
     </div>
 </div>
 
