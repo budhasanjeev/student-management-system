@@ -15,16 +15,16 @@ if (isset($_POST['login'])){
     $stored_password = "null";
     $role = "null";
 
-    $select_query = "SELECT `password`, `role` FROM `user` WHERE `email_address` = '$email'";
-    $result = $connection->query($select_query);
+    $select_query = "SELECT password, role FROM user WHERE email = '$email'";
 
+    $result = $connection->query($select_query);
 
     while($row = $result->fetch_assoc()){
         $stored_password = $row['password'];
         $role = $row['role'];
     }
 
-    if($password == $stored_password){
+    if(md5($password) == $stored_password){
         if($role == "Admin"){
             $_SESSION['email'] = $email;
             $_SESSION['role'] = $role;
@@ -42,9 +42,7 @@ if (isset($_POST['login'])){
         echo "user not found";
     }
 
-
 }
-
 
 ?>
 
