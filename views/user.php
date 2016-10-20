@@ -7,7 +7,7 @@
  */
 session_start();
 include '../common/Common.php';
-
+include '../config/databaseConnection.php';
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +15,10 @@ include '../common/Common.php';
 <head lang="en">
     <meta charset="UTF-8">
     <title>Student Management</title>
+    <link href="https://fonts.googleapis.com/css?family=David+Libre|Raleway" rel="stylesheet">
+
     <script src="../js/user.js"></script>
+   
 </head>
 <body>
 <?php include 'layout/header.php'; ?>
@@ -31,67 +34,85 @@ include '../common/Common.php';
                 <h4 class="modal-title" style="text-align: center;">Modal Header</h4>
             </div>
             <div class="modal-body">
-                    <form id="user-form" action="" method="post" enctype="multipart/form-data" class="form form-horizontal">
+                <form id="user-form" action="" method="post" enctype="multipart/form-data" class="form form-horizontal">
 
-                        <input type="hidden" name="mode" id="modes">
-                        <input type="hidden" name="user_id" id="user_id">
-                        <div class="form-group">
-                            <label class="col-md-4">First Name</label>
-                            <div class="col-lg-8">
-                                <input class="form-control" type="text" id="firstName" name="firstName" required=""/>
-                            </div>
+                    <input type="hidden" name="mode" id="modes">
+                    <input type="hidden" name="user_id" id="user_id">
+                    <div class="form-group">
+                        <label class="col-md-4">First Name</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" type="text" id="firstName" name="firstName" required=""/>
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            <label class="col-md-4">Last Name</label>
-                            <div class="col-lg-8">
-                                <input class="form-control" type="text" id="lastName" name="lastName" required=""/>
-                            </div>
+                    <div class="form-group">
+                        <label class="col-md-4">Last Name</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" type="text" id="lastName" name="lastName" required=""/>
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            <label class="col-md-4">Username</label>
-                            <div class="col-lg-8">
-                                <input class="form-control" type="text" id="username" name="username" required=""/>
-                            </div>
+                    <div class="form-group">
+                        <label class="col-md-4">Username</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" type="text" id="username" name="username" required=""/>
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            <label class="col-md-4">Role</label>
-                            <div class="col-lg-8">
-                                <select class="form-control" name="role" id="role">
-                                    <option>Parents</option>
-                                    <option>Admin</option>
-                                    <option>Teacher</option>
-                                </select>
-                            </div>
+                    <div class="form-group">
+                        <label class="col-md-4">Role</label>
+                        <div class="col-lg-8">
+                            <select class="form-control" name="role" id="role">
+                                <option>Parents</option>
+                                <option>Admin</option>
+                                <option>Teacher</option>
+                            </select>
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            <label class="col-md-4">Email</label>
-                            <div class="col-lg-8">
-                                <input class="form-control" type="email" id="email" name="email" required=""/>
-                            </div>
+                    <div class="form-group">
+                        <label class="col-md-4">Email</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" type="email" id="email" name="email" required=""/>
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            <label class="col-md-4">Student</label>
-                            <div class="col-lg-8">
-                                <input class="form-control" type="text" id="student_id" name="student_id" required=""/>
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label class="col-md-4">Children</label>
+                        <div class="col-lg-8">
+                            <!-- <input class="form-control" type="text" id="student_id" name="student_id" required=""/>-->
+                            <select class="form-control js-example-basic-multiple " multiple="multiple" name="student_id[]" id="student_id" style="width: 100%">
 
-                        <div class="form-group">
-                            <label class="col-md-4">Photo</label>
-                            <div class="col-lg-8">
-                                <input type="file" name="photo" id="photo" required=""/>
-                            </div>
-                        </div>
+                                <?php
+                                    $objCommon = new Common();
 
-                        <div style="text-align: right;">
-                            <input class="btn btn-primary" type="submit" id="user-save"/>
+                                    $studentList = $objCommon->getStudent();
+
+                                    foreach ($studentList as $student ){
+                                        ?>
+                                        <option value="<?php echo $student["id"] ; ?>">
+                                            <?php echo $student["first_name"].' '.$student["last_name"] ?>
+                                        </option>
+
+                                        <?php
+                                    }
+                                ?>
+
+                            </select>
                         </div>
-                    </form>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4">Photo</label>
+                        <div class="col-lg-8">
+                            <input type="file" name="photo" id="photo" required=""/>
+                        </div>
+                    </div>
+
+                    <div style="text-align: right;">
+                        <input class="btn btn-primary" type="submit" id="user-save"/>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -103,26 +124,26 @@ include '../common/Common.php';
 
 
 <div class="container">
-<div class="add-btn-div">
-    <button type="button" id="add-user" class="btn btn-primary btn-block glyphicon glyphicon-plus">  New</button>
-</div>
+    <div class="add-btn-div">
+        <button type="button" id="add-user" class="btn btn-primary btn-block glyphicon glyphicon-plus">  New</button>
+    </div>
 
     <?php
-        if(isset($_SESSION['create_user'])){
-            if($_SESSION['create_user'] == 'success'){
-                echo '<script>
+    if(isset($_SESSION['create_user'])){
+        if($_SESSION['create_user'] == 'success'){
+            echo '<script>
                     displayMessage("Successfully completed","success");
                 </script>';
-            }
-            else if($_SESSION['create_user'] == 'error'){
-                echo '<script>
+        }
+        else if($_SESSION['create_user'] == 'error'){
+            echo '<script>
                     displayMessage("failed to complete","error");
                 </script>';
-            }
         }
+    }
 
 
-        session_unset();
+    session_unset();
     ?>
 
     <div>
@@ -139,8 +160,8 @@ include '../common/Common.php';
 
             <tbody>
             <?php
-                $objCommon = new Common();
-                $userList = $objCommon->getUser();
+            $objCommon = new Common();
+            $userList = $objCommon->getUser();
 
             foreach ($userList as $user) {
                 ?>
@@ -176,7 +197,10 @@ include '../common/Common.php';
 
     })
 
+</script>
 
+<script type="text/javascript">
+    $(".js-example-basic-multiple").select2();
 </script>
 </body>
 </html>

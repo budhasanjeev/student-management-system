@@ -15,13 +15,15 @@
     <title>Student Management</title>
     <script src="../js/jquery-1.12.4.min.js"></script>
     <script src="../js/jquery.noty.packaged.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script src="../js/custom.js"></script>
     <script src="../js/bootstrap.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="../css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../css/style.css"/>
-<!--    <link rel="stylesheet" href="../css/easydropdown.css"/>-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 
-    <link href="https://fonts.googleapis.com/css?family=David+Libre|Raleway" rel="stylesheet">
+    <!--    <link rel="stylesheet" href="../css/easydropdown.css"/>-->
+
     <style>
         .icon-bar {
             width: 100%;

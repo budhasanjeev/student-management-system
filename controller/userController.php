@@ -19,7 +19,9 @@ if(isset($_POST['mode'])){
         $username = $_POST['username'];
         $role     = $_POST['role'];
         $emailAddress  = $_POST['email'];
-        $student_id  = $_POST['student_id'];
+        $children  = $_POST['student_id'];
+
+        $student_id = implode(",",$children);
 
         $image = $_FILES['photo']['name'];
         $image_tmp = $_FILES['photo']['tmp_name'];
