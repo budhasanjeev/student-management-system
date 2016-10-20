@@ -5,7 +5,12 @@
  * Date: 9/5/2016
  * Time: 6:38 PM
  */
+
 session_start();
+
+if(!isset($_SESSION["email"])){
+    header("Location: login.php");
+}
 include '../common/Common.php'
 
 ?>

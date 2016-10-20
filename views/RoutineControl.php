@@ -1,4 +1,10 @@
+<?php
+session_start();
 
+if(!isset($_SESSION["email"])){
+    header("Location: login.php");
+}
+?>
 <table width="80%" border="1">
     <tr>
     <td>File id</td>

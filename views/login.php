@@ -1,4 +1,41 @@
 <?php
+session_start();
+if (isset($_POST['submit'])) {
+    include("db.php");
+
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    $selectpassword = "select password, role from user where username = '$username'";
+    $storedPassword = null;
+
+    $result = $conn->query($selectpassword);
+    while ($row = $result->fetch_assoc()) {
+        $storedPassword = $row['password'];
+        $role = $row['role'];
+    }
+
+    if ($password == $storedPassword) {
+        if ($role == "manager") {
+            $_SESSION['username'] = $username;
+            $_SESSION['role'] = $role;
+            header("Location: view/managerView/managerLanding.php");
+        } else {
+            $_SESSION['username'] = $username;
+            $_SESSION['role'] = "member";
+            header("Location: view/memberView/memberView.php");
+        }
+    } else {
+        echo "<span style='background-color: red; color: #ffffff; text-align: center; display: block;'>user not found</span>";
+    }
+
+}
+?>
+
+
+
+
+<?php
 /**
  * Created by PhpStorm.
  * User: Pratik
@@ -7,6 +44,7 @@
  */
 
 include '../config/databaseConnection.php';
+session_start();
 if (isset($_POST['login'])){
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -23,10 +61,18 @@ if (isset($_POST['login'])){
     }
 
     if($password == $stored_password){
-        if($role == "admin"){
+        if($role == "Admin"){
+            $_SESSION['email'] = $email;
+            $_SESSION['role'] = $role;
             header("Location: admin.php");
+        }elseif($role = "Parents"){
+            $_SESSION['email'] = $email;
+            $_SESSION['role'] = $role;
+            echo "parents";
         }else{
-            echo "student";
+            $_SESSION['email'] = $email;
+            $_SESSION['role'] = $role;
+            header("Location: teacher.php");
         }
     }else{
         echo "user not found";

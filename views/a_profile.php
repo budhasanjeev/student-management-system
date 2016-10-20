@@ -5,6 +5,10 @@
  * Date: 9/18/2016
  * Time: 1:39 PM
  */
+session_start();
+if(!isset($_SESSION["email"])){
+    header("Location: login.php");
+}
 ?>
 
 
@@ -26,12 +30,12 @@
     </div>
     <div class="row">
         <div class="col-lg-6">
-            <div class="row">
-                Photo
+            <div class="row" style="text-align: center;">
+                <img src="../images/user.png" width="50%" height="300px" alt=""/>
             </div>
 
             <div class="row">
-                <table class="table">
+                <table style="width: 100%;">
                     <tr>
                     <th>Name</th>
                         <td>Ram</td>
