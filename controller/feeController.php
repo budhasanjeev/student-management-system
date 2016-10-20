@@ -1,7 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Sanjeev
- * Date: 8/31/2016
- * Time: 7:18 PM
- */
+include '../common/Common.php';
+
+$objCommon = new Common();
+
+if(isset($_FILES['file'])) {
+
+    $file = $_FILES['file']['name'];
+    $file_tmp = $_FILES['file']['tmp_name'];
+    move_uploaded_file($file_tmp, "../excelFiles/Fee/$file");
+
+
+    $result = $objCommon->FeeExcel($file,$file_tmp);
+
+}

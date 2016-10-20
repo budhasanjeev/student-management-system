@@ -44,6 +44,7 @@ class Common
 
     public function createStudentList($file_name,$student_record_temp){
 
+
         global $connection;
 
         $data = array();
@@ -57,6 +58,7 @@ class Common
         }
 
         $allDataInSheet = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
+
 
         $arrayCount = count($allDataInSheet);
 
@@ -103,6 +105,7 @@ class Common
         global $connection;
 
         $data = array();
+        print("test");
 
         try{
             include '../Classes/PHPExcel/IOFactory.php';
@@ -117,6 +120,7 @@ class Common
         $arrayCount = count($allDataInSheet);
 
         for($i = 2; $i <= $arrayCount; $i++){
+            print("loop");
 
             $subject = trim($allDataInSheet[$i]['A']);
 
@@ -128,8 +132,8 @@ class Common
             $created_date = date("Y-m-d");
 
             $insert_query = "insert into attendance(subject,present_days,absent_days,student_id,created_date) values('$subject','$present_days','$absent_days','$student_id','$created_date')";
-
-            if(mysqli_query($connection,$insert_query)>0){
+            print("sql");
+            if(mysqli_query($connection,$insert_query)){
                 $data['message'] = 'success';
             }
     else{
@@ -348,6 +352,53 @@ public function getUser(){
     return $data;
 
 }
+    public function FeeExcel($file_name,$file_temp){
+
+        global $connection;
+
+        $data = array();
+
+        try{
+            $objPHPExcel = PHPExcel_IOFactory::load("../excelFiles/Fee/$file_name");
+        }catch (Exception $e) {
+            die('Error loading file "' . pathinfo($file_temp, PATHINFO_BASENAME) . '": ' . $e->getMessage());
+        }
+
+        $allDataInSheet = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
+
+        $arrayCount = count($allDataInSheet);
+
+        for($i = 2; $i <= $arrayCount; $i++){
+
+            $id = trim($allDataInSheet[$i]['A']);
+
+            $tution= trim($allDataInSheet[$i]['B']);
+            $lab= trim($allDataInSheet[$i]['C']);
+            $hostel= trim($allDataInSheet[$i]['D']);
+            $sports= trim($allDataInSheet[$i]['E']);
+            $outing= trim($allDataInSheet[$i]['F']);
+            $fooding= trim($allDataInSheet[$i]['G']);
+            $miscellaneous= trim($allDataInSheet[$i]['H']);
+
+
+
+
+
+            $created_date = date("Y-m-d");
+            $updated_date= date("Y-m-d");
+
+            $insert_query = "insert into fee(id,tution,lab,hostel,sports,outing,fooding,miscellaneous) values('$id','$tution','$lab','$hostel','$sports','$outing','$fooding','$miscellaneous')";
+
+            if(mysqli_query($connection,$insert_query)>0){
+                $data['message'] = 'success';
+            }
+            else{
+                $data['message'] = 'fail';
+            }
+        }
+
+        return $data;
+    }
 
 
 }

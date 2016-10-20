@@ -54,7 +54,7 @@
         </div>
     </div>
 
-    <legend>Attendance</legend>
+    <legend>Fee</legend>
     <a href="student.php">
         <div class="col-lg-4 col-space">
             <div class="btn btn-block option-box">
