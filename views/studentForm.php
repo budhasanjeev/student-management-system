@@ -5,11 +5,6 @@
  * Date: 9/5/2016
  * Time: 9:29 PM
  */
-session_start();
-
-if(!isset($_SESSION["email"])){
-    header("Location: login.php");
-}
 ?>
 
 <!DOCTYPE html>
@@ -17,10 +12,7 @@ if(!isset($_SESSION["email"])){
 <head lang="en">
     <meta charset="UTF-8">
     <title>Student Management</title>
-
     <script src="../js/common.js"></script>
-
-
 </head>
 <body>
 <?php include 'layout/header.php' ?>

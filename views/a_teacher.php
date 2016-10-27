@@ -2,12 +2,10 @@
 /**
  * Created by PhpStorm.
  * User: Pratik
- * Date: 9/18/2016
- * Time: 1:37 PM
+ * Date: 10/20/2016
+ * Time: 7:55 PM
  */
-
 ?>
-
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -21,30 +19,21 @@
 <?php include 'layout/header.php'; ?>
 
 <div class="container">
-    <div class="row">
-        <legend><a href="t_marks.php">Class</a>/<a href="t_student.php">students</a></legend>
-    </div>
-
-    <table class="table">
+    <legend>All teachers</legend>
+    <table class="table table-responsive table-striped table-bordered">
         <thead>
-
-        <tr>
-            <th>Photo</th>
-            <th>name</th>
-            <th>roll.no</th>
-        </tr>
+        <th>Name</th>
+        <th>Dedication</th>
+        <th>Degree</th>
         </thead>
         <tbody>
-
         <tr>
-
-            <td><a href="a_profile.php">photo</a></td>
-            <td><a href="a_profile.php">ram</a></td>
-            <td><a href="a_profile.php">2079</a></td>
+            <td>Ram Thapa</td>
+            <td>Part time</td>
+            <td>Masters</td>
         </tr>
-
         </tbody>
     </table>
-</div>
+    </div>
 </body>
 </html>

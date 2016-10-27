@@ -7,6 +7,7 @@
  * Time: 11:55 AM
  */
 
+
 include '../config/databaseConnection.php';
 session_start();
 if (isset($_POST['login'])){
@@ -29,10 +30,12 @@ if (isset($_POST['login'])){
             $_SESSION['email'] = $email;
             $_SESSION['role'] = $role;
             header("Location: admin.php");
+
         }elseif($role = "Parents"){
             $_SESSION['email'] = $email;
             $_SESSION['role'] = $role;
             echo "parents";
+            header("Location: admin.php");
         }else{
             $_SESSION['email'] = $email;
             $_SESSION['role'] = $role;

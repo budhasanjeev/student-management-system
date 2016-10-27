@@ -5,11 +5,7 @@
  * Date: 9/5/2016
  * Time: 6:39 PM
  */
-session_start();
 
-if(!isset($_SESSION["email"])){
-    header("Location: login.php");
-}
 ?>
 
 <!DOCTYPE html>
@@ -20,9 +16,9 @@ if(!isset($_SESSION["email"])){
 
 </head>
 <body>
-<div class="container">
-    <?php include 'layout/header.php' ?>
 
+    <?php include 'layout/header.php' ?>
+    <div class="container">
 
     <form action="../controller/feeController.php"   method="post" enctype="multipart/form-data">
         <input type="file" name="file">

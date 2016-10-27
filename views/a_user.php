@@ -5,11 +5,6 @@
  * Date: 9/13/2016
  * Time: 3:52 PM
  */
-session_start();
-
-if(!isset($_SESSION["email"])){
-    header("Location: login.php");
-}
 include '../common/Common.php';
 include '../config/databaseConnection.php';
 ?>
@@ -20,9 +15,7 @@ include '../config/databaseConnection.php';
     <meta charset="UTF-8">
     <title>Student Management</title>
     <link href="https://fonts.googleapis.com/css?family=David+Libre|Raleway" rel="stylesheet">
-
     <script src="../js/user.js"></script>
-   
 </head>
 <body>
 <?php include 'layout/header.php'; ?>
@@ -66,10 +59,9 @@ include '../config/databaseConnection.php';
                     <div class="form-group">
                         <label class="col-md-4">Role</label>
                         <div class="col-lg-8">
-                            <select class="form-control" name="role" id="role">
-                                <option>Parents</option>
-                                <option>Admin</option>
-                                <option>Teacher</option>
+                            <select class="form-control" name="role" id="role" onchange="checkRole();">
+                                <option value="Admin">Admin</option>
+                                <option value="Parents">Parents</option>
                             </select>
                         </div>
                     </div>
@@ -81,7 +73,7 @@ include '../config/databaseConnection.php';
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group children">
                         <label class="col-md-4">Children</label>
                         <div class="col-lg-8">
                             <!-- <input class="form-control" type="text" id="student_id" name="student_id" required=""/>-->
@@ -133,6 +125,9 @@ include '../config/databaseConnection.php';
     </div>
 
     <?php
+    $email = $_SESSION['email'];
+    $role = $_SESSION['role'];
+
     if(isset($_SESSION['create_user'])){
         if($_SESSION['create_user'] == 'success'){
             echo '<script>
@@ -145,9 +140,10 @@ include '../config/databaseConnection.php';
                 </script>';
         }
     }
-
-
     session_unset();
+
+    $_SESSION['email'] = $email;
+    $_SESSION['role'] = $role;
     ?>
 
     <div>
@@ -200,6 +196,16 @@ include '../config/databaseConnection.php';
         $('#user_id').removeAttr('value');
 
     })
+
+    function checkRole(){
+        var role = document.getElementById('role').value;
+        if(role == "Parents"){
+            alert(role);
+            $(".children").attr('style', 'display: block;');
+        }else(
+            $(".children").attr('style', 'display: none;');
+        )
+    }
 
 </script>
 

@@ -5,6 +5,11 @@
  * Date: 9/4/2016
  * Time: 1:33 PM
  */
+
+session_start();
+if(!isset($_SESSION["email"])){
+    header("Location: login.php");
+}
 ?>
 
 
@@ -60,19 +65,19 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="../admin.php">SMS</a>
+        <a class="navbar-brand" href="admin.php">SMS</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
             <li><a href="a_class.php">Student</a></li>
-            <li><a href="#">Link</a></li>
+            <li><a href="a_teacher.php">Teacher</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Add New<b class="caret"></b></a>
 
                 <div class="dropdown-menu" style="padding: 4px;">
-                    <a href="user.php">
+                    <a href="a_user.php">
                         <div class="col-md-6" style="padding: 5px;">
                             <div class="dropdown-div" style="background-color: #47666b;">
                                 <div>User</div>

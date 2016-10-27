@@ -5,12 +5,6 @@
  * Date: 9/5/2016
  * Time: 6:38 PM
  */
-
-session_start();
-
-if(!isset($_SESSION["email"])){
-    header("Location: login.php");
-}
 include '../common/Common.php'
 
 ?>
@@ -39,6 +33,9 @@ include 'layout/header.php';
     </div>
 
     <?php
+    $email = $_SESSION['email'];
+    $role = $_SESSION['role'];
+
     if(isset($_SESSION['create_student'])){
         if($_SESSION['create_student'] == 'success'){
             echo '<script>
@@ -51,12 +48,14 @@ include 'layout/header.php';
                 </script>';
         }
     }
-
     session_unset();
+    $_SESSION['email'] = $email;
+    $_SESSION['role'] = $role;
+
     ?>
 
-    <table class="table table-responsive">
-        <thead>
+    <table class="table table-responsive table-bordered table-striped">
+        <thead  style="font-size: 15px;">
         <tr>
             <th>Photo</th>
             <th>Student ID</th>
@@ -73,7 +72,7 @@ include 'layout/header.php';
         </tr>
         </thead>
 
-        <tbody>
+        <tbody  style="font-size: 13px;">
         <?php
         $objCommon = new Common();
         $studentList = $objCommon->getStudent();
