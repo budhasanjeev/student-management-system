@@ -30,6 +30,55 @@ if(!isset($_SESSION["email"])){
     <!--    <link rel="stylesheet" href="../css/easydropdown.css"/>-->
 
     <style>
+        .dropdown-submenu {
+            position: relative;
+        }
+
+        .dropdown-submenu>.dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: -6px;
+            margin-left: -1px;
+            -webkit-border-radius: 0 6px 6px 6px;
+            -moz-border-radius: 0 6px 6px;
+            border-radius: 0 6px 6px 6px;
+        }
+
+        .dropdown-submenu:hover>.dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-submenu>a:after {
+            display: block;
+            content: " ";
+            float: right;
+            width: 0;
+            height: 0;
+            border-color: transparent;
+            border-style: solid;
+            border-width: 5px 0 5px 5px;
+            border-left-color: #ccc;
+            margin-top: 5px;
+            margin-right: -10px;
+        }
+
+        .dropdown-submenu:hover>a:after {
+            border-left-color: #fff;
+        }
+
+        .dropdown-submenu.pull-left {
+            float: none;
+        }
+
+        .dropdown-submenu.pull-left>.dropdown-menu {
+            left: -100%;
+            margin-left: 10px;
+            -webkit-border-radius: 6px 0 6px 6px;
+            -moz-border-radius: 6px 0 6px 6px;
+            border-radius: 6px 0 6px 6px;
+        }
+
+
         .icon-bar {
             width: 100%;
             text-align: center;
@@ -56,6 +105,59 @@ if(!isset($_SESSION["email"])){
     </style>
 </head>
 <body>
+
+<!-- Modal -->
+<div id="routineModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add new Routine</h4>
+            </div>
+            <div class="modal-body">
+                <form action="">
+                    <div class="form-group">
+                        <label for="class">Class: </label>
+                        <select class="form-control">
+                            <option value="">Class 1</option>
+                            <option value="">Class 1</option>
+                            <option value="">Class 1</option>
+                            <option value="">Class 1</option>
+                            <option value="">Class 1</option>
+                            <option value="">Class 1</option>
+                            <option value="">Class 1</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="section">Section: </label>
+                        <select class="form-control">
+                            <option value="">A</option>
+                            <option value="">B</option>
+                            <option value="">C</option>
+                            <option value="">D</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="routine">Routine: </label>
+                        <input type="file"/>
+                    </div>
+                    <div style="text-align: right">
+                        <button type="submit" class="btn btn-success">Add</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 <nav class="navbar" role="navigation" style="border-radius: 0px; border-bottom: 2px solid #a07789">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -71,8 +173,48 @@ if(!isset($_SESSION["email"])){
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-            <li><a href="a_class.php">Student</a></li>
-            <li><a href="a_teacher.php">Teacher</a></li>
+            <li><a href="a_class.php">Students</a></li>
+            <li><a href="a_teacher.php">Teachers</a></li>
+            <li>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Routine<b class="caret"></b></a>
+                <ul class="dropdown-menu multi-level">
+                    <li class="dropdown-submenu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Class 1</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="routine.php">Section A</a></li>
+                            <li><a href="routine.php">Section B</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Class 2</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="routine.php">Section A</a></li>
+                            <li><a href="routine.php">Section B</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Class 3</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="routine.php">Section A</a></li>
+                            <li><a href="routine.php">Section B</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Class 4</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="routine.php">Section A</a></li>
+                            <li><a href="routine.php">Section B</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Class 5</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../routine.php">Section A</a></li>
+                            <li><a href="../routine.php">Section B</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Add New<b class="caret"></b></a>
 
@@ -96,7 +238,7 @@ if(!isset($_SESSION["email"])){
                     <a href="routine.php">
                         <div class="col-md-6" style="padding: 5px;">
                             <div class="dropdown-div" style="background-color: #533443;">
-                                <div>Routine</div>
+                                <a href="" data-toggle="modal" data-target="#routineModal"><div>Routine</div></a>
                             </div>
                         </div>
                     </a>
