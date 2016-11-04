@@ -106,7 +106,7 @@ if(!isset($_SESSION["email"])){
 </head>
 <body>
 
-<!-- Modal -->
+<!--Routine Modal -->
 <div id="routineModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
@@ -157,6 +157,50 @@ if(!isset($_SESSION["email"])){
 
     </div>
 </div>
+
+
+<!--Fee Modal -->
+<div id="feeModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add Fee</h4>
+            </div>
+            <div class="modal-body">
+                <form action="">
+                    <div class="form-group">
+                        <label for="class">Class: </label>
+                        <select class="form-control">
+                            <option value="">Class 1</option>
+                            <option value="">Class 1</option>
+                            <option value="">Class 1</option>
+                            <option value="">Class 1</option>
+                            <option value="">Class 1</option>
+                            <option value="">Class 1</option>
+                            <option value="">Class 1</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="routine">Fee: </label>
+                        <input type="file"/>
+                    </div>
+                    <div style="text-align: right">
+                        <button type="submit" class="btn btn-success">Add</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 
 <nav class="navbar" role="navigation" style="border-radius: 0px; border-bottom: 2px solid #a07789">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -215,13 +259,14 @@ if(!isset($_SESSION["email"])){
                     </li>
                 </ul>
             </li>
+            <li><a href="a_fee.php">Fee</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Add New<b class="caret"></b></a>
 
                 <div class="dropdown-menu" style="padding: 4px;">
                     <a href="a_user.php">
                         <div class="col-md-6" style="padding: 5px;">
-                            <div class="dropdown-div" style="background-color: #47666b;">
+                            <div class="dropdown-div" style="background-color: #a07789;">
                                 <div>User</div>
                             </div>
                         </div>
@@ -235,6 +280,14 @@ if(!isset($_SESSION["email"])){
                         </div>
                     </a>
 
+                    <a href="#">
+                        <div class="col-md-12" style="padding: 5px;">
+                            <div class="dropdown-div" style="background-color: #47666b;">
+                                <div>Teacher</div>
+                            </div>
+                        </div>
+                    </a>
+
                     <a href="routine.php">
                         <div class="col-md-6" style="padding: 5px;">
                             <div class="dropdown-div" style="background-color: #533443;">
@@ -243,18 +296,10 @@ if(!isset($_SESSION["email"])){
                         </div>
                     </a>
 
-                    <a href="fee.php">
+                    <a href="a_fee.php">
                         <div class="col-md-6" style="padding: 5px;">
                             <div class="dropdown-div" style="background-color: #a07789;">
-                                <div>Fee</div>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="fee.php">
-                        <div class="col-md-12" style="padding: 5px;">
-                            <div class="dropdown-div" style="background-color: #a07789;">
-                                <div>Teacher</div>
+                                <a href=""  data-toggle="modal" data-target="#feeModal"><div>Fee</div></a>
                             </div>
                         </div>
                     </a>
