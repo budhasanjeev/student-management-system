@@ -117,7 +117,7 @@ if(!isset($_SESSION["email"])){
                 <h4 class="modal-title">Add new Routine</h4>
             </div>
             <div class="modal-body">
-                <form action="">
+                <form action="../controller/routineController.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="class">Class: </label>
                         <select class="form-control">
@@ -143,7 +143,7 @@ if(!isset($_SESSION["email"])){
 
                     <div class="form-group">
                         <label for="routine">Routine: </label>
-                        <input type="file"/>
+                        <input type="file" name="file"/>
                     </div>
                     <div style="text-align: right">
                         <button type="submit" class="btn btn-success">Add</button>
