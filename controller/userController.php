@@ -77,7 +77,7 @@ if(isset($_POST['mode'])){
             $_SESSION['create_user'] = 'error';
         }
 
-        header('Location:../views/user.php');
+        header('Location:../views/a_user.php');
         
     }
 

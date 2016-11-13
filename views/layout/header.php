@@ -216,10 +216,10 @@ include "../common/service.php";
                 <h4 class="modal-title">Add Class</h4>
             </div>
             <div class="modal-body">
-                <form action="../controller/addClass.php" method="post">
+                <form class="form" action="../controller/addClass.php" method="post">
                     <div class="form-group">
                         <label for="class">Class: </label>
-                        <input type="text" name="class" required=""/>
+                        <input class="form-control" type="text" name="class" required=""/>
                     </div>
                     <div style="text-align: right">
                         <button type="submit" class="btn btn-success">Add</button>
@@ -234,6 +234,72 @@ include "../common/service.php";
     </div>
 </div>
 
+
+<!--Add Teacher Modal -->
+<div id="teacherModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add Teacher</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form" action="../controller/addClass.php" method="post">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="class">Name: </label>
+                            <input class="form-control" type="text" name="name" required=""/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="class">Contact: </label>
+                            <input class="form-control" placeholder="98********, 98********" type="text" name="contact" required=""/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="class">Experience: </label>
+                            <input class="form-control" type="text" name="experience" required=""/>
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="class">Address: </label>
+                            <input class="form-control" type="text" name="address" required=""/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="class">Degree: </label>
+                            <input class="form-control" type="text" name="degree" required=""/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="class">Joined on: </label>
+                            <input class="form-control" type="date" name="join_on" required=""/>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="class">Photo: </label>
+                        <input type="file" name="photo" required=""/>
+                    </div>
+
+                    <div style="text-align: right">
+                        <button type="submit" class="btn btn-success">Add</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 <nav class="navbar" role="navigation" style="border-radius: 0px; border-bottom: 2px solid #a07789">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -313,10 +379,10 @@ include "../common/service.php";
                         </div>
                     </a>
 
-                    <a href="#">
+                    <a href="">
                         <div class="col-md-6" style="padding: 5px;">
                             <div class="dropdown-div" style="background-color: #47666b;">
-                                <div>Teacher</div>
+                                <a href="" data-toggle="modal" data-target="#teacherModal"><div>Teacher</div></a>
                             </div>
                         </div>
                     </a>
