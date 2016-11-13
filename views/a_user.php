@@ -121,7 +121,7 @@ include '../config/databaseConnection.php';
 
 <div class="container">
     <div class="add-btn-div">
-        <button type="button" id="add-user" class="btn btn-primary btn-block glyphicon glyphicon-plus">  New</button>
+        <button type="button" id="add-user" class="btn btn-primary btn-block glyphicon glyphicon-plus"> New</button>
     </div>
 
     <?php
@@ -195,16 +195,16 @@ include '../config/databaseConnection.php';
         $('#modes').attr('value','add');
         $('#user_id').removeAttr('value');
 
-    })
+    });
 
     function checkRole(){
         var role = document.getElementById('role').value;
         if(role == "Parents"){
             alert(role);
-            $(".children").attr('style', 'display: block;');
-        }else(
-            $(".children").attr('style', 'display: none;');
-        )
+            $(".children").css('display','block');
+        }else{
+            $(".children").css('display','none');
+        }
     }
 
 </script>

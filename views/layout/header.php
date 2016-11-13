@@ -21,13 +21,14 @@ if(!isset($_SESSION["email"])){
     <script src="../js/jquery-1.12.4.min.js"></script>
     <script src="../js/jquery.noty.packaged.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-    <script src="../js/custom.js"></script>
     <script src="../js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../js/custom.js"></script>
+
     <link rel="stylesheet" href="../css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../css/style.css"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 
-    <!--    <link rel="stylesheet" href="../css/easydropdown.css"/>-->
+    <link rel="stylesheet" href="../css/easydropdown.css"/>
 
     <style>
         .dropdown-submenu {
