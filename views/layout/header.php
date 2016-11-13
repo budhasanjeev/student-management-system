@@ -259,6 +259,11 @@ include "../common/service.php";
                         </div>
 
                         <div class="form-group">
+                            <label for="class">Email: </label>
+                            <input class="form-control" type="email" name="address"/>
+                        </div>
+
+                        <div class="form-group">
                             <label for="class">Experience: </label>
                             <input class="form-control" type="text" name="experience" required=""/>
                         </div>
@@ -266,10 +271,17 @@ include "../common/service.php";
 
                     </div>
                     <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label for="class">Username: </label>
+                            <input class="form-control" type="text" name="username" required=""/>
+                        </div>
+
                         <div class="form-group">
                             <label for="class">Address: </label>
                             <input class="form-control" type="text" name="address" required=""/>
                         </div>
+
 
                         <div class="form-group">
                             <label for="class">Degree: </label>
