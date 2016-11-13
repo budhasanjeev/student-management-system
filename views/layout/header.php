@@ -273,8 +273,10 @@ include "../common/service.php";
                     ?>
                 </ul>
             </li>
-            <li><a href="a_fee.php">Fee</a></li>
-            <li class="dropdown">
+            <?php
+                if($_SESSION['role'] == 'Admin'){
+                    echo '<li><a href="a_fee.php">Fee</a></li>';
+                    echo '<li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Add New<b class="caret"></b></a>
 
                 <div class="dropdown-menu" style="padding: 4px;">
@@ -326,7 +328,14 @@ include "../common/service.php";
                         </div>
                     </a>
                 </div>
-            </li>
+            </li>';
+                }
+
+            if($_SESSION['role'] == 'teacher'){
+                echo '<li><a href="t_marks.php">Marks</a></li>';
+            }
+            ?>
+
         </ul>
         <div class="col-sm-3 col-md-3">
             <form class="navbar-form" role="search">
