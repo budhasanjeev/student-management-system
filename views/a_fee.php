@@ -21,70 +21,21 @@
     <div class="container">
 
     <legend>Fee</legend>
-    <a href="fee.php">
-        <div class="col-lg-4 col-space">
-            <div class="btn btn-block option-box">
-                <h4>Class 1</h4>
-            </div>
-        </div>
-    </a>
 
-    <a href="fee.php">
-        <div class="col-lg-4 col-space">
-            <div class="btn btn-block option-box">
-                <h4>Class 2</h4>
-            </div>
-        </div>
-    </a>
-
-    <a href="fee.php">
-        <div class="col-lg-4 col-space">
-            <div class="btn btn-block option-box">
-                <h4>Class 3</h4>
-            </div>
-        </div>
-    </a>
-
-    <a href="fee.php">
-        <div class="col-lg-4 col-space">
-            <div class="btn btn-block option-box">
-                <h4>Class 4</h4>
-            </div>
-        </div>
-    </a>
-
-    <a href="fee.php">
-        <div class="col-lg-4 col-space">
-            <div class="btn btn-block option-box">
-                <h4>Class 5</h4>
-            </div>
-        </div>
-    </a>
-
-    <a href="fee.php">
-        <div class="col-lg-4 col-space">
-            <div class="btn btn-block option-box">
-                <h4>Class 6<h4>
-            </div>
-        </div>
-    </a>
-
-    <a href="fee.php">
-        <div class="col-lg-4 col-space">
-            <div class="btn btn-block option-box">
-                <h4>Class 7</h4>
-            </div>
-        </div>
-    </a>
-
-    <a href="fee.php">
-        <div class="col-lg-4 col-space">
-            <div class="btn btn-block option-box">
-                <h4>Class 8</h4>
-            </div>
-        </div>
-    </a>
-
+        <?php
+        $class = getClass($connection);
+        while($row = $class->fetch_assoc()){
+            ?>
+            <a href="fee.php?id=<?php echo $row["id"]; ?>">
+                <div class="col-lg-4 col-space">
+                    <div class="btn btn-block option-box">
+                        <h4><?php echo $row["class"]; ?></h4>
+                    </div>
+                </div>
+            </a>
+        <?php
+        }
+        ?>
 </div>
 
 

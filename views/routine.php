@@ -49,7 +49,11 @@
 <!--</form>-->
 
 <div class="container">
-    <legend>Routine of Class 10</legend>
+    <?php
+    $id = $_GET["id"];
+    $class = getClassName($id, $connection);
+    ?>
+    <legend>Routine of Class <?php echo $class; ?></legend>
     <img style="width: 100%" height="600px;" src="../img/user.png" alt=""/>
 </div>
 

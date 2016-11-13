@@ -19,7 +19,11 @@
 
 <?php include 'layout/header.php' ?>
 <div class="container">
-    <legend>Fee of Class 10</legend>
+    <?php
+    $id = $_GET["id"];
+    $class = getClassName($id, $connection);
+    ?>
+    <legend>Fee of Class <?php echo $class; ?></legend>
     <img style="width: 100%" height="600px;" src="../img/user.png" alt=""/>
 </div>
 </body>

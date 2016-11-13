@@ -137,3 +137,7 @@ body{
 .children{
     display: none;
 }
+
+.c_tab{
+    background-color: #ffffff !important;
+}
