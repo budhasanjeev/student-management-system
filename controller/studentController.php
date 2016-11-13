@@ -42,7 +42,7 @@ if(isset($_POST['mode'])){
         $photo = $_FILES['photo']['name'];
         $photo_tmp = $_FILES['photo']['tmp_name'];
         
-        move_uploaded_file($photo_tmp,"../images/$photo");
+        move_uploaded_file($photo_tmp,"../img/$photo");
 
         $result = array();
 
@@ -101,7 +101,7 @@ if(isset($_POST['mode'])){
         $photo = $_FILES['photo']['name'];
         $photo_tmp = $_FILES['photo']['tmp_name'];
 
-        move_uploaded_file($photo_tmp,"../images/$photo");
+        move_uploaded_file($photo_tmp,"../img/$photo");
 
         $result = array();
 

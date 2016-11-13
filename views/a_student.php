@@ -35,7 +35,9 @@
         <thead>
         <tr>
             <th>Photo</th>
-            <th>name</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Contact Number</th>
             <th>roll.no</th>
         </tr>
         </thead>
@@ -44,14 +46,17 @@
         while($row = $student->fetch_assoc()){
             ?>
 
-            <tr>
-                <a href="a_profile.php?id=<?php echo $row["id"]; ?>">
-                    <td><a href="a_profile.php">photo</a></td>
-                    <td><?php echo $row["first_name"]." ". $row["last_name"]; ?></td>
-                    <td><?php echo $row["roll_number"]; ?></td>
-                </a>
-            </tr>
-        <?php
+
+                <tr>
+
+                    <td> <a href="a_profile.php?id=<?php echo $row['id']; ?>" ><img class="img-thumbnail" width="60px" src="../img/<?php echo $row["photo"] ?>"></a></td>
+                    <td style="vertical-align: middle"><?php echo $row["first_name"]." ". $row["last_name"]; ?></td>
+                    <td style="vertical-align: middle"><?php echo $row["address"] ?></td>
+                    <td style="vertical-align: middle"><?php echo $row["contact_number"] ?></td>
+                    <td style="vertical-align: middle"><?php echo $row["roll_number"]; ?></td>
+                </tr>
+
+            <?php
         }
         ?>
         </tbody>

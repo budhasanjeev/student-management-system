@@ -23,6 +23,7 @@ function getClass($connection){
 function getClassName($id, $connection){
     $select = "select class from class where id = $id";
     $class = $connection->query($select);
+    
     while($row = $class->fetch_assoc()){
         $name = $row["class"];
     }

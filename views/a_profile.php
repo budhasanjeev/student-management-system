@@ -27,7 +27,7 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="row" style="text-align: center;">
-                <img src="../images/user.png" width="50%" height="300px" alt=""/>
+                <img src="../img/user.png" width="50%" height="300px" alt=""/>
             </div>
 
             <div class="row">

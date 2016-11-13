@@ -81,7 +81,7 @@ include 'layout/header.php';
             ?>
 
             <tr>
-                <td style="vertical-align: middle"><img src="../images/<?php echo $student['photo'] ?>" style="width: 40px;" class="img-circle">
+                <td style="vertical-align: middle"><img src="../img/<?php echo $student['photo'] ?>" style="width: 40px;" class="img-circle">
                 </td>
                 <td style="vertical-align: middle"><?php echo $student['student_id'] ?></td>
                 <td style="vertical-align: middle"><?php echo $student['first_name'] . ' ' . $student['last_name'] ?></td>
