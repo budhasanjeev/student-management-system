@@ -5,6 +5,9 @@
  * Date: 10/20/2016
  * Time: 7:55 PM
  */
+
+include '../common/Common.php';
+include '../config/databaseConnection.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,18 +23,37 @@
 
 <div class="container">
     <legend>All teachers</legend>
+
+    <?php
+        $objCommon = new Common();
+        $teacherList = $objCommon->getAllTeacher();
+    ?>
     <table class="table table-responsive table-striped table-bordered">
         <thead>
+        <th>Photo</th>
         <th>Name</th>
-        <th>Dedication</th>
+        <th>Email</th>
+        <th>Contact</th>
+        <th>Address</th>
         <th>Degree</th>
         </thead>
         <tbody>
-        <tr>
-            <td>Ram Thapa</td>
-            <td>Part time</td>
-            <td>Masters</td>
-        </tr>
+
+        <?php
+            foreach ($teacherList as $teacher) {
+                ?>
+                <tr>
+                    <td><img class="img-circle" width="60px" src="../img/<?php echo $teacher["photo"] ?>"></td>
+                    <td><?php echo $teacher['name'] ?></td>
+                    <td><?php echo $teacher['email'] ?></td>
+                    <td><?php echo $teacher['contact'] ?></td>
+                    <td><?php echo $teacher['address'] ?></td>
+                    <td><?php echo $teacher['degree'] ?></td>
+                </tr>
+
+                <?php
+            }
+        ?>
         </tbody>
     </table>
     </div>

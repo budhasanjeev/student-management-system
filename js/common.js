@@ -16,7 +16,7 @@ function checkAlphabet(id) {
 
     }
     else {
-        alert("Invalid");
+        // alert("Invalid");
         return false;
     }
 }
@@ -30,7 +30,7 @@ function checkNumeric(id)
 
     }
     else {
-        alert("Invalid");
+        // alert("Invalid");
         return false;
     }
 }

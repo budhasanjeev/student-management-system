@@ -380,10 +380,6 @@ public function getUser(){
             $fooding= trim($allDataInSheet[$i]['G']);
             $miscellaneous= trim($allDataInSheet[$i]['H']);
 
-
-
-
-
             $created_date = date("Y-m-d");
             $updated_date= date("Y-m-d");
 
@@ -400,5 +396,45 @@ public function getUser(){
         return $data;
     }
 
+    function createTeacher($name,$contact,$address,$experience,$username,$address,$degree,$join_on,$photo,$email){
 
+        global $connection;
+
+        $created_date = date('Y-m-d');
+
+        $insert_teacher = "insert into teacher(name,address,contact,email,username,degree,experience,start_date,photo,created_date) values('$name','$address','$contact','$email','$username','$degree','$experience','$join_on','$photo','$created_date')";
+
+        $result = mysqli_query($connection,$insert_teacher);
+
+        return $insert_teacher;
+
+    }
+
+    public function getAllTeacher(){
+        global $connection;
+
+        $select_teacher = "select *from teacher";
+
+        $result = mysqli_query($connection,$select_teacher);
+
+        $data = array();
+
+        $i = 0;
+
+        while ($row = mysqli_fetch_assoc($result)){
+            $data[$i]['id'] = $row['id'];
+            $data[$i]['name'] = $row['name'];
+            $data[$i]['address'] = $row['address'];
+            $data[$i]['contact'] = $row['contact'];
+            $data[$i]['email'] = $row['email'];
+            $data[$i]['username'] = $row['username'];
+            $data[$i]['degree'] = $row['degree'];
+            $data[$i]['experience'] = $row['experience'];
+            $data[$i]['start_date'] = $row['start_date'];
+            $data[$i]['photo'] = $row['photo'];
+            $i++;
+        }
+
+        return $data;
+    }
 }
