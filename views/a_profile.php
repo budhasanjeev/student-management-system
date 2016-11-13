@@ -22,7 +22,7 @@
 
 <div class="container">
     <div class="row">
-        <legend><a href="t_marks.php">Class</a>/<a href="t_student.php">students</a>/profile</legend>
+        <legend><a href="t_marks.php">Class</a>/<a href="a_student.php">students</a>/profile</legend>
     </div>
     <div class="row">
         <div class="col-lg-6">
