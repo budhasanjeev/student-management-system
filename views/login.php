@@ -65,8 +65,6 @@ if (isset($_POST["login"])){
     }else{
         echo "user not found";
     }
-}else{
-    echo "No";
 }
 
 ?>
