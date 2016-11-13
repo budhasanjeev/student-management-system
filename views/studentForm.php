@@ -44,7 +44,19 @@
                 <input type="number" name="rollNumber" placeholder="roll no." class="form-control form-group" id="roll"  onkeyup="checkNumeric('roll')"  />
             </div>
             <div class="col-md-4">
-                <input type="text" name="grade" placeholder="grade" class="form-control form-group" id="grade"  onkeyup="checkNumeric('grade')"/>
+                <div class="form-group">
+                    <select class="form-control" name="grade" id="grade" placeholder="grade" required="">
+                        <?php
+                        $class = getClass($connection);
+                        while($row = $class->fetch_assoc()){
+                            ?>
+                            <option value="<?php echo $row["class"]; ?>"><?php echo $row["class"]; ?></option>
+                        <?php
+                        }
+                        ?>
+                    </select>
+                </div>
+
             </div>
             <div class="col-md-4">
                 <input type="text" name="section" placeholder="section" class="form-control form-group" id="section" onkeyup="checkAlphabet('section')"/>

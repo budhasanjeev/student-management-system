@@ -25,9 +25,14 @@
         <legend><a href="a_class.php">Class</a>/students</legend>
     </div>
 
+    <?php
+    $id = $_GET['id'];
+    $class = getClassName($id, $connection);
+    $student = getClassStudents($class, $connection);
+    ?>
+
     <table class="table">
         <thead>
-
         <tr>
             <th>Photo</th>
             <th>name</th>
@@ -35,14 +40,20 @@
         </tr>
         </thead>
         <tbody>
+        <?php
+        while($row = $student->fetch_assoc()){
+            ?>
 
-        <tr>
-
-            <td><a href="a_profile.php">photo</a></td>
-            <td><a href="a_profile.php">ram</a></td>
-            <td><a href="a_profile.php">2079</a></td>
-        </tr>
-
+            <tr>
+                <a href="a_profile.php?id=<?php echo $row["id"]; ?>">
+                    <td><a href="a_profile.php">photo</a></td>
+                    <td><?php echo $row["first_name"]." ". $row["last_name"]; ?></td>
+                    <td><?php echo $row["roll_number"]; ?></td>
+                </a>
+            </tr>
+        <?php
+        }
+        ?>
         </tbody>
     </table>
 </div>
