@@ -33,80 +33,6 @@ include "../common/service.php";
 
     <link rel="stylesheet" href="../css/easydropdown.css"/>
 
-    <style>
-        .dropdown-submenu {
-            position: relative;
-        }
-
-        .dropdown-submenu>.dropdown-menu {
-            top: 0;
-            left: 100%;
-            margin-top: -6px;
-            margin-left: -1px;
-            -webkit-border-radius: 0 6px 6px 6px;
-            -moz-border-radius: 0 6px 6px;
-            border-radius: 0 6px 6px 6px;
-        }
-
-        .dropdown-submenu:hover>.dropdown-menu {
-            display: block;
-        }
-
-        .dropdown-submenu>a:after {
-            display: block;
-            content: " ";
-            float: right;
-            width: 0;
-            height: 0;
-            border-color: transparent;
-            border-style: solid;
-            border-width: 5px 0 5px 5px;
-            border-left-color: #ccc;
-            margin-top: 5px;
-            margin-right: -10px;
-        }
-
-        .dropdown-submenu:hover>a:after {
-            border-left-color: #fff;
-        }
-
-        .dropdown-submenu.pull-left {
-            float: none;
-        }
-
-        .dropdown-submenu.pull-left>.dropdown-menu {
-            left: -100%;
-            margin-left: 10px;
-            -webkit-border-radius: 6px 0 6px 6px;
-            -moz-border-radius: 6px 0 6px 6px;
-            border-radius: 6px 0 6px 6px;
-        }
-
-
-        .icon-bar {
-            width: 100%;
-            text-align: center;
-            background-color: #555;
-            overflow: auto;
-        }
-
-        .icon-bar a {
-            width: 20%;
-            padding: 7px 0;
-            float: left;
-            transition: all 0.3s ease;
-            color: white;
-            font-size: 20px;
-        }
-
-        .icon-bar a:hover {
-            background-color: #000;
-        }
-
-        .active {
-            background-color: #4CAF50;
-        }
-    </style>
 </head>
 <body>
 
@@ -334,42 +260,17 @@ include "../common/service.php";
             <li><a href="a_teacher.php">Teachers</a></li>
             <li>
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Routine<b class="caret"></b></a>
-                <ul class="dropdown-menu multi-level">
-                    <li class="dropdown-submenu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Class 1</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="routine.php">Section A</a></li>
-                            <li><a href="routine.php">Section B</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown-submenu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Class 2</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="routine.php">Section A</a></li>
-                            <li><a href="routine.php">Section B</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown-submenu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Class 3</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="routine.php">Section A</a></li>
-                            <li><a href="routine.php">Section B</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown-submenu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Class 4</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="routine.php">Section A</a></li>
-                            <li><a href="routine.php">Section B</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown-submenu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Class 5</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="../routine.php">Section A</a></li>
-                            <li><a href="../routine.php">Section B</a></li>
-                        </ul>
-                    </li>
+                <ul class="dropdown-menu">
+                    <?php
+                    $class = getClass($connection);
+                    while($row = $class->fetch_assoc()) {
+                        ?>
+                        <li>
+                            <a href="routine.php?id=<?php echo $row["id"]; ?>">Class <?php echo $row["class"]; ?></a>
+                        </li>
+                    <?php
+                    }
+                    ?>
                 </ul>
             </li>
             <li><a href="a_fee.php">Fee</a></li>
