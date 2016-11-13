@@ -10,6 +10,9 @@ session_start();
 if(!isset($_SESSION["email"])){
     header("Location: login.php");
 }
+
+include "../config/databaseConnection.php";
+include "../common/service.php";
 ?>
 
 
@@ -202,6 +205,35 @@ if(!isset($_SESSION["email"])){
     </div>
 </div>
 
+<!--Class Modal -->
+<div id="classModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add Class</h4>
+            </div>
+            <div class="modal-body">
+                <form action="../controller/addClass.php" method="post">
+                    <div class="form-group">
+                        <label for="class">Class: </label>
+                        <input type="text" name="class" required=""/>
+                    </div>
+                    <div style="text-align: right">
+                        <button type="submit" class="btn btn-success">Add</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 
 <nav class="navbar" role="navigation" style="border-radius: 0px; border-bottom: 2px solid #a07789">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -282,14 +314,22 @@ if(!isset($_SESSION["email"])){
                     </a>
 
                     <a href="#">
-                        <div class="col-md-12" style="padding: 5px;">
+                        <div class="col-md-6" style="padding: 5px;">
                             <div class="dropdown-div" style="background-color: #47666b;">
                                 <div>Teacher</div>
                             </div>
                         </div>
                     </a>
 
-                    <a href="routine.php">
+                    <a href="#">
+                        <div class="col-md-6" style="padding: 5px;">
+                            <div class="dropdown-div" style="background-color: #533443;">
+                                <a href="" data-toggle="modal" data-target="#classModal"><div>Class</div></a>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#">
                         <div class="col-md-6" style="padding: 5px;">
                             <div class="dropdown-div" style="background-color: #533443;">
                                 <a href="" data-toggle="modal" data-target="#routineModal"><div>Routine</div></a>

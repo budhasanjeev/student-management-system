@@ -5,6 +5,7 @@
  * Date: 9/18/2016
  * Time: 1:32 PM
  */
+
 ?>
 
 
@@ -26,11 +27,24 @@
     <div class="row">
         <legend>Class</legend>
     </div>
-    <a href="a_student.php">
-        <div class="box col-lg-3">
-            class 1
-        </div>
-    </a>
+
+    <?php
+    $class = getClass($connection);
+
+    while($row = $class->fetch_assoc()){
+        ?>
+
+        <a href="a_student.php?id=<?php echo $row["id"]; ?>">
+            <div class="col-lg-3">
+                <div class="box">
+                    <?php echo $row["class"]; ?>
+                </div>
+            </div>
+        </a>
+
+    <?php
+    }
+    ?>
 </div>
 </body>
 </html>
