@@ -246,7 +246,9 @@ include "../common/service.php";
                 <h4 class="modal-title">Add Teacher</h4>
             </div>
             <div class="modal-body">
-                <form class="form" action="../controller/addClass.php" method="post">
+                <form class="form" action="../controller/teacherController.php" method="post" enctype="multipart/form-data">
+
+                    <input type="hidden" name="mode" value="add">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="class">Name: </label>
@@ -260,7 +262,7 @@ include "../common/service.php";
 
                         <div class="form-group">
                             <label for="class">Email: </label>
-                            <input class="form-control" type="email" name="address"/>
+                            <input class="form-control" type="email" name="email"/>
                         </div>
 
                         <div class="form-group">
