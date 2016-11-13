@@ -49,7 +49,7 @@
 
                 <tr>
 
-                    <td> <a href="a_profile.php?id=<?php echo $row['id']; ?>" ><img class="img-thumbnail" width="60px" src="../img/<?php echo $row["photo"] ?>"></a></td>
+                    <td> <a href="a_profile.php?sid=<?php echo $row['id']; ?>&lid=<?php echo $id; ?>" ><img class="img-thumbnail" width="60px" src="../img/<?php echo $row["photo"] ?>"></a></td>
                     <td style="vertical-align: middle"><?php echo $row["first_name"]." ". $row["last_name"]; ?></td>
                     <td style="vertical-align: middle"><?php echo $row["address"] ?></td>
                     <td style="vertical-align: middle"><?php echo $row["contact_number"] ?></td>

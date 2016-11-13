@@ -35,3 +35,10 @@ function getClassStudents($name, $connection){
     $student = $connection->query($select);
     return $student;
 }
+
+
+function getStudentInfo($sid, $connection){
+    $select = "select * from student where id = '$sid'";
+    $student = $connection->query($select);
+    return $student;
+}
