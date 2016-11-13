@@ -26,7 +26,7 @@ if(isset($_POST['mode'])){
         $image = $_FILES['photo']['name'];
         $image_tmp = $_FILES['photo']['tmp_name'];
 
-        move_uploaded_file($image_tmp,"../images/$image");
+        move_uploaded_file($image_tmp,"../img/$image");
         
         $result = $objCommon->createUser($firstName,$lastName,$username,$role,$emailAddress,$student_id,$image);
         
@@ -37,7 +37,7 @@ if(isset($_POST['mode'])){
             $_SESSION['create_user'] = 'error';
         }
 
-        header('Location:../views/user.php');
+        header('Location:../views/a_user.php');
 
     }
 
