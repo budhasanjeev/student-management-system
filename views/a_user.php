@@ -166,7 +166,7 @@ include '../config/databaseConnection.php';
             foreach ($userList as $user) {
                 ?>
                 <tr>
-                    <td style="vertical-align: middle"><img src="../images/<?php echo $user['photo'] ?>"
+                    <td style="vertical-align: middle"><img src="../img/<?php echo $user['photo'] ?>"
                                                             class="img-circle" style="width:40px"></td>
                     <td style="vertical-align: middle"><?php echo $user['first_name'] . ' ' . $user['first_name'] ?></td>
                     <td style="vertical-align: middle"><?php echo $user['username'] ?></td>
