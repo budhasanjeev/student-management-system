@@ -10,41 +10,63 @@
 
 include '../config/databaseConnection.php';
 session_start();
-if (isset($_POST['login'])){
+
+if (isset($_POST["login"])){
+
+    echo "Login";
     $email = $_POST['email'];
     $password = $_POST['password'];
     $stored_password = "null";
     $role = "null";
 
-    $select_query = "SELECT password, role FROM user WHERE email = '$email'";
+    $select_from_user = "SELECT password, role FROM user WHERE email = '$email'";
 
-    $result = $connection->query($select_query);
+    $select_from_teacher = "SELECT password FROM teacher WHERE email = '$email'";
 
-    while($row = $result->fetch_assoc()){
+    $result_from_user = $connection->query($select_from_user);
+
+    $result_from_teacher = $connection->query($select_from_teacher);
+
+    if(mysqli_num_rows($result_from_user) > 0) {
+
+        echo "User";
+        $row = $result_from_user->fetch_assoc();
         $stored_password = $row['password'];
         $role = $row['role'];
+
+    }else if(mysqli_num_rows($result_from_teacher) > 0){
+
+        echo "Teacher";
+        $row = $result_from_teacher->fetch_assoc();
+        $stored_password = $row['password'];
+        $role = 'teacher';
     }
 
     if(md5($password) == $stored_password){
+
         if($role == "Admin"){
             $_SESSION['email'] = $email;
             $_SESSION['role'] = $role;
             header("Location: admin.php");
 
-        }elseif($role = "Parents"){
+        }
+        else if($role == "Parents"){
             $_SESSION['email'] = $email;
             $_SESSION['role'] = $role;
             echo "parents";
             header("Location: admin.php");
-        }else{
+        }
+        else if($role == "teacher") {
             $_SESSION['email'] = $email;
             $_SESSION['role'] = $role;
             header("Location: teacher.php");
+
         }
     }else{
         echo "user not found";
     }
-
+}else{
+    echo "No";
 }
 
 ?>
