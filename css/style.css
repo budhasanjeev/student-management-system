@@ -51,7 +51,7 @@ body{
 .login-div{
     padding: 60px;
     position: relative;
-    width: 40%;
+    /*width: 40%;*/
 }
 
 .option-box{
@@ -94,24 +94,6 @@ body{
     padding: 40px;
 }
 
-.login-body{
-    position: fixed;
-    left: 0;
-    right: 0;
-    z-index: -1;
-
-    width: 100%;
-    height: 800px;
-
-    background-image: url("../img/classroom.jpg");
-    background-size: cover;
-
-    -webkit-filter: blur(5px);
-    -moz-filter: blur(5px);
-    -o-filter: blur(5px);
-    -ms-filter: blur(5px);
-    filter: blur(5px);
-}
 
 .info-box{
     height: 100px;
