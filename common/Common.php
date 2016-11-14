@@ -253,6 +253,20 @@ public function deleteStudent($id){
     return $data;
 }
 
+    public function addRoutine($class,$file)
+    {
+        global $connection;
+        $created_date = date("Y-m-d");
+        $password = md5('123');
+
+        $add_routine = "INSERT INTO routine(class, file) VALUES('$class','$file')";
+
+        $result = mysqli_query($connection,$add_routine);
+
+        return $result;
+
+    }
+
 public function createUser($firstName,$lastName,$username,$role,$emailAddress,$student_id,$image){
 
     global $connection;
