@@ -255,6 +255,8 @@ public function deleteStudent($id){
 
     public function addRoutine($class,$file)
     {
+
+
         global $connection;
         $created_date = date("Y-m-d");
         $password = md5('123');

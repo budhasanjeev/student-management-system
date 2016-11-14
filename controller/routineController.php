@@ -6,6 +6,9 @@
  * Time: 7:18 PM
  */
 include "../config/databaseConnection.php";
+include  '../common/Common.php';
+
+$objCommon = new Common();
 $uploads_dir = '../img';
 if(isset($_FILES['file']))
 {
@@ -15,15 +18,16 @@ if(isset($_FILES['file']))
     $class = $_POST['class'];
     print_r($file);
     $path = "../img/" . basename($file);
+    print_r($path);
+
     if (move_uploaded_file($file_tmp, $path)) {
-        mysql_query("insert into routin (class, file) VALUES ('$class','$file')")
-        or die(mysql_error());
+        $result = $objCommon->addRoutine($class,$file);
 
 
         ?>
         <script>
             alert('successfully uploaded');
-            window.location.href='admin.php?success';
+            window.location.href='../views/admin.php?success';
         </script>
     <?php
     }
