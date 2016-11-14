@@ -20,15 +20,16 @@ function getClass($connection){
     return $class;
 }
 
-function getClassName($id, $connection){
-    $select = "select class from class where id = $id";
-    $class = $connection->query($select);
-    
-    while($row = $class->fetch_assoc()){
-        $name = $row["class"];
-    }
-    return $name;
-}
+//
+//function getClassName($id, $connection){
+//    $select = "select class from class where id = $id";
+//    $class = $connection->query($select);
+//
+//    while($row = $class->fetch_assoc()){
+//        $name = $row["class"];
+//    }
+//    return $name;
+//}
 
 function getClassStudents($name, $connection){
     $select = "select * from student where grade = '$name'";
