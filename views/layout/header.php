@@ -51,23 +51,14 @@ include "../common/service.php";
                     <div class="form-group">
                         <label for="class">Class: </label>
                         <select class="form-control">
-                            <option value="">Class 1</option>
-                            <option value="">Class 1</option>
-                            <option value="">Class 1</option>
-                            <option value="">Class 1</option>
-                            <option value="">Class 1</option>
-                            <option value="">Class 1</option>
-                            <option value="">Class 1</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="section">Section: </label>
-                        <select class="form-control">
-                            <option value="">A</option>
-                            <option value="">B</option>
-                            <option value="">C</option>
-                            <option value="">D</option>
+                            <?php
+                            $class = getClass($connection);
+                            while($row = $class->fetch_assoc()){
+                                ?>
+                                <option value="<?php echo $row["class"]; ?>"><?php echo $row["class"]; ?></option>
+                            <?php
+                            }
+                            ?>
                         </select>
                     </div>
 
@@ -104,13 +95,14 @@ include "../common/service.php";
                     <div class="form-group">
                         <label for="class">Class: </label>
                         <select class="form-control">
-                            <option value="">Class 1</option>
-                            <option value="">Class 1</option>
-                            <option value="">Class 1</option>
-                            <option value="">Class 1</option>
-                            <option value="">Class 1</option>
-                            <option value="">Class 1</option>
-                            <option value="">Class 1</option>
+                            <?php
+                            $class = getClass($connection);
+                            while($row = $class->fetch_assoc()){
+                                ?>
+                                <option value="<?php echo $row["class"]; ?>"><?php echo $row["class"]; ?></option>
+                            <?php
+                            }
+                            ?>
                         </select>
                     </div>
 
