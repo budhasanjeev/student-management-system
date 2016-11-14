@@ -50,7 +50,7 @@ include "../common/service.php";
                 <form action="../controller/routineController.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="class">Class: </label>
-                        <select class="form-control">
+                        <select name="class" class="form-control">
                             <?php
                             $class = getClass($connection);
                             while($row = $class->fetch_assoc()){
