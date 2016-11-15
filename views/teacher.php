@@ -39,10 +39,9 @@ function getAttendance($student_id, $day, $month, $year, $connection){
     $attendance = $connection->query($select);
     while($row = $attendance->fetch_assoc()){
         $a = $row["status"];
+        return $a;
     }
-    return $a;
 }
-
 ?>
 
 
@@ -72,11 +71,12 @@ function getAttendance($student_id, $day, $month, $year, $connection){
                 <?php
                 $day = getClassAttendance($class_id, $month, $year, $connection);
                 $day_array = array();
+                $i = 0;
                 while($row = $day->fetch_assoc()){
-                    $i = 0;
                     $day_array[$i] = $row["day"];
                     $i++;
                 }
+                echo count($day_array);
                 for($i=0; $i < count($day_array); $i++) {
                     ?>
                     <th><?php echo $day_array[$i]; ?></th>
@@ -84,28 +84,28 @@ function getAttendance($student_id, $day, $month, $year, $connection){
                 }
                 ?>
             </thead>
-            <tbody>
+            <tbody style="background-color: blanchedalmond;">
             <?php
-                $classAttendance = getClassAttendance($class_id, $month, $year, $connection);
-            while($row = $classAttendance->fetch_assoc()){
-                $i = 0;
+            $classStudent = getClassStudents(getClassName($class_id, $connection), $connection);
+            $i = 0;
+            while($row = $classStudent->fetch_assoc()){
                 ?>
                 <tr>
-                    <th><?php
-                        $sid = $row["student_id"];
-                        echo getStudentName($sid, $connection); ?></th>
+                    <th>
+                        <?php
+                        echo $row["first_name"]." ".$row["last_name"]; ?></th>
                     <td>
-                        <select name="<?php echo $sid; ?>">
-                            <option value="absent">Absent</option>
+                        <select name="<?php echo $row["id"]; ?>" default="Present">
                             <option value="present">Present</option>
+                            <option value="absent">Absent</option>
                             <option value="leave">Leave</option>
                         </select>
                     </td>
                     <?php
-                    foreach ($day_array as &$value) {
-                        $attendance = getAttendance($row["student_id"], $value, $month, $year, $connection);
+                    foreach ($day_array as &$att_day) {
+                        $attendance = getAttendance($row["id"], $att_day, $month, $year, $connection);
                         ?>
-                        <td><?php echo $attendance; ?>/td>
+                        <td><?php echo $attendance; ?></td>
                     <?php
                     }
                     ?>
@@ -114,6 +114,8 @@ function getAttendance($student_id, $day, $month, $year, $connection){
             }
             ?>
             </tbody>
+
+
         </table>
             <input class="btn btn-primary" value="Done" type="submit"/>
         </form>
