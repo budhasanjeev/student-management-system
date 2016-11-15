@@ -253,6 +253,22 @@ public function deleteStudent($id){
     return $data;
 }
 
+    public function addRoutine($class,$file,$class_id)
+    {
+
+
+        global $connection;
+        $created_date = date("Y-m-d");
+        $password = md5('123');
+
+        $add_routine = "INSERT INTO routine(class_id,class, file) VALUES('$class_id','$class','$file')";
+
+        $result = mysqli_query($connection,$add_routine);
+
+        return $result;
+
+    }
+
 public function createUser($firstName,$lastName,$username,$role,$emailAddress,$student_id,$image){
 
     global $connection;
@@ -324,7 +340,25 @@ public function deleteUser($id){
 
     return $data;
 }
+public function getRoutine($id){
+    global $connection;
+    $res="SELECT *FROM routine WHERE class_id='$id'";
 
+    $result= mysqli_query($connection,$res);
+   // $data= array();
+
+    while($row = mysqli_fetch_assoc($result))
+    {
+//        $data['id'] = $row["id"];
+//        $data['class'] = $row["class"];
+        $data = $row["file"];
+
+    }
+
+    return $data;
+
+
+}
 public function getUser(){
 
     global $connection;

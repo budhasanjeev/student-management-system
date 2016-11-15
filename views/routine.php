@@ -5,6 +5,8 @@
  * Date: 9/5/2016
  * Time: 6:39 PM
  */
+include '../common/Common.php';
+include '../config/databaseConnection.php';
 ?>
 
 <!DOCTYPE html>
@@ -50,11 +52,29 @@
 
 <div class="container">
     <?php
-    $id = $_GET["id"];
-    $class = getClassName($id, $connection);
+    $class_id = $_GET["id"];
+    include "../config/databaseConnection.php";
+    //$class = getClassName($id, $connection);
     ?>
-    <legend>Routine of Class <?php echo $class; ?></legend>
-    <img style="width: 100%" height="600px;" src="../img/user.png" alt=""/>
+<!--    //<legend>Routine of Class --><?php //echo $class; ?><!--</legend>-->
+    <?php
+    $objCommon = new Common();
+    $routine = $objCommon->getRoutine($class_id);
+    echo $routine;
+    ?>
+
+    <tr>
+        <td style="vertical-align: middle"><img src="../img/<?php echo $routine ?>"
+                                                 style="width:inherit
+"></td>
+
+        </td>
+    </tr>
+
+
+
+
+
 </div>
 
 </body>
