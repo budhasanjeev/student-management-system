@@ -54,6 +54,11 @@ function getStudentName($sid, $connection){
 
 }
 
+function addAttendance($return_class, $sid, $month, $day, $year, $status, $connection){
+    $insert = "INSERT INTO `attendance`(`class_id`, `student_id`, `year`, `month`, `day`, `status`) VALUES ($return_class,$sid,'$year','$month','$day','$status')";
+    $connection->query($insert);
+}
+
 
 
 //function getClassAttendance($class_id, $month, $year, $connection){
