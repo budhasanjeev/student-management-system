@@ -36,6 +36,7 @@ function getClassAttendance($class_id, $month, $year, $connection){
 
 function getAttendance($student_id, $day, $month, $year, $connection){
     $select = "select status from attendance where `student_id` = '$student_id' && `day` = '$day' && MONTH = '$month' && YEAR = '$year'";
+    echo $select."</br>";
     $attendance = $connection->query($select);
     while($row = $attendance->fetch_assoc()){
         $a = $row["status"];
@@ -63,7 +64,7 @@ function getAttendance($student_id, $day, $month, $year, $connection){
     <div class="col-md-11">
         <legend>Attendance of <?php echo getClassName($class_id, $connection); ?><span class="pull-right"><?php echo $month." ".$year; ?></span></legend>
 
-        <form action="">
+        <form action="../controller/attendanceController.php?id=<?php echo $class_id; ?>" method="post">
         <table class="table table table-responsive table-bordered table-striped table-fixed">
             <thead>
                 <th></th>
@@ -95,7 +96,7 @@ function getAttendance($student_id, $day, $month, $year, $connection){
                         <?php
                         echo $row["first_name"]." ".$row["last_name"]; ?></th>
                     <td>
-                        <select name="<?php echo $row["id"]; ?>" default="Present">
+                        <select name="<?php echo $row["id"]; ?>">
                             <option value="present">Present</option>
                             <option value="absent">Absent</option>
                             <option value="leave">Leave</option>
