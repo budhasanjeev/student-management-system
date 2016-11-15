@@ -100,27 +100,36 @@ include "../common/service.php";
                 <h4 class="modal-title">Add Fee</h4>
             </div>
             <div class="modal-body">
-                <form action="">
+                <form action="../controller/feeController.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="class">Class: </label>
-                        <select class="form-control">
+                        <label for="class" name="class">Class: </label>
+                        <select name="class_id" class="form-control" onchange="setTextField()">
                             <?php
                             $class = getClass($connection);
                             while($row = $class->fetch_assoc()){
                                 ?>
-                                <option value="<?php echo $row["class"]; ?>"><?php echo $row["class"]; ?></option>
+
+                                <option  value="<?php echo $row["id"]; ?>"><?php echo $row["class"]; ?></option>
+
                             <?php
                             }
                             ?>
                         </select>
+<!--                        <input id="class" type = "hidden" name = "class" value = "" />-->
+                        <script type="text/javascript">
+                            function setTextField(ddl) {
+                                document.getElementById('class').value = ddl.options[ddl.selectedIndex].text;
+                            }
+                        </script>
+
                     </div>
 
                     <div class="form-group">
                         <label for="routine">Fee: </label>
-                        <input type="file"/>
+                        <input type="file" name="file"/>
                     </div>
                     <div style="text-align: right">
-                        <button type="submit" class="btn btn-success">Add</button>
+                        <input type="submit" value="submit" name="submit"/>
                     </div>
                 </form>
             </div>
