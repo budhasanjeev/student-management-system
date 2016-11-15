@@ -268,8 +268,24 @@ public function deleteStudent($id){
         return $result;
 
     }
+    public function addFee($file,$class_id)
+    {
 
-public function createUser($firstName,$lastName,$username,$role,$emailAddress,$student_id,$image){
+
+        global $connection;
+        $created_date = date("Y-m-d");
+        $password = md5('123');
+
+        $add_fee = "INSERT INTO fee (class_id, file) VALUES('$class_id','$file')";
+
+        $result = mysqli_query($connection,$add_fee);
+
+        return $result;
+
+    }
+
+
+    public function createUser($firstName,$lastName,$username,$role,$emailAddress,$student_id,$image){
 
     global $connection;
 
@@ -340,7 +356,27 @@ public function deleteUser($id){
 
     return $data;
 }
-public function getRoutine($id){
+    public function getFee($id){
+        global $connection;
+        $res="SELECT *FROM fee WHERE class_id='$id'";
+
+        $result= mysqli_query($connection,$res);
+        // $data= array();
+
+        while($row = mysqli_fetch_assoc($result))
+        {
+//        $data['id'] = $row["id"];
+//        $data['class'] = $row["class"];
+            $data = $row["file"];
+
+        }
+
+        return $data;
+
+
+    }
+
+    public function getRoutine($id){
     global $connection;
     $res="SELECT *FROM routine WHERE class_id='$id'";
 
@@ -359,6 +395,7 @@ public function getRoutine($id){
 
 
 }
+
 public function getUser(){
 
     global $connection;

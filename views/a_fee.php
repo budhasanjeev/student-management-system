@@ -24,15 +24,11 @@
 
         <?php
         $class = getClass($connection);
-        while($row = $class->fetch_assoc()){
+        while($row = $class->fetch_assoc()) {
             ?>
-            <a href="fee.php?id=<?php echo $row["id"]; ?>">
-                <div class="col-lg-4 col-space">
-                    <div class="btn btn-block option-box">
-                        <h4><?php echo $row["class"]; ?></h4>
-                    </div>
-                </div>
-            </a>
+            <li>
+                <a href="fee.php?id=<?php echo $row["id"]; ?>">Class <?php echo $row["class"]; ?></a>
+            </li>
         <?php
         }
         ?>
