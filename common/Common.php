@@ -396,13 +396,13 @@ public function getUser(){
         return $data;
     }
 
-    function createTeacher($name,$contact,$address,$experience,$username,$address,$degree,$join_on,$photo,$email){
+    function createTeacher($name,$contact,$addres,$experience,$username,$address,$degree,$join_on,$photo,$email){
 
         global $connection;
 
         $created_date = date('Y-m-d');
 
-        $insert_teacher = "insert into teacher(name,address,contact,email,username,degree,experience,start_date,photo,created_date) values('$name','$address','$contact','$email','$username','$degree','$experience','$join_on','$photo','$created_date')";
+        $insert_teacher = "insert into teacher(name,address,contact,email,username,degree,experience,start_date,photo,created_date) values('$name','$addres','$contact','$email','$username','$degree','$experience','$join_on','$photo','$created_date')";
 
         $result = mysqli_query($connection,$insert_teacher);
 

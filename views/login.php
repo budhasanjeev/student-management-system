@@ -59,7 +59,7 @@ if (isset($_POST["login"])){
         else if($role == "teacher") {
             $_SESSION['email'] = $email;
             $_SESSION['role'] = $role;
-            header("Location: teacher.php");
+            header("Location: teacher.php?id=1");
 
         }
     }else{
@@ -78,37 +78,36 @@ if (isset($_POST["login"])){
     <link rel="stylesheet" href="../css/style.css"/>
 </head>
 <body>
-<div class="login-body"></div>
+<div style="height: 100%; width: 100%; display: flex; justify-content: center; align-items: center; position: absolute;">
+<div style="text-align: center">
+    <div class="container" style="text-align: center;">
+        <h3>Student Management Portal</h3>
+    </div>
 
-<br/><br/>
-<div class="container" style="text-align: center;">
-    <div style="height: 200px;"></div>
-<!--    <img height="200px" width="50%" src="../img/banner.jpg" alt=""/>-->
-    <h3>Student Management Portal</h3>
-</div>
+    <div class="col-lg-6">
+        <div class="highlight login-div">
+            <form class="form-horizontal"  method="post" action="">
+                <!--        <legend><h2>System Login</h2></legend>-->
+                <div class="form-group">
+                    <label class="glyphicon glyphicon-envelope col-md-2 login-glyphicon"></label>
+                    <div class="col-md-10">
+                        <input type="email" class="form-control" name="email" required="" placeholder="username"/>
+                    </div>
+                </div>
 
+                <div class="form-group">
+                    <label class="glyphicon glyphicon-pencil col-md-2 login-glyphicon" for=""></label>
+                    <div class="col-md-10">
+                        <input type="password" class="form-control" name="password" required="" placeholder="password"/>
+                    </div>
+                </div>
 
-<div style="display: flex; justify-content: center; align-items: center;">
-<div class="highlight login-div">
-    <form class="form-horizontal"  method="post" action="">
-<!--        <legend><h2>System Login</h2></legend>-->
-        <div class="form-group">
-            <label class="glyphicon glyphicon-envelope col-md-2 login-glyphicon"></label>
-            <div class="col-md-10">
-                <input type="email" class="form-control" name="email" required="" placeholder="username"/>
-            </div>
+                <input class="btn btn-primary btn-block" name="login" type="submit" value="login"/>
+            </form>
         </div>
-
-        <div class="form-group">
-            <label class="glyphicon glyphicon-pencil col-md-2 login-glyphicon" for=""></label>
-            <div class="col-md-10">
-            <input type="password" class="form-control" name="password" required="" placeholder="password"/>
-            </div>
-        </div>
-
-        <input class="btn btn-primary btn-block" name="login" type="submit" value="login"/>
-    </form>
+    </div>
 </div>
 </div>
+
 </body>
 </html>
