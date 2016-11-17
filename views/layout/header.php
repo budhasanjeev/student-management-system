@@ -13,6 +13,7 @@ if(!isset($_SESSION["email"])){
 
 include "../config/databaseConnection.php";
 include "../common/service.php";
+include "../common/Common.php";
 ?>
 
 

@@ -121,5 +121,6 @@ function getAttendance($student_id, $day, $month, $year, $connection){
         </form>
     </div>
 </div>
+
 </body>
 </html>
