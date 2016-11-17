@@ -28,13 +28,14 @@
                 <h4 class="modal-title">Update Routine</h4>
             </div>
             <div class="modal-body">
-                <form class="form" action="" method="post">
+                <form class="form" action="../controller/routineController.php" method="post">
 
-                    <input type="hidden" name="mode" value="add">
+                    <input type="hidden" name="update" value="update">
+                    <input type="hidden" name="class_id" value="<?php echo $_GET['id'] ?> ">
 
                     <div class="form-group">
                         <label for="class">Routine Photo: </label>
-                        <input type="file" name="fee_photo" required=""/>
+                        <input type="file" name="routine_photo" required=""/>
                     </div>
 
                     <div style="text-align: right">
@@ -60,10 +61,9 @@
     <?php
     $objCommon = new Common();
     $routine = $objCommon->getRoutine($class_id);
-    echo $routine;
     ?>
 
-<img src="../img/<?php echo $routine ?>"style="width:inherit">
+<img src="../img/<?php echo $routine['file'] ?>"style="width:inherit">
 
 
 </div>

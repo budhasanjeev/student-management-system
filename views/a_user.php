@@ -5,7 +5,6 @@
  * Date: 9/13/2016
  * Time: 3:52 PM
  */
-include '../common/Common.php';
 include '../config/databaseConnection.php';
 ?>
 

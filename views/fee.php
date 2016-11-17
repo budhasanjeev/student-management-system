@@ -28,9 +28,10 @@
                 <h4 class="modal-title">Update Fee</h4>
             </div>
             <div class="modal-body">
-                <form class="form" action="" method="post">
+                <form class="form" action="../controller/feeController.php" method="post" enctype="multipart/form-data">
 
-                    <input type="hidden" name="mode" value="add">
+                    <input type="hidden" name="mode" value="update">
+                    <input type="hidden" name="class_id" value="<?php echo $_GET['id'] ?>" >
 
                     <div class="form-group">
                         <label for="class">Fee Photo: </label>
