@@ -508,4 +508,14 @@ public function getUser(){
 
         return $data;
     }
+
+    function getImageName($id){
+
+        global $connection;
+
+        $select_fee = "select *from fee where id = $id";
+
+        return mysqli_query($connection,$select_fee);
+
+    }
 }

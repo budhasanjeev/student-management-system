@@ -53,7 +53,7 @@ include "../common/service.php";
                         <select name="class_id" class="form-control" onchange="setTextField()">
                             <?php
                             $class = getClass($connection);
-                            while($row = $class->fetch_assoc()){
+                            while($row = mysqli_fetch_assoc($class)){
                                 ?>
 
                                 <option  value="<?php echo $row["id"]; ?>"><?php echo $row["class"]; ?></option>
@@ -106,7 +106,7 @@ include "../common/service.php";
                         <select name="class_id" class="form-control" onchange="setTextField()">
                             <?php
                             $class = getClass($connection);
-                            while($row = $class->fetch_assoc()){
+                            while($row = mysqli_fetch_assoc($class)){
                                 ?>
 
                                 <option  value="<?php echo $row["id"]; ?>"><?php echo $row["class"]; ?></option>
@@ -273,7 +273,7 @@ include "../common/service.php";
                 <ul class="dropdown-menu">
                     <?php
                     $class = getClass($connection);
-                    while($row = $class->fetch_assoc()) {
+                    while($row = mysqli_fetch_assoc($class)) {
                         ?>
                         <li>
                             <a href="routine.php?id=<?php echo $row["id"]; ?>">Class <?php echo $row["class"]; ?></a>
