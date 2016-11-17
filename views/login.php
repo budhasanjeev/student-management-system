@@ -28,15 +28,12 @@ if (isset($_POST["login"])){
     $result_from_teacher = $connection->query($select_from_teacher);
 
     if(mysqli_num_rows($result_from_user) > 0) {
-
-        echo "User";
         $row = $result_from_user->fetch_assoc();
         $stored_password = $row['password'];
         $role = $row['role'];
 
     }else if(mysqli_num_rows($result_from_teacher) > 0){
 
-        echo "Teacher";
         $row = $result_from_teacher->fetch_assoc();
         $stored_password = $row['password'];
         $role = 'teacher';
@@ -45,6 +42,7 @@ if (isset($_POST["login"])){
     if(md5($password) == $stored_password){
 
         if($role == "Admin"){
+            echo "Admin";
             $_SESSION['email'] = $email;
             $_SESSION['role'] = $role;
             header("Location: admin.php");

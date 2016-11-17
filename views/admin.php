@@ -5,6 +5,7 @@
  * Date: 9/4/2016
  * Time: 2:03 PM
  */
+
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +19,7 @@
 </head>
 <body>
 <?php include 'layout/header.php'; ?>
+
 <div class="container" style="padding: 10px;">
     <div class="col-lg-3">
         <div class="info-box" style="background-color: #a07789">
