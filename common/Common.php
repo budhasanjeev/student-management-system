@@ -518,4 +518,18 @@ public function getUser(){
         return mysqli_query($connection,$select_fee);
 
     }
+
+    function deletePhoto($fileName){
+
+        $data = array();
+
+        if(unlink("../img/".$fileName)){
+           $data['message'] = 'success';
+        }
+        else{
+            $data['message'] = 'fail';
+        }
+
+        return $data;
+    }
 }

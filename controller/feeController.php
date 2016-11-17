@@ -37,14 +37,7 @@ if(isset($_POST['submit']))
 
 }
 
-else if(isset($_POST['submit_update'])){
+else if(isset($_POST['deletePhoto'])){
 
-    $id = (int)$_POST['id'];
-//    $select = mysql_query("SELECT `file_name` FROM `file_records` WHERE `file_records`.`id` = '$id'");
-//    $image  =mysql_fetch_array($select);
-    
-    $image = $objCommon->getImageName($id);
-    
-    @unlink('images/'.$image['photo']);
-    
+    $objCommon->deletePhoto("Koala.jpg");
 }

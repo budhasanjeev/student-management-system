@@ -34,6 +34,10 @@
         ?>
 </div>
 
+    <form method="post" action="../controller/feeController.php">
+        <input type="hidden" name="deletePhoto" value="deletePhoto">
+        <button type="submit">Delete</button>
+    </form>
 
 </body>
 </html>
