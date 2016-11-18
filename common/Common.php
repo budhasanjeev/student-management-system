@@ -259,12 +259,25 @@ class Common{
         global $connection;
         $created_date = date("Y-m-d");
         $password = md5('123');
+        $sql = "SELECT class_id FROM routine WHERE class_id='$class_id'";
+        $result1 = mysqli_query($connection,$sql);
 
+        if(mysqli_num_rows($result1) >0)
+        {
+            echo "<script>
+        alert('routine already exist!');
+    </script>";
+
+        }else{
+         //   not found
         $add_routine = "INSERT INTO routine(class_id,class, file) VALUES('$class_id','$class','$file')";
 
         $result = mysqli_query($connection,$add_routine);
 
         return $result;
+        }
+
+
 
     }
 
@@ -287,12 +300,23 @@ class Common{
         global $connection;
         $created_date = date("Y-m-d");
         $password = md5('123');
+        $sql = "SELECT class_id FROM routine WHERE class_id='$class_id'";
+        $result1 = mysqli_query($connection,$sql);
 
-        $add_fee = "INSERT INTO fee (class_id, file) VALUES('$class_id','$file')";
+        if(mysqli_num_rows($result1) >0)
+        {
+            echo "<script>
+        alert('Fee already exist!');
+    </script>";
 
-        $result = mysqli_query($connection,$add_fee);
+        }else {
 
-        return $result;
+            $add_fee = "INSERT INTO fee (class_id, file) VALUES('$class_id','$file')";
+
+            $result = mysqli_query($connection, $add_fee);
+
+            return $result;
+        }
 
     }
 
