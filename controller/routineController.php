@@ -38,8 +38,8 @@ else if($_POST['update']){
 
     $class_id = $_POST['class_id'];
 
-    $file = $_FILES['routine_photo']['name'];
-    $file_tmp = $_FILES['routine_photo']['tmp_name'];
+    $file = $_FILES['routine']['name'];
+    $file_tmp = $_FILES['routine']['tmp_name'];
 
     $imageName = $objCommon->getRoutinePhoto($class_id);
 

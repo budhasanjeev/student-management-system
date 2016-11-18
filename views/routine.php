@@ -28,14 +28,14 @@
                 <h4 class="modal-title">Update Routine</h4>
             </div>
             <div class="modal-body">
-                <form class="form" action="../controller/routineController.php" method="post">
+                <form class="form" action="../controller/routineController.php" method="post" enctype="multipart/form-data">
 
                     <input type="hidden" name="update" value="update">
                     <input type="hidden" name="class_id" value="<?php echo $_GET['id'] ?> ">
 
                     <div class="form-group">
                         <label for="class">Routine Photo: </label>
-                        <input type="file" name="routine_photo" required=""/>
+                        <input type="file" name="routine" required=""/>
                     </div>
 
                     <div style="text-align: right">
