@@ -70,7 +70,7 @@
     </div>
 
     <div class="row" style="padding: 20px; margin-top: 120px;">
-        <img src="../images/graph.jpg" width="100%" height="500px" alt=""/>
+        <img src="../img/ohiocharters1.png" width="100%" height="500px" alt=""/>
     </div>
 </div>
 

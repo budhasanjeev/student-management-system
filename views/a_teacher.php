@@ -6,7 +6,6 @@
  * Time: 7:55 PM
  */
 
-include '../common/Common.php';
 include '../config/databaseConnection.php';
 ?>
 <!DOCTYPE html>
