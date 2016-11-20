@@ -49,6 +49,8 @@ if(isset($_POST['mode'])){
 
         $result = $objCommon->createStudent($std_id,$fname,$lname,$dob,$address,$contact,$rollNumber,$grade,$section,$fatherName,$motherName,$photo);
 
+
+
         if($result){
             $_SESSION['create_student'] = 'success';
         }

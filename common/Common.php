@@ -185,6 +185,16 @@ class Common{
 
         $result = mysqli_query($connection,$insert_student);
 
+        $classID = getClassID($grade, $connection);
+
+        $select = "SELECT * FROM `student` WHERE `student_id` = '$std_id' && `first_name` = '$fname' && `last_name` = '$lname'";
+        $forID = $connection->query($select);
+        while($row = $forID->fetch_assoc()){
+            $student_id = $row['id'];
+            $insert = "INSERT INTO `attendance`(`class_id`, `student_id`) VALUES ($classID, $student_id)";
+            $connection->query($insert);
+        }
+
         return $result;
 
     }
