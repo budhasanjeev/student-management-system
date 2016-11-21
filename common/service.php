@@ -63,7 +63,6 @@ function getStudentName($sid, $connection){
         $n = $row["name"];
         return $n;
     }
-
 }
 
 function addAttendance($return_class, $sid, $month, $day, $year, $status, $connection){
@@ -71,20 +70,20 @@ function addAttendance($return_class, $sid, $month, $day, $year, $status, $conne
     $connection->query($insert);
 }
 
+function getTeacherInfo($teacherID, $connection){
+    $select = "select * from teacher where id = '$teacherID'";
+    $teacher = $connection->query($select);
+    return $teacher;
+}
 
+function addSubject($subject, $class_ID, $connection){
+    $insert = "INSERT INTO `subject`(`subject_name`, `class_id`) VALUES ('$subject',$class_ID)";
+    $connection->query($insert);
+}
 
-//function getClassAttendance($class_id, $month, $year, $connection){
-//    $select = "select * from attendance where class_id = '$class_id' & month = '$month' & year = '$year'";
-//    $attendance = $connection->query($select);
-//    return $attendance;
-//}
-//
-//
-//function getAttendance($student_id, $day, $month, $year, $connection){
-//    $select = "select status from attendance where `student_id` = '$student_id' & `day` = '$day' & MONTH = '$month' & YEAR = '$year'";
-//    $attendance = $connection->query($select);
-//    while($row = $attendance->fetch_assoc()){
-//        $a = $row["status"];
-//    }
-//    return $a;
-//}
+function getSubject($classID, $connection){
+    $select = "select * from subject where class_id = '$classID'";
+    $sub = $connection->query($select);
+    return $sub;
+}
+
