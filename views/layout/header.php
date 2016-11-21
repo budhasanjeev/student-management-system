@@ -171,6 +171,50 @@ include "../common/Common.php";
     </div>
 </div>
 
+<!--Subject Modal -->
+<div id="subjectModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add Subject</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form" action="../controller/addSubject.php" method="post">
+
+                        <div class="form-group">
+                            <lable>Class:</lable>
+                            <select class="form-control" name="classID">
+                                <?php
+                                $class = getClass($connection);
+                                while($r = $class->fetch_assoc()){
+                                    ?>
+                                    <option value="<?php echo $r['id']; ?>"><?php echo $r['class']; ?></option>
+                                <?php
+                                }
+                                ?>
+                            </select>
+                        </div>
+
+                    <div class="form-group">
+                        <lable>Subject:</lable>
+                        <input class="form-control" type="text" name="subject" required=""/>
+                    </div>
+
+                    <div style="text-align: right">
+                        <button type="submit" class="btn btn-success">Add</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 <!--Add Teacher Modal -->
 <div id="teacherModal" class="modal fade" role="dialog">
@@ -269,6 +313,7 @@ include "../common/Common.php";
         <ul class="nav navbar-nav">
             <li><a href="a_class.php">Students</a></li>
             <li><a href="a_teacher.php">Teachers</a></li>
+            <li><a href="a_subject.php">Subjects</a></li>
             <li>
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Routine<b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -323,6 +368,14 @@ include "../common/Common.php";
                         </div>
                     </a>
 
+                    <a href="student.php">
+                        <div class="col-md-12" style="padding: 5px;">
+                            <div class="dropdown-div" style="background-color: #aba992;">
+                                <a href="" data-toggle="modal" data-target="#subjectModal"><div>Subject</div></a>
+                            </div>
+                        </div>
+                    </a>
+
                     <a href="#">
                         <div class="col-md-6" style="padding: 5px;">
                             <div class="dropdown-div" style="background-color: #533443;">
@@ -361,7 +414,6 @@ include "../common/Common.php";
             </form>
         </div>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Link</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">H! User<b class="caret"></b></a>
 

@@ -42,12 +42,12 @@ include '../config/databaseConnection.php';
             foreach ($teacherList as $teacher) {
                 ?>
                 <tr>
-                    <td><img class="img-circle" width="60px" src="../img/<?php echo $teacher["photo"] ?>"></td>
-                    <td><?php echo $teacher['name'] ?></td>
-                    <td><?php echo $teacher['email'] ?></td>
-                    <td><?php echo $teacher['contact'] ?></td>
-                    <td><?php echo $teacher['address'] ?></td>
-                    <td><?php echo $teacher['degree'] ?></td>
+                    <td><a href="editTeacher.php?id=<?php echo $teacher['id']; ?>"><img class="img-circle" width="60px" src="../img/<?php echo $teacher["photo"] ?>"></a></td>
+                    <td><a href="editTeacher.php?id=<?php echo $teacher['id']; ?>"><?php echo $teacher['name'] ?></a></td>
+                    <td><a href="editTeacher.php?id=<?php echo $teacher['id']; ?>"><?php echo $teacher['email'] ?></a></td>
+                    <td><a href="editTeacher.php?id=<?php echo $teacher['id']; ?>"><?php echo $teacher['contact'] ?></a></td>
+                    <td><a href="editTeacher.php?id=<?php echo $teacher['id']; ?>"><?php echo $teacher['address'] ?></a></td>
+                    <td><a href="editTeacher.php?id=<?php echo $teacher['id']; ?>"><?php echo $teacher['degree'] ?></a></td>
                 </tr>
 
                 <?php
