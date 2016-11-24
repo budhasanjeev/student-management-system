@@ -8,6 +8,16 @@
 
 include "../config/databaseConnection.php";
 
+if(isset($_POST['actionname'])){
+    $actionname = $_POST['actionname'];
+    if($actionname == 'getsubject'){
+        $finaloutput = array();
+        $classid = $_POST['classid'];
+        $finaloutput = getSubject($classid,$connection);
+          echo json_encode($finaloutput);
+    }
+
+}
 function addClass($name, $connection){
     $insert = "INSERT INTO `class`(`class`) VALUES ('$name')";
     $connection->query($insert);
@@ -84,6 +94,57 @@ function addSubject($subject, $class_ID, $connection){
 function getSubject($classID, $connection){
     $select = "select * from subject where class_id = '$classID'";
     $sub = $connection->query($select);
-    return $sub;
+    $i = 0;
+    $output = array();
+    while($subject = $sub->fetch_assoc())
+    {
+        $eachOutput = array("subjectName"=>$subject["subject_name"],"id"=>$subject["id"]);
+        $output[$i++] = $eachOutput;
+    }
+   return $output;
 }
+
+function getClassSubject($class_id, $connection){
+    $select = "SELECT * FROM `subject` WHERE `class_id` = '$class_id'";
+    $subject = $connection->query($select);
+    return $subject;
+}
+
+
+
+function addClassSubject($class_id, $subject_id, $teacher_id, $connection){
+    $insert = "INSERT INTO `teacher_subject`(`teacher_id`, `subject_id`, `class_id`) VALUES ($teacher_id, $subject_id, $class_id)";
+    $connection->query($insert);
+}
+
+function getTeacherSubject($teacherID, $connection){
+    $select = "SELECT * FROM `teacher_subject` WHERE `teacher_id` = '$teacherID'";
+    $teacher = $connection->query($select);
+    return $teacher;
+}
+
+
+function getSubjectName($sid, $connection){
+    $select = "SELECT * FROM `subject` WHERE `id` = '$sid'";
+    $name = $connection->query($select);
+    while($row = $name->fetch_assoc()){
+        $n = $row["subject_name"];
+        return $n;
+    }
+}
+
+
+function getSubjectTeacher($subjectID, $connection){
+    $select = "SELECT * FROM `teacher_subject` WHERE `id` = '$subjectID'";
+    $teacherid = $connection->query($select);
+    while($row = $teacherid->fetch_assoc()){
+        $n = getTeacherInfo($row["teacher_id"], $connection);
+        while($r = $n->fetch_assoc()){
+            return $r['name'];
+        }
+    }
+}
+
+
+
 

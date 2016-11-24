@@ -296,7 +296,7 @@ include "../common/Common.php";
     </div>
 </div>
 
-<nav class="navbar" role="navigation" style="border-radius: 0px; border-bottom: 2px solid #a07789">
+<nav class="navbar" role="navigation" style="border-radius: 0px; border-bottom: 2px solid #a07789; background-color: wheat;">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -305,12 +305,20 @@ include "../common/Common.php";
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="admin.php">SMS</a>
+        <a class="navbar-brand" <?php if($_SESSION['role'] == 'Admin'){ ?> href="admin.php" <?php } ?><?php if($_SESSION['role'] == 'Teacher'){ ?> href="teacher.php" <?php } ?>>SMS</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
+            <?php
+            if($_SESSION['role'] == 'teacher'){
+                ?>
+                <li><a href="teacher.php?id=1">Attendance</a></li>
+            <?php
+            }
+            ?>
+
             <li><a href="a_class.php">Students</a></li>
             <li><a href="a_teacher.php">Teachers</a></li>
             <li><a href="a_subject.php">Subjects</a></li>

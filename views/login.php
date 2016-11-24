@@ -19,9 +19,9 @@ if (isset($_POST["login"])){
     $stored_password = "null";
     $role = "null";
 
-    $select_from_user = "SELECT password, role FROM user WHERE email = '$email'";
+    $select_from_user = "SELECT id, password, role FROM user WHERE email = '$email'";
 
-    $select_from_teacher = "SELECT password FROM teacher WHERE email = '$email'";
+    $select_from_teacher = "SELECT id, password FROM teacher WHERE email = '$email'";
 
     $result_from_user = $connection->query($select_from_user);
 
@@ -31,12 +31,14 @@ if (isset($_POST["login"])){
         $row = $result_from_user->fetch_assoc();
         $stored_password = $row['password'];
         $role = $row['role'];
+        $user_id = $row['id'];
 
     }else if(mysqli_num_rows($result_from_teacher) > 0){
 
         $row = $result_from_teacher->fetch_assoc();
         $stored_password = $row['password'];
         $role = 'teacher';
+        $teacher_id = $row['id'];
     }
 
     if(md5($password) == $stored_password){
@@ -45,6 +47,7 @@ if (isset($_POST["login"])){
             echo "Admin";
             $_SESSION['email'] = $email;
             $_SESSION['role'] = $role;
+            $_SESSION['user_id'] = $user_id;
             header("Location: admin.php");
 
         }
@@ -57,6 +60,7 @@ if (isset($_POST["login"])){
         else if($role == "teacher") {
             $_SESSION['email'] = $email;
             $_SESSION['role'] = $role;
+            $_SESSION['teacher_id'] = $teacher_id;
             header("Location: teacher.php?id=1");
 
         }

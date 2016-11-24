@@ -23,11 +23,41 @@
         <legend>Exam Marks</legend>
     </div>
 
-    <a href="t_student.php">
-    <div class="box col-lg-3">
-        class 1
-    </div>
-    </a>
+    <?php
+    $teacherClass = getTeacherSubject($_SESSION['teacher_id'], $connection);
+    while($row = $teacherClass->fetch_assoc()){
+        $cid = $row['class_id'];
+        $sid = $row['subject_id'];
+        ?>
+        <a href="t_addMarks.php?class=<?php echo $cid; ?>&sub=<?php echo $sid; ?>">
+            <div class="col-lg-3">
+                <div class="box" style="padding: 15px;">
+                <table class="table table-responsive table-bordered">
+                    <tr>
+                    <td>Class</td>
+                    <td>Subject</td>
+                    </tr>
+
+                <tr>
+                    <td><strong>
+                        <?php
+                        echo getClassName($cid, $connection);
+                        ?></strong>
+                    </td>
+                    <td><strong>
+                        <?php
+                        echo getSubjectName($sid, $connection);
+                        ?></strong>
+                    </td>
+                </tr>
+                </table>
+                </div>
+            </div>
+        </a>
+
+    <?php
+    }
+    ?>
 
 
 </div>

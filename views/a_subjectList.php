@@ -18,7 +18,7 @@
     <body>
 <?php include 'layout/header.php';
 $classID = $_GET['id'];
-$subject =  getSubject($classID, $connection);
+$subject =  getClassSubject($classID, $connection);
 ?>
 
     <div class="container">
@@ -33,7 +33,7 @@ $subject =  getSubject($classID, $connection);
                 ?>
                 <tr>
                     <td><?php echo $row["subject_name"]; ?></td>
-                    <td></td>
+                    <td><?php echo getSubjectTeacher($row['id'], $connection); ?></td>
                 </tr>
             <?php
             }

@@ -20,7 +20,10 @@
     <?php include 'layout/header.php' ?>
     <div class="container">
 
-    <legend>Fee</legend>
+    <legend>Fee <form method="post" action="../controller/feeController.php" class="pull-right">
+            <input type="hidden" name="deletePhoto" value="deletePhoto">
+            <button class="btn btn-success" type="submit">Update</button>
+        </form></legend>
 
         <?php
         $class = getClass($connection);
@@ -41,10 +44,7 @@
         ?>
 </div>
 
-    <form method="post" action="../controller/feeController.php">
-        <input type="hidden" name="deletePhoto" value="deletePhoto">
-        <button type="submit">Delete</button>
-    </form>
+
 
 </body>
 </html>

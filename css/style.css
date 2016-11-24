@@ -123,3 +123,7 @@ body{
 .c_tab{
     background-color: #ffffff !important;
 }
+
+body a:hover{
+    text-decoration: none;
+}
