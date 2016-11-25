@@ -31,7 +31,7 @@ include "../common/Common.php";
     <link rel="stylesheet" href="../css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../css/style.css"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Ultra" rel="stylesheet">
     <link rel="stylesheet" href="../css/easydropdown.css"/>
 
 </head>
@@ -305,7 +305,7 @@ include "../common/Common.php";
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" <?php if($_SESSION['role'] == 'Admin'){ ?> href="admin.php" <?php } ?><?php if($_SESSION['role'] == 'Teacher'){ ?> href="teacher.php" <?php } ?>>SMS</a>
+        <a class="navbar-brand" style="font-family: 'Kaushan Script', cursive;" <?php if($_SESSION['role'] == 'Admin'){ ?> href="admin.php" <?php } ?><?php if($_SESSION['role'] == 'Teacher'){ ?> href="teacher.php" <?php } ?>>SMS</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->

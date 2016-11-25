@@ -8,6 +8,12 @@
 
 include "../config/databaseConnection.php";
 
+
+$month = date("F");
+$year = date("o");
+$day = date("j");
+
+
 if(isset($_POST['actionname'])){
     $actionname = $_POST['actionname'];
     if($actionname == 'getsubject'){
@@ -145,6 +151,51 @@ function getSubjectTeacher($subjectID, $connection){
     }
 }
 
+function getTotalStudent($connection){
+    $select = "SELECT COUNT(*) FROM `student`";
+    $count = $connection->query($select);
+    return $count;
+}
 
+
+function getAbsentCount($connection){
+
+    $month = date("F");
+    $year = date("o");
+    $day = date("j");
+
+    $select = "SELECT COUNT(*) FROM `attendance` WHERE `status` = 'absent' && `year` = '$year' && `month` = '$month'&& `day` = '$day'";
+    $count = $connection->query($select);
+    return $count;
+}
+
+function getAbsentStudent($connection){
+
+    $month = date("F");
+    $year = date("o");
+    $day = date("j");
+
+    $select = "SELECT * FROM `attendance` WHERE `status` = 'absent' && `year` = '$year' && `month` = '$month'&& `day` = '$day'";
+    $count = $connection->query($select);
+    return $count;
+}
+
+
+
+function getBirthdayCount($connection){
+    $today = DATE("Y-m-d");
+    $select = "SELECT COUNT(*) FROM `student` where 'dob' = '$today'";
+    $count = $connection->query($select);
+    return $count;
+}
+
+
+
+function getBirthdayStudent($connection){
+    $today = DATE("Y-m-d");
+    $select = "SELECT * FROM `student` where 'dob' = '$today'";
+    $count = $connection->query($select);
+    return $count;
+}
 
 

@@ -28,22 +28,38 @@
                 <div class="row" style="font-size: 20px;">
                     Total Students
                 </div>
-                <div class="row" style="font-size: 18px;">100</div>
+                <div class="row" style="font-size: 18px;"><?php $total = getTotalStudent($connection);
+                    while($row = $total->fetch_assoc()){
+                        echo $row['COUNT(*)'];
+                    }
+                    ?></div>
             </div>
         </div>
     </div>
 
-    <div class="col-lg-3">
+    <a href="absent.php"><div class="col-lg-3">
         <div class="info-box" style="background-color: #533443">
             <div class="col-md-4" style="font-size: 50px;"><span class="glyphicon glyphicon-user"></span></div>
             <div class="col-md-8">
                 <div class="row" style="font-size: 20px;">
                     Absent Today
                 </div>
-                <div class="row" style="font-size: 18px;">100</div>
+                <div class="row" style="font-size: 18px;"><?php $total = getAbsentCount($connection);
+
+                        while($row = $total->fetch_assoc()){
+                            $count = $row['COUNT(*)'];
+                            if($count != 0){
+                                echo $count;
+                            }else{
+                                ?>
+                                <span style="color: red">Attendance not taken</span>
+                            <?php
+                            }
+                        }
+                ?></div>
             </div>
         </div>
-    </div>
+    </div></a>
 
     <div class="col-lg-3">
         <div class="info-box" style="background-color: #aba992">
@@ -52,7 +68,20 @@
                 <div class="row" style="font-size: 20px;">
                     Birthday today
                 </div>
-                <div class="row" style="font-size: 18px;">5</div>
+                <div class="row" style="font-size: 18px;">
+                    <?php $total = getBirthdayCount($connection);
+                    while($row = $total->fetch_assoc()){
+                        $count = $row['COUNT(*)'];
+                        if($count != 0){
+                            echo "<a href='birthday.php'>".$count."</a>";
+                        }else{
+                            ?>
+                            <span style="color: red">No Birthday</span>
+                        <?php
+                        }
+                    }
+                    ?>
+                </div>
             </div>
         </div>
     </div>

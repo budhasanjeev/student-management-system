@@ -32,7 +32,7 @@
                 <input type="text" name="lastName" placeholder="last Name" class="form-control form-group" id="lastName" onkeyup="checkAlphabet('lastName')"/>
             </div>
             <div class="col-md-4">
-                <input type="date" name="dob" placeholder="DOB" class="form-control form-group" id="dob" />
+                <input type="text" name="dob" placeholder="Date of Birth" class="form-control form-group" onfocus="(this.type='date')" id="dob" />
             </div>
             <div class="col-md-4">
                 <input type="text" name="address" placeholder="address" class="form-control form-group" id="address" onkeyup="checkAlphabet('address')"/>
@@ -77,6 +77,8 @@
             <input class="btn btn-primary btn-block" name="submit"  type="submit"  value="Add"/>
         </div>
     </form>
+
+    <?php echo date("Y-m-d") ?>
 </div>
 
 </body>
