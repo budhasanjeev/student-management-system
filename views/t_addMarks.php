@@ -23,7 +23,16 @@ $subject_id = $_GET['sub'];
 <div class="container">
 
     <legend>Marks for <strong><?php echo getSubjectName($subject_id, $connection) ?></strong> of class <strong><?php echo getClassName($class_id, $connection) ?></strong></legend>
-    <form action="">
+    <form action="../controller/c_addMarks.php" method="post">
+        <input type="hidden" name="class_id" value="<?php echo $class_id ?>"/>
+        <input type="hidden" name="subject_id" value="<?php echo $subject_id ?>"/>
+        <select class="form-control" name="exam" id="">
+            <option value="first">First Term</option>
+            <option value="second">Second Term</option>
+            <option value="third">Third Term</option>
+            <option value="final">Final Term</option>
+        </select>
+        <br/><br/>
     <table class="table table-responsive">
         <thead>
         <th>Student</th>
@@ -36,13 +45,11 @@ $subject_id = $_GET['sub'];
         ?>
 <tr>
     <td><?php echo $row['first_name']." ".$row['last_name']; ?></td>
-    <td><input class="form-control" type="text" name="<?php echo $row['id']; ?>"/></td>
+    <td><input class="form-control" type="number" name="<?php echo $row['id']; ?>"/></td>
 </tr>
     <?php
     }
-    ?>
-
-    </table>
+    ?>    </table>
     <input type="submit" value="ADD" class="btn btn-primary btn-block"/>
     </form>
 </div>

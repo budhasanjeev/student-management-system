@@ -42,32 +42,28 @@
                 <div class="row">
                     <table class="table table-striped table-responsive">
                         <tr>
-                            <td><span class="glyphicon glyphicon-home"></span></td>
-                            <td><?php echo $row["address"]; ?></td>
+                            <td>Address</td>
+                            <td>: <?php echo $row["address"]; ?></td>
                         </tr>
                         <tr>
-                            <td><span class="glyphicon glyphicon-phone"></span></td>
-                            <td><?php echo $row["contact_number"]; ?></td>
+                            <td>Class</td>
+                            <td>: <?php echo $row["grade"]." ".$row["section"]; ?></td>
                         </tr>
                         <tr>
-                            <td><span class="glyphicon glyphicon-phone"></span></td>
-                            <td><?php echo $row["grade"]; ?></td>
+                            <td>Roll .no</td>
+                            <td>: <?php echo $row["roll_number"]; ?></td>
                         </tr>
                         <tr>
-                            <td><span class="glyphicon glyphicon-phone"></span></td>
-                            <td><?php echo $row["section"]; ?></td>
+                            <td>Father</td>
+                            <td>: <?php echo $row["father_name"]; ?></td>
                         </tr>
                         <tr>
-                            <td><span class="glyphicon glyphicon-phone"></span></td>
-                            <td><?php echo $row["roll_number"]; ?></td>
+                            <td>Mother</td>
+                            <td>: <?php echo $row["mother_name"]; ?></td>
                         </tr>
                         <tr>
-                            <td><span class="glyphicon glyphicon">Father</span></td>
-                            <td><?php echo $row["father_name"]; ?></td>
-                        </tr>
-                        <tr>
-                            <td><span class="glyphicon glyphicon-phone">Mother</span></td>
-                            <td><?php echo $row["mother_name"]; ?></td>
+                            <td>Contact</td>
+                            <td>: <?php echo $row["contact_number"]; ?></td>
                         </tr>
                     </table>
                 </div>
@@ -85,8 +81,28 @@
 
         <div class="tab-content">
             <div id="perform" class="c_tab tab-pane fade in active">
-                <h3>Yearly</h3>
-                <p>Some content.</p>
+                <br/><br/>
+                <legend>Exam Marks</legend>
+                <div class="col-lg-3">
+                    <div class="box">
+                        First Term
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="box">
+                        Second Term
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="box">
+                        Third Term
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="box">
+                        First Term
+                    </div>
+                </div>
             </div>
             <div id="Attendance" class="c_tab tab-pane fade">
                 <h3></h3>
