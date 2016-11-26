@@ -533,7 +533,9 @@ class Common{
 
         $created_date = date('Y-m-d');
 
-        $insert_teacher = "insert into teacher(name,address,contact,email,username,degree,experience,start_date,photo,created_date) values('$name','$addres','$contact','$email','$username','$degree','$experience','$join_on','$photo','$created_date')";
+        $password = md5("@".$username."123#");
+
+        $insert_teacher = "insert into teacher(name,address,contact,email,username,password,degree,experience,start_date,photo,created_date) values('$name','$addres','$contact','$email','$username','$password','$degree','$experience','$join_on','$photo','$created_date')";
 
         $result = mysqli_query($connection,$insert_teacher);
 

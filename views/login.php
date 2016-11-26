@@ -97,7 +97,7 @@ if (isset($_POST["login"])){
                 <div class="form-group">
                     <label class="glyphicon glyphicon-user col-md-2 login-glyphicon"></label>
                     <div class="col-md-10">
-                        <input type="email" class="form-control" name="email" required="" placeholder="username"/>
+                        <input type="email" class="form-control" name="email" required="" placeholder="email address"/>
                     </div>
                 </div>
 
