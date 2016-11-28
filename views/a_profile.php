@@ -81,7 +81,6 @@
         <ul class="nav nav-tabs nav-justified">
             <li class="active"><a data-toggle="tab" href="#perform">Performance</a></li>
             <li><a data-toggle="tab" href="#Attendance">Attendance</a></li>
-            <li><a data-toggle="tab" href="#Achievements">Achievements</a></li>
         </ul>
 
         <div class="tab-content">
@@ -110,12 +109,8 @@
                 </div>
             </div>
             <div id="Attendance" class="c_tab tab-pane fade">
-                <h3>Attendance of this month</h3>
-                <div id="piechart"></div>
-            </div>
-            <div id="Achievements" class="c_tab tab-pane fade">
-                <h3>Menu 2</h3>
-                <p>Some content in menu 2.</p>
+<!--                <h3>Attendance of this month</h3>--> <br/><br/>
+                <div id="piechart" style="padding-left: 20%;"></div>
             </div>
         </div>
     </div>
@@ -135,10 +130,10 @@
                 ?>
             ]);
             var options = {
-                title: 'Of this month till date',
-                'width':500,
-                'height':500
-                //is3D:true,
+                title: 'Attendance of this month till date',
+                'width':600,
+                'height':500,
+                is3D:true
 //                pieHole: 0.4
             };
             var chart = new google.visualization.PieChart(document.getElementById('piechart'));

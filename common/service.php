@@ -183,7 +183,7 @@ function getAbsentStudent($connection){
 
 
 function getBirthdayCount($connection){
-    $today = DATE("Y-m-d");
+    $today = DATE("m-d");
     $select = "SELECT COUNT(*) FROM `student` where 'dob' = '$today'";
     $count = $connection->query($select);
     return $count;
@@ -192,7 +192,7 @@ function getBirthdayCount($connection){
 
 
 function getBirthdayStudent($connection){
-    $today = DATE("Y-m-d");
+    $today = DATE("m-d");
     $select = "SELECT * FROM `student` where 'dob' = '$today'";
     $count = $connection->query($select);
     return $count;
