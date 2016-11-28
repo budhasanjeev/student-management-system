@@ -16,15 +16,20 @@
     <script src="../js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../css/style.css"/>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 </head>
 <body>
-<?php include 'layout/header.php'; ?>
+<?php include 'layout/header.php';
+
+?>
 
 <div class="container">
     <?php
     $lid = $_GET['lid'];
     $sid = $_GET['sid'];
     $info = getStudentInfo($sid, $connection);
+    $attendanceStatus = getAttendanceStatus($sid, $connection);
     ?>
 
     <div class="row">
@@ -105,8 +110,8 @@
                 </div>
             </div>
             <div id="Attendance" class="c_tab tab-pane fade">
-                <h3></h3>
-                <p>Some content in menu 1.</p>
+                <h3>Attendance of this month</h3>
+                <div id="piechart"></div>
             </div>
             <div id="Achievements" class="c_tab tab-pane fade">
                 <h3>Menu 2</h3>
@@ -114,5 +119,32 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart()
+        {
+            var data = google.visualization.arrayToDataTable([
+                ['Status', 'Number'],
+                <?php
+                while($row = mysqli_fetch_array($attendanceStatus))
+                {
+                     echo "['".$row["status"]."', ".$row["number"]."],";
+                }
+                ?>
+            ]);
+            var options = {
+                title: 'Of this month till date',
+                'width':500,
+                'height':500
+                //is3D:true,
+//                pieHole: 0.4
+            };
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+        }
+    </script>
+
 </body>
 </html>

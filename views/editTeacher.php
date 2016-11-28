@@ -54,7 +54,17 @@ $class = getClass($connection);
             }
             ?>
         </div>
+        <?php
+        if($_SESSION['role'] == "Admin"){
+            ?>
         <div class="col-md-5" style="background-color: antiquewhite;">
+        <?php
+        }else{
+            ?>
+            <div class="col-md-9" style="background-color: antiquewhite;">
+            <?php
+        }
+        ?>
             <legend>Teaching</legend>
 
             <?php
@@ -78,30 +88,36 @@ $class = getClass($connection);
             </table>
 
         </div>
-        <div class="col-md-4">
-            <legend>Add Class and Subjects</legend>
-            <form action="../controller/addClassSubject.php?id=<?php echo $teacherID; ?>" method="post">
-                <div class="form-group">
-                    <label>Class:</label>
-                    <select class="form-control" name="class" id="classID" onchange="getClassValue();">
-                        <?php
-                        while($r = $class->fetch_assoc()){
-                            ?>
-                            <option value="<?php echo $r['id']; ?>"><?php echo $r['class']; ?></option>
-                        <?php
-                        }
-                        ?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>subject</label>
-                    <select class="form-control" name="subject" id="subjectClass">
+            <?php
+            if($_SESSION['role'] == "Admin") {
+                ?>
+                <div class="col-md-4">
+                    <legend>Add Class and Subjects</legend>
+                    <form action="../controller/addClassSubject.php?id=<?php echo $teacherID; ?>" method="post">
+                        <div class="form-group">
+                            <label>Class:</label>
+                            <select class="form-control" name="class" id="classID" onchange="getClassValue();">
+                                <?php
+                                while ($r = $class->fetch_assoc()) {
+                                    ?>
+                                    <option value="<?php echo $r['id']; ?>"><?php echo $r['class']; ?></option>
+                                <?php
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>subject</label>
+                            <select class="form-control" name="subject" id="subjectClass">
 
-                    </select>
+                            </select>
+                        </div>
+                        <input type="submit" class="btn btn-block btn-primary" value="ADD"/>
+                    </form>
                 </div>
-                <input type="submit" class="btn btn-block btn-primary" value="ADD"/>
-            </form>
-        </div>
+            <?php
+            }
+            ?>
     </div>
 
 <script>

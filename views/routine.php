@@ -57,7 +57,11 @@
     $class_id = $_GET["id"];
     $class = getClassName($class_id, $connection);
     ?>
-        <legend>Routine of Class <?php echo $class; ?><span class="btn btn-success pull-right" data-toggle="modal" data-target="#updateRoutineModal"><i class="glyphicon glyphicon-update"> Update</i></span></legend>
+        <legend>Routine of Class <?php echo $class; ?><?php if($_SESSION['role'] == "Admin"){
+                ?>
+                <span class="btn btn-success pull-right" data-toggle="modal" data-target="#updateRoutineModal"><i class="glyphicon glyphicon-update"> Update</i></span>
+            <?php
+            } ?> </legend>
     <?php
     $objCommon = new Common();
     $routine = $objCommon->getRoutine($class_id);

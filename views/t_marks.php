@@ -32,12 +32,11 @@
         <a href="t_addMarks.php?class=<?php echo $cid; ?>&sub=<?php echo $sid; ?>">
             <div class="col-lg-3">
                 <div class="box" style="padding: 15px;">
-                <table class="table table-responsive table-bordered">
+                <table class="table table-responsive table-bordered" style="text-align: center;">
                     <tr>
                     <td>Class</td>
                     <td>Subject</td>
                     </tr>
-
                 <tr>
                     <td><strong>
                         <?php

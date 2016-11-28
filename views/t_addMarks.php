@@ -26,30 +26,42 @@ $subject_id = $_GET['sub'];
     <form action="../controller/c_addMarks.php" method="post">
         <input type="hidden" name="class_id" value="<?php echo $class_id ?>"/>
         <input type="hidden" name="subject_id" value="<?php echo $subject_id ?>"/>
-        <select class="form-control" name="exam" id="">
-            <option value="first">First Term</option>
-            <option value="second">Second Term</option>
-            <option value="third">Third Term</option>
-            <option value="final">Final Term</option>
-        </select>
-        <br/><br/>
-    <table class="table table-responsive">
-        <thead>
-        <th>Student</th>
-        <th>Marks</th>
-        </thead>
+        <div class="col-md-4">
+            <select class="form-control" name="exam" id="">
+                <option value="first">First Term</option>
+                <option value="second">Second Term</option>
+                <option value="third">Third Term</option>
+                <option value="final">Final Term</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <input type="number" class="form-control" name="fullMarks" placeholder="Full Marks"/>
+        </div>
+        <div class="col-md-4">
+            <input type="number" name="passMarks" class="form-control" placeholder="Pass Marks"/>
+        </div>
+        <div class="col-md-4"></div>
+        <br/><br/> <br/><br/>
+        <div  style="background-color: #f5f5f5; padding: 10px">
+            <table class="table table-responsive">
+                <thead>
+                <th>Student</th>
+                <th>Marks</th>
+                </thead>
 
-    <?php
-    $students = getClassStudents(getClassName($class_id, $connection), $connection);
-    while($row = $students->fetch_assoc()){
-        ?>
-<tr>
-    <td><?php echo $row['first_name']." ".$row['last_name']; ?></td>
-    <td><input class="form-control" type="number" name="<?php echo $row['id']; ?>"/></td>
-</tr>
-    <?php
-    }
-    ?>    </table>
+                <?php
+                $students = getClassStudents(getClassName($class_id, $connection), $connection);
+                while($row = $students->fetch_assoc()){
+                    ?>
+                    <tr>
+                        <td><?php echo $row['first_name']." ".$row['last_name']; ?></td>
+                        <td><input class="form-control" type="number" name="<?php echo $row['id']; ?>"/></td>
+                    </tr>
+                <?php
+                }
+                ?>    </table>
+        </div>
+
     <input type="submit" value="ADD" class="btn btn-primary btn-block"/>
     </form>
 </div>

@@ -199,3 +199,14 @@ function getBirthdayStudent($connection){
 }
 
 
+function getAttendanceStatus($sid, $connection){
+    $month = date("F");
+    $year = date("o");
+    $day = date("j");
+
+    $select = "SELECT status, count(*) as number FROM `attendance` WHERE `student_id` = $sid && `year` = '$year' && `month` = '$month' GROUP BY status  ";
+    $count = $connection->query($select);
+    return $count;
+}
+
+

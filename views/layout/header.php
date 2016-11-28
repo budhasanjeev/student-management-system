@@ -404,7 +404,7 @@ include "../common/Common.php";
                 }
 
             if($_SESSION['role'] == 'teacher'){
-                echo '<li><a href="t_marks.php">Marks</a></li>';
+                echo '<li><a href="t_marks.php">Insert Marks</a></li>';
             }
             ?>
 
