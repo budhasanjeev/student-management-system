@@ -110,7 +110,7 @@
             </div>
             <div id="Attendance" class="c_tab tab-pane fade">
 <!--                <h3>Attendance of this month</h3>--> <br/><br/>
-                <div id="piechart" style="padding-left: 20%;"></div>
+                <div id="piechart" style="padding-left: 20%; boarder"></div>
             </div>
         </div>
     </div>
@@ -133,6 +133,7 @@
                 title: 'Attendance of this month till date',
                 'width':600,
                 'height':500,
+                'border':1,
                 is3D:true
 //                pieHole: 0.4
             };

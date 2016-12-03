@@ -67,6 +67,7 @@ function getAttendance($student_id, $day, $month, $year, $connection){
         <form action="../controller/attendanceController.php?id=<?php echo $class_id; ?>" method="post">
         <table class="table table table-responsive table-bordered table-striped table-fixed">
             <thead>
+                <th>Roll no.</th>
                 <th></th>
                 <th><?php echo date("j"); ?></th>
                 <?php
@@ -91,6 +92,8 @@ function getAttendance($student_id, $day, $month, $year, $connection){
             while($row = $classStudent->fetch_assoc()){
                 ?>
                 <tr>
+                    <td><?php
+                        echo $row["roll_number"]; ?></td>
                     <th>
                         <?php
                         echo $row["first_name"]." ".$row["last_name"]; ?></th>
