@@ -25,9 +25,9 @@ $class_id = $_GET["id"];
 $month = date("F");
 $year = date("o");
 
-function getClassAttendance($class_id, $month, $year, $connection){
+function getAttendanceDay($class_id, $month, $year, $connection){
 
-    $select = "select * from attendance where class_id = '$class_id' && month = '$month' && year = '$year'";
+    $select = "select DISTINCT day from attendance where class_id = '$class_id' && month = '$month' && year = '$year'";
     $attendance = $connection->query($select);
     return $attendance;
 
@@ -36,7 +36,7 @@ function getClassAttendance($class_id, $month, $year, $connection){
 
 function getAttendance($student_id, $day, $month, $year, $connection){
     $select = "select status from attendance where `student_id` = '$student_id' && `day` = '$day' && MONTH = '$month' && YEAR = '$year'";
-    echo $select."</br>";
+//    echo $select."</br>";
     $attendance = $connection->query($select);
     while($row = $attendance->fetch_assoc()){
         $a = $row["status"];
@@ -70,15 +70,15 @@ function getAttendance($student_id, $day, $month, $year, $connection){
                 <th></th>
                 <th><?php echo date("j"); ?></th>
                 <?php
-                $day = getClassAttendance($class_id, $month, $year, $connection);
+                $day = getAttendanceDay($class_id, $month, $year, $connection);
                 $day_array = array();
                 $i = 0;
                 while($row = $day->fetch_assoc()){
                     $day_array[$i] = $row["day"];
                     $i++;
                 }
-                echo count($day_array);
-                for($i=0; $i < count($day_array); $i++) {
+//                echo count($day_array);
+                for($i=count($day_array)-1; $i >= 0; $i--) {
                     ?>
                     <th><?php echo $day_array[$i]; ?></th>
                 <?php
@@ -88,7 +88,6 @@ function getAttendance($student_id, $day, $month, $year, $connection){
             <tbody style="background-color: blanchedalmond;">
             <?php
             $classStudent = getClassStudents(getClassName($class_id, $connection), $connection);
-            $i = 0;
             while($row = $classStudent->fetch_assoc()){
                 ?>
                 <tr>
@@ -103,8 +102,8 @@ function getAttendance($student_id, $day, $month, $year, $connection){
                         </select>
                     </td>
                     <?php
-                    foreach ($day_array as &$att_day) {
-                        $attendance = getAttendance($row["id"], $att_day, $month, $year, $connection);
+                    for($i = count($day_array)-1; $i >= 0; $i--) {
+                        $attendance = getAttendance($row["id"], $day_array[$i], $month, $year, $connection);
                         ?>
                         <td><?php echo $attendance; ?></td>
                     <?php

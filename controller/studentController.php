@@ -7,6 +7,7 @@
  */
 session_start();
 include '../common/Common.php';
+include '../common/service.php';
 
 $objCommon = new Common();
 

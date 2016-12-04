@@ -35,4 +35,4 @@ for($i = 0; $i < count($student_array); $i++){
     addAttendance($return_class, $student_array[$i], $month, $day, $year, $status, $connection);
 }
 
-//header("Location: ../views/teacher.php?id=$return_class");
+header("Location: ../views/teacher.php?id=$return_class");
