@@ -26,16 +26,21 @@
 
 <div class="container">
     <?php
-    $lid = $_GET['lid'];
+
     $sid = $_GET['sid'];
     $info = getStudentInfo($sid, $connection);
     $attendanceStatus = getAttendanceStatus($sid, $connection);
+
+
+    if($_SESSION['role'] != "Parents"){
+        $lid = $_GET['lid'];
+        ?>
+        <div class="row">
+            <legend><a href="t_marks.php">Class</a>/<a href="a_student.php?id=<?php echo $lid; ?>">students</a>/profile</legend>
+        </div>
+    <?php
+    }
     ?>
-
-    <div class="row">
-        <legend><a href="t_marks.php">Class</a>/<a href="a_student.php?id=<?php echo $lid; ?>">students</a>/profile</legend>
-    </div>
-
         <div class="col-lg-3">
             <?php
             while($row = $info->fetch_assoc()) {

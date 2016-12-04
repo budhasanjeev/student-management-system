@@ -13,7 +13,6 @@ session_start();
 
 if (isset($_POST["login"])){
 
-    echo "Login";
     $email = $_POST['email'];
     $password = $_POST['password'];
     $stored_password = "null";
@@ -54,8 +53,8 @@ if (isset($_POST["login"])){
         else if($role == "Parents"){
             $_SESSION['email'] = $email;
             $_SESSION['role'] = $role;
-            echo "parents";
-            header("Location: admin.php");
+            $_SESSION['user_id'] = $user_id;
+            header("Location: ../controller/c_checkChildren.php");
         }
         else if($role == "teacher") {
             $_SESSION['email'] = $email;
@@ -65,7 +64,7 @@ if (isset($_POST["login"])){
 
         }
     }else{
-        echo "user not found";
+        echo "<h5 style='text-align: center; background-color: red; color: #ffffff;'>user not found</h5>";
     }
 }
 

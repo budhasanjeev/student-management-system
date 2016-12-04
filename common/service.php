@@ -76,7 +76,7 @@ function getStudentName($sid, $connection){
     $select = "select * from student where id = '$sid'";
     $name = $connection->query($select);
     while($row = $name->fetch_assoc()){
-        $n = $row["name"];
+        $n = $row["first_name"];
         return $n;
     }
 }
@@ -207,6 +207,12 @@ function getAttendanceStatus($sid, $connection){
     $select = "SELECT status, count(*) as number FROM `attendance` WHERE `student_id` = $sid && `year` = '$year' && `month` = '$month' GROUP BY status  ";
     $count = $connection->query($select);
     return $count;
+}
+
+function getParentsInfo($pid, $connection){
+    $select = "select * from user where id = '$pid'";
+    $parents = $connection->query($select);
+    return $parents;
 }
 
 
