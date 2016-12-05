@@ -20,9 +20,9 @@ while($row = mysqli_fetch_assoc($parentsInfo)){
     $number_child = sizeof($student_ids);
 }
 
-echo $number_child;
 
 if($number_child == 1){
+    $_SESSION['sid'] = $student_ids[0];
     header("Location: ../views/a_profile.php?sid=$student_ids[0]");
 }else{
     header("Location: ../views/p_MLanding.php");

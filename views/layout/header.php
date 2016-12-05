@@ -301,9 +301,9 @@ include "../common/Common.php";
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
             <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+            <span style="background-color: #ffffff;" class="icon-bar"></span>
+            <span style="background-color: #ffffff;" class="icon-bar"></span>
+            <span style="background-color: #ffffff;" class="icon-bar"></span>
         </button>
         <a class="navbar-brand" style="font-family: 'Kaushan Script', cursive;" <?php if($_SESSION['role'] == 'Admin'){ ?> href="admin.php" <?php } ?><?php if($_SESSION['role'] == 'Teacher'){ ?> href="teacher.php" <?php } ?>>SMS</a>
     </div>
@@ -319,7 +319,15 @@ include "../common/Common.php";
             }
             ?>
 
-            <li><a href="a_class.php">Students</a></li>
+            <?php
+            if($_SESSION['role'] != 'Parents'){
+                ?>
+                <li><a href="a_class.php">Students</a></li>
+            <?php
+            }
+            ?>
+
+
             <li><a href="a_teacher.php">Teachers</a></li>
             <li><a href="a_subject.php">Subjects</a></li>
             <li>
@@ -338,8 +346,10 @@ include "../common/Common.php";
                 </ul>
             </li>
             <?php
-                if($_SESSION['role'] == 'Admin'){
+                if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'Parents') {
                     echo '<li><a href="a_fee.php">Fee</a></li>';
+                }
+            if($_SESSION['role'] == 'Admin'){
                     echo '<li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Add New<b class="caret"></b></a>
 
@@ -405,6 +415,39 @@ include "../common/Common.php";
 
             if($_SESSION['role'] == 'teacher'){
                 echo '<li><a href="t_marks.php">Insert Marks</a></li>';
+            }
+
+            if(isset($_SESSION['multiChild'])){
+                $pid = $_SESSION['user_id'];
+                $parentsInfo = getParentsInfo($pid, $connection);
+                while($row = mysqli_fetch_assoc($parentsInfo)) {
+                    $student_id = $row["student_id"];
+                    $student_ids = explode(",",$student_id);
+                    $number_child = sizeof($student_ids);
+                }
+                ?>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Select Child<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <?php
+                        for($i = 0; $i < $number_child; $i++){
+                            ?>
+                            <li>
+                                <a href="a_profile.php?sid=<?php echo $student_ids[$i]; ?>"><?php echo getStudentName($student_ids[$i], $connection); ?></a>
+                            </li>
+                        <?php
+                        }
+                        ?>
+                    </ul>
+                </li>
+
+            <?php
+            }
+
+            if(isset($_SESSION['sid'])){
+                ?>
+                <li><a href="a_profile.php?sid=<?php echo $_SESSION['sid']; ?>">Profile</a></li>
+            <?php
             }
             ?>
 

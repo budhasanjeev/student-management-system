@@ -25,12 +25,15 @@
         $student_id = $row["student_id"];
         $student_ids = explode(",",$student_id);
         $number_child = sizeof($student_ids);
+        if($number_child>1){
+            $_SESSION['multiChild'] = 1;
+        }
     }
 
     for($i = 0; $i < $number_child; $i++){
         $sid = $student_ids[$i];
         ?>
-        <a href="a_profile.php?sid=<?php echo $sid; ?>">
+        <a href="a_profile.php?sid=<?php echo $sid;?>">
             <div class="col-md-3">
                 <div class="box">
                     <?php
