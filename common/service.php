@@ -199,6 +199,23 @@ function getBirthdayStudent($connection){
 }
 
 
+function getTodayAppointCount($connection){
+    $today = DATE("Y-m-d");
+    $select = "SELECT COUNT(*) FROM `appointment` where `purposed_date` = '$today'";
+    $count = $connection->query($select);
+    return $count;
+}
+
+
+
+function getTodayAppoint($connection){
+    $today = DATE("Y-m-d");
+    $select = "SELECT * FROM `appointment` where `purposed_date` = '$today'";
+    $count = $connection->query($select);
+    return $count;
+}
+
+
 function getAttendanceStatus($sid, $connection){
     $month = date("F");
     $year = date("o");
@@ -215,4 +232,16 @@ function getParentsInfo($pid, $connection){
     return $parents;
 }
 
+function getStudentAttendance($student_id, $connection){
+    $month = date("F");
+    $year = date("o");
+    $select = "select * from attendance where `student_id` = '$student_id' && MONTH = '$month' && YEAR = '$year'";
+    $attendance = $connection->query($select);
+    return $attendance;
+}
 
+
+function makeAppointment($agenda, $date, $time, $parentsID, $connection){
+    $insert = "INSERT INTO `appointment`(`purpose`, `purposed_date`, `prefered_time`, `parent_id`) VALUES ('$agenda','$date','$time','$parentsID')";
+    $connection->query($insert);
+}

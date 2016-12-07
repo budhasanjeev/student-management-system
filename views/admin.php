@@ -18,10 +18,11 @@
     <link rel="stylesheet" href="../css/style.css"/>
 </head>
 <body>
-<?php include 'layout/header.php'; ?>
+<?php include 'layout/header.php';
+?>
 
 <div class="container" style="padding: 10px;">
-    <div class="col-lg-3">
+    <div class="col-lg-4">
         <div class="info-box" style="background-color: #a07789">
             <div class="col-md-4" style="font-size: 50px;"><span class="glyphicon glyphicon-user"></span></div>
             <div class="col-md-8">
@@ -32,12 +33,13 @@
                     while($row = $total->fetch_assoc()){
                         echo $row['COUNT(*)'];
                     }
-                    ?></div>
+                    ?>
+                </div>
             </div>
         </div>
     </div>
 
-    <a href="absent.php"><div class="col-lg-3">
+    <a href="absent.php"><div class="col-lg-4">
         <div class="info-box" style="background-color: #533443">
             <div class="col-md-4" style="font-size: 50px;"><span class="glyphicon glyphicon-user"></span></div>
             <div class="col-md-8">
@@ -61,22 +63,23 @@
         </div>
     </div></a>
 
-    <div class="col-lg-3">
-        <div class="info-box" style="background-color: #aba992">
+
+    <a href="a_appoints.php"><div class="col-lg-4">
+        <div class="info-box" style="background-color: #47666b">
             <div class="col-md-4" style="font-size: 50px;"><span class="glyphicon glyphicon-user"></span></div>
             <div class="col-md-8">
                 <div class="row" style="font-size: 20px;">
-                    Birthday today
+                    Appoints today
                 </div>
                 <div class="row" style="font-size: 18px;">
-                    <?php $total = getBirthdayCount($connection);
+                    <?php $total = getTodayAppointCount($connection);
                     while($row = $total->fetch_assoc()){
                         $count = $row['COUNT(*)'];
                         if($count != 0){
-                            echo "<a href='birthday.php'>".$count."</a>";
+                            echo $count;
                         }else{
                             ?>
-                            <span style="color: red">No Birthday</span>
+                            <span style="color: red">No Appointments Today</span>
                         <?php
                         }
                     }
@@ -84,19 +87,7 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="col-lg-3">
-        <div class="info-box" style="background-color: #47666b">
-            <div class="col-md-4" style="font-size: 50px;"><span class="glyphicon glyphicon-user"></span></div>
-            <div class="col-md-8">
-                <div class="row" style="font-size: 20px;">
-                    Appoints today
-                </div>
-                <div class="row" style="font-size: 18px;">14</div>
-            </div>
-        </div>
-    </div>
+    </div></a>
 
     <div class="row" style="padding: 20px; margin-top: 120px;">
         <img src="../img/ohiocharters1.png" width="100%" height="500px" alt=""/>

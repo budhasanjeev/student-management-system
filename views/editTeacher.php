@@ -29,10 +29,10 @@ $class = getClass($connection);
             <?php
             while($row = $teacher->fetch_assoc()){
                 ?>
-                <h4>Joined: <?php echo $row['start_date']; ?></h4>
-                <img class="img-circle" width="100%" height="250px" src="../img/<?php echo $row["photo"] ?>">
+                <img width="100%" height="250px" src="../img/<?php echo $row["photo"] ?>">
             <h1><?php echo $row['name']; ?></h1>
-                <table>
+                <h4>Joined: <?php echo $row['start_date']; ?></h4>
+                <table class="table table-responsive">
                     <tr>
                         <td>Experience:</td>
                         <td><?php echo $row['experience']; ?></td>
@@ -46,8 +46,7 @@ $class = getClass($connection);
                         <td><?php echo $row['contact']; ?></td>
                     </tr>
                     <tr>
-                        <td>Email:</td>
-                        <td><?php echo $row['email']; ?></td>
+                        <td colspan="2"><?php echo $row['email']; ?></td>
                     </tr>
                 </table>
             <?php

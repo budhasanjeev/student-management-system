@@ -171,6 +171,47 @@ include "../common/Common.php";
     </div>
 </div>
 
+
+<!--appointment Modal -->
+<div id="appointmentModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Make Appointment</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form" action="../controller/c_appointment.php" method="post">
+                    <div class="form-group">
+                        <label for="class">Agenda: </label>
+                        <input class="form-control" type="text" name="agenda" required=""/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="class">Time: </label>
+                        <input class="form-control" type="time" name="time" required=""/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="class">Appointment Date: </label>
+                        <input class="form-control" type="date" name="date" required=""/>
+                    </div>
+                    <div style="text-align: right">
+                        <button type="submit" class="btn btn-success">Send</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
 <!--Subject Modal -->
 <div id="subjectModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -441,15 +482,25 @@ include "../common/Common.php";
                     </ul>
                 </li>
 
+<!--                <li><a href="studentAttendance.php?id=--><?php //echo $student_ids[$i]; ?><!--">Attendance</a></li>-->
+
             <?php
             }
 
             if(isset($_SESSION['sid'])){
                 ?>
                 <li><a href="a_profile.php?sid=<?php echo $_SESSION['sid']; ?>">Profile</a></li>
+                <li><a href="studentAttendance.php?id=<?php echo $_SESSION['sid']; ?>">Attendance</a></li>
             <?php
             }
+
+            if($_SESSION['role'] == 'Parents'){
+                echo '<li><a href="#" data-toggle="modal" data-target="#appointmentModal">Make Appointment</a></li>';
+            }
+
             ?>
+
+
 
         </ul>
         <div class="col-sm-3 col-md-3">

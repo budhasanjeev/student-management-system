@@ -43,6 +43,7 @@ function getAttendance($student_id, $day, $month, $year, $connection){
         return $a;
     }
 }
+
 ?>
 
 
@@ -93,10 +94,12 @@ function getAttendance($student_id, $day, $month, $year, $connection){
                 ?>
                 <tr>
                     <td><?php
+                        $studentID =  $row['id'];
                         echo $row["roll_number"]; ?></td>
                     <th>
+                        <a href="studentAttendance.php?id=<?php echo $studentID; ?>">
                         <?php
-                        echo $row["first_name"]." ".$row["last_name"]; ?></th>
+                        echo $row["first_name"]." ".$row["last_name"]; ?></th></a>
                     <td>
                         <select name="<?php echo $row["id"]; ?>">
                             <option value="present">Present</option>
@@ -106,7 +109,7 @@ function getAttendance($student_id, $day, $month, $year, $connection){
                     </td>
                     <?php
                     for($i = count($day_array)-1; $i >= 0; $i--) {
-                        $attendance = getAttendance($row["id"], $day_array[$i], $month, $year, $connection);
+                        $attendance = getAttendance($studentID, $day_array[$i], $month, $year, $connection);
                         ?>
                         <td><?php echo $attendance; ?></td>
                     <?php
