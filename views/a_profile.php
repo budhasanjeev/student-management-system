@@ -45,10 +45,11 @@
             <?php
             while($row = $info->fetch_assoc()) {
                 ?>
-                <h2><?php echo $row["first_name"]." ".$row["last_name"]; ?></h2>
+
                 <div class="row" style="text-align: center;">
                     <img width="100%" height="200px" src="../img/<?php echo $row["photo"] ?>">
                 </div>
+                <h2><?php echo $row["first_name"]." ".$row["last_name"]; ?></h2>
                 <div class="row">
                     <table class="table table-striped table-responsive">
                         <tr>

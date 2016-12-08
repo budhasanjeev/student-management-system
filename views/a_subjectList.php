@@ -30,10 +30,17 @@ $subject =  getClassSubject($classID, $connection);
             </thead>
             <?php
             while($row = $subject->fetch_assoc()){
+                $id = $row['id'];
                 ?>
                 <tr>
                     <td><?php echo $row["subject_name"]; ?></td>
-                    <td><?php echo getSubjectTeacher($row['id'], $connection); ?></td>
+                    <td><?php
+                        if(getSubjectTeacher($id, $connection) != null){
+                            echo getSubjectTeacher($id, $connection);
+                        }else{
+                            echo 'Not Assigned';
+                        }
+                        ?></td>
                 </tr>
             <?php
             }

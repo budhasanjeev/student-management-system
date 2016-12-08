@@ -141,14 +141,14 @@ function getSubjectName($sid, $connection){
 
 
 function getSubjectTeacher($subjectID, $connection){
-    $select = "SELECT * FROM `teacher_subject` WHERE `id` = '$subjectID'";
-    $teacherid = $connection->query($select);
-    while($row = $teacherid->fetch_assoc()){
-        $n = getTeacherInfo($row["teacher_id"], $connection);
-        while($r = $n->fetch_assoc()){
-            return $r['name'];
-        }
-    }
+        $select = "SELECT * FROM `teacher_subject` WHERE `subject_id` = '$subjectID'";
+    $teacher_id = $connection->query($select);
+    $row = $teacher_id->fetch_assoc();
+    $t_id = $row['teacher_id'];
+    $n = getTeacherInfo($t_id, $connection);
+    $r = $n->fetch_assoc();
+    return $r['name'];
+
 }
 
 function getTotalStudent($connection){

@@ -32,7 +32,6 @@ include "../common/Common.php";
     <link rel="stylesheet" href="../css/style.css"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Ultra" rel="stylesheet">
-    <link rel="stylesheet" href="../css/easydropdown.css"/>
 
 </head>
 <body>
@@ -503,18 +502,18 @@ include "../common/Common.php";
 
 
         </ul>
-        <div class="col-sm-3 col-md-3">
-            <form class="navbar-form" role="search">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="q">
-
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
+<!--        <div class="col-sm-3 col-md-3">-->
+<!--            <form class="navbar-form" role="search">-->
+<!--                <div class="input-group">-->
+<!--                    <input type="text" class="form-control" placeholder="Search" name="q">-->
+<!---->
+<!--                    <div class="input-group-btn">-->
+<!--                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i>-->
+<!--                        </button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">H! User<b class="caret"></b></a>
