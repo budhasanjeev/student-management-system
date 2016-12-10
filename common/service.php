@@ -245,3 +245,16 @@ function makeAppointment($agenda, $date, $time, $parentsID, $connection){
     $insert = "INSERT INTO `appointment`(`purpose`, `purposed_date`, `prefered_time`, `parent_id`) VALUES ('$agenda','$date','$time','$parentsID')";
     $connection->query($insert);
 }
+
+function getExam($connection){
+    $select = "SELECT DISTINCT `exam` FROM marks";
+    $result = $connection->query($select);
+    return $result;
+}
+
+function getExamMarks($exam, $sid, $connection){
+    $select = "SELECT * FROM `marks` WHERE `exam` = '$exam' && `student_id` = $sid";
+//    echo $select;
+    $result = $connection->query($select);
+    return $result;
+}

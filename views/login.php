@@ -40,6 +40,10 @@ if (isset($_POST["login"])){
         $teacher_id = $row['id'];
     }
 
+    echo $stored_password."</br>";
+    echo md5($password)."</br>";
+
+
     if(md5($password) == $stored_password){
 
         if($role == "Admin"){
@@ -48,7 +52,6 @@ if (isset($_POST["login"])){
             $_SESSION['role'] = $role;
             $_SESSION['user_id'] = $user_id;
             header("Location: admin.php");
-
         }
         else if($role == "Parents"){
             $_SESSION['email'] = $email;
@@ -60,7 +63,7 @@ if (isset($_POST["login"])){
             $_SESSION['email'] = $email;
             $_SESSION['role'] = $role;
             $_SESSION['teacher_id'] = $teacher_id;
-            header("Location: teacher.php?id=1");
+            header("Location: teacher.php?id=4");
 
         }
     }else{

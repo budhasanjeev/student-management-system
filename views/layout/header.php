@@ -387,7 +387,23 @@ include "../common/Common.php";
             </li>
             <?php
                 if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'Parents') {
-                    echo '<li><a href="a_fee.php">Fee</a></li>';
+                    ?>
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Fee<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <?php
+                            $class = getClass($connection);
+                            while($row = mysqli_fetch_assoc($class)) {
+                                ?>
+                                <li>
+                                    <a href="fee.php?id=<?php echo $row["id"]; ?>">Class <?php echo $row["class"]; ?></a>
+                                </li>
+                            <?php
+                            }
+                            ?>
+                        </ul>
+                    </li>
+                    <?php
                 }
             if($_SESSION['role'] == 'Admin'){
                     echo '<li class="dropdown">

@@ -93,26 +93,22 @@
             <div id="perform" class="c_tab tab-pane fade in active">
                 <br/><br/>
                 <legend>Exam Marks</legend>
-                <div class="col-lg-3">
-                    <div class="box">
-                        First Term
+                <?php
+                $class = getExam($connection);
+                while($row = $class->fetch_assoc()){
+                ?>
+                    <form action="markSheet.php" method="post" id="marks">
+                        <input type="hidden" name="exam" value="<?php echo $row['exam']; ?>"/>
+                        <input type="hidden" name="sid" value="<?php echo $sid; ?>"/>
+                    <div class="col-lg-3" onclick="submitForm('#marks')">
+                        <div class="box"  style="height: 150px;">
+                            <?php echo $row['exam']; ?>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="box">
-                        Second Term
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="box">
-                        Third Term
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="box">
-                        First Term
-                    </div>
-                </div>
+                    </form>
+                <?php
+                }
+                ?>
             </div>
             <div id="Attendance" class="c_tab tab-pane fade">
 <!--                <h3>Attendance of this month</h3>--> <br/><br/>
@@ -146,6 +142,11 @@
             var chart = new google.visualization.PieChart(document.getElementById('piechart'));
             chart.draw(data, options);
         }
+
+        function submitForm(id){
+            $(id).submit();
+        }
+
     </script>
 
 </body>

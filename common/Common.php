@@ -417,7 +417,7 @@ class Common{
         $res="SELECT *FROM fee WHERE class_id='$id'";
 
         $result= mysqli_query($connection,$res);
-        // $data= array();
+        $data="";
 
         while($row = mysqli_fetch_assoc($result))
         {
