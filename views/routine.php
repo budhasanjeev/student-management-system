@@ -66,8 +66,8 @@
     $objCommon = new Common();
     $routine = $objCommon->getRoutine($class_id);
     ?>
+    <embed src="../img/<?php echo $routine['file'] ?>" style="width:1000px !important; height: 600px"></embed>
 
-<img src="../img/<?php echo $routine['file'] ?>"style="width:inherit">
 
 
 </div>
