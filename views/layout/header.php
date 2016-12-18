@@ -458,7 +458,7 @@ include "../common/Common.php";
                         </div>
                     </a>
 
-                    <a href="a_fee.php">
+                    <a href="#">
                         <div class="col-md-6" style="padding: 5px;">
                             <div class="dropdown-div" style="background-color: #a07789;">
                                 <a href=""  data-toggle="modal" data-target="#feeModal"><div>Fee</div></a>
@@ -539,7 +539,7 @@ include "../common/Common.php";
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">H! User<b class="caret"></b></a>
 
                 <ul class="dropdown-menu ">
-                    <li><a href="">Change Password</a></li>
+                    <li><a href="../views/changePassword.php">Change Password</a></li>
                     <li><a href="logout.php">Logout</a></li>
                 </ul>
             </li>

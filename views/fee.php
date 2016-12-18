@@ -63,9 +63,11 @@ session_start();
     <?php
     $objCommon = new Common();
     $fee = $objCommon->getFee($class_id);
+//    print_r("asdf");
+//    print_r($fee);
 
     ?>
-    <img src="../img/<?php echo $fee ?>" style="width:inherit">
+    <embed src="../img/<?php echo $fee ?>" style="width:1000px !important; height: 600px"></embed>
 
 </div>
 
