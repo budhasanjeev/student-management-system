@@ -40,14 +40,10 @@ if (isset($_POST["login"])){
         $teacher_id = $row['id'];
     }
 
-    echo $stored_password."</br>";
-    echo md5($password)."</br>";
-
-
     if(md5($password) == $stored_password){
 
-        if($role == "Admin"){
-            echo "Admin";
+        if($role == "Admin" || $role == "sAdmin"){
+            echo "admin";
             $_SESSION['email'] = $email;
             $_SESSION['role'] = $role;
             $_SESSION['user_id'] = $user_id;
@@ -59,11 +55,18 @@ if (isset($_POST["login"])){
             $_SESSION['user_id'] = $user_id;
             header("Location: ../controller/c_checkChildren.php");
         }
+        else if($role == "Receptionist"){
+            $_SESSION['email'] = $email;
+            $_SESSION['role'] = $role;
+            $_SESSION['user_id'] = $user_id;
+            header("Location: teacher.php");
+        }
         else if($role == "teacher") {
             $_SESSION['email'] = $email;
             $_SESSION['role'] = $role;
             $_SESSION['teacher_id'] = $teacher_id;
-            header("Location: teacher.php?id=4");
+            echo $_SESSION['role'];
+            header("Location: a_class.php");
 
         }
     }else{

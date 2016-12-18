@@ -5,6 +5,8 @@
  * Date: 9/4/2016
  * Time: 2:03 PM
  */
+session_start();
+if($_SESSION['role'] == "Admin" || $_SESSION['role'] == "sAdmin"){
 
 ?>
 
@@ -18,8 +20,7 @@
     <link rel="stylesheet" href="../css/style.css"/>
 </head>
 <body>
-<?php include 'layout/header.php';
-?>
+<?php include 'layout/header.php'; ?>
 
 <div class="container" style="padding: 10px;">
     <div class="col-lg-4">
@@ -93,6 +94,13 @@
         <img src="../img/ohiocharters1.png" width="100%" height="500px" alt=""/>
     </div>
 </div>
+
+    <?php
+    }else{
+        echo "asdf";
+        header("Location: login.php");
+    }
+?>
 
 </body>
 </html>

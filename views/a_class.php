@@ -5,7 +5,7 @@
  * Date: 9/18/2016
  * Time: 1:32 PM
  */
-
+session_start();
 ?>
 
 
@@ -20,8 +20,6 @@
 </head>
 <body>
 <?php include 'layout/header.php'; ?>
-
-
 
 <div class="container">
     <div class="row">

@@ -2,9 +2,10 @@
 /**
  * Created by PhpStorm.
  * User: Pratik
- * Date: 9/18/2016
- * Time: 1:39 PM
+ * Date: 12/7/2016
+ * Time: 9:31 PM
  */
+session_start();
 ?>
 
 

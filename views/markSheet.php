@@ -5,6 +5,7 @@
  * Date: 12/10/2016
  * Time: 1:23 PM
  */
+session_start();
 
 $exam = $_POST['exam'];
 $sid = $_POST['sid'];
@@ -31,12 +32,12 @@ $student = $studentInfo->fetch_assoc();
 <div class="container">
     <table class="table table-bordered">
         <thead>
-        <th>Name</th>
-        <th style="border-left: 0px;"><?php echo ": ".$student['first_name']." ".$student['last_name'] ?></th>
-        <th>Class</th>
-        <th style="border-left: 0px;"><?php echo ": ".ucfirst($student['grade'])." ".$student['section'] ?></th>
-        <th>Roll</th>
-        <th style="border-left: 0px;"><?php echo ": ".$student['roll_number'] ?></th>
+        <th style="border-right-color: white;">Name</th>
+        <th><?php echo ": ".$student['first_name']." ".$student['last_name'] ?></th>
+        <th style="border-right-color: white;">Class</th>
+        <th><?php echo ": ".ucfirst($student['grade'])." ".$student['section'] ?></th>
+        <th style="border-right-color: white;">Roll</th>
+        <th><?php echo ": ".$student['roll_number'] ?></th>
         </thead>
         <thead>
         <th colspan="6" style="text-align: center;">

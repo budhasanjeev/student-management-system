@@ -6,6 +6,8 @@
  * Time: 6:38 PM
  */
 //include '../common/Common.php'
+session_start();
+
 
 ?>
 

@@ -3,11 +3,12 @@
  * Created by PhpStorm.
  * User: Pratik
  * Date: 9/18/2016
- * Time: 11:05 AM
+ * Time: 1:32 PM
  */
 session_start();
-
 ?>
+
+
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -19,16 +20,29 @@ session_start();
 </head>
 <body>
 <?php include 'layout/header.php'; ?>
+
 <div class="container">
+    <div class="row">
+        <legend>Class</legend>
+    </div>
+
     <?php
-    $pid = $_SESSION['user_id'];
-    $parentsInfo = getParentsInfo($pid, $connection);
-    while($row = mysqli_fetch_assoc($parentsInfo)){
-        $student_id = $row["student_id"];
-        $student_ids = explode(",",$student_id);
-        $number_child = sizeof($student_ids);
+    $class = getClass($connection);
+
+    while($row = $class->fetch_assoc()){
+        ?>
+
+        <a href="classPerform.php?id=<?php echo $row["id"]; ?>">
+            <div class="col-lg-3">
+                <div class="box">
+                    <?php echo $row["class"]; ?>
+                </div>
+            </div>
+        </a>
+
+    <?php
     }
     ?>
- </div>
+</div>
 </body>
 </html>

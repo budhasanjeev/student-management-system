@@ -2,14 +2,14 @@
 /**
  * Created by PhpStorm.
  * User: Pratik
- * Date: 11/20/2016
- * Time: 8:53 PM
+ * Date: 12/7/2016
+ * Time: 9:31 PM
  */
-
+session_start();
 ?>
 
 
-    <!DOCTYPE html>
+<!DOCTYPE html>
     <html>
     <head lang="en">
         <meta charset="UTF-8">

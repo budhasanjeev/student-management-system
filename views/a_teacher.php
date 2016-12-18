@@ -5,7 +5,7 @@
  * Date: 10/20/2016
  * Time: 7:55 PM
  */
-
+session_start();
 include '../config/databaseConnection.php';
 ?>
 <!DOCTYPE html>

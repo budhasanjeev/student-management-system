@@ -5,6 +5,7 @@
  * Date: 12/7/2016
  * Time: 8:05 PM
  */
+session_start();
 
 
 $sid = $_GET['id'];

@@ -6,6 +6,8 @@
  * Time: 7:55 PM
  */
 //include '../config/databaseConnection.php';
+
+session_start();
 ?>
     <!DOCTYPE html>
     <html>

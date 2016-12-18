@@ -258,3 +258,7 @@ function getExamMarks($exam, $sid, $connection){
     $result = $connection->query($select);
     return $result;
 }
+
+function getClassPerformance($id, $connection){
+    $select = "SELECT * FROM `marks` WHERE `exam` = '$exam' && `student_id` = $sid";
+}

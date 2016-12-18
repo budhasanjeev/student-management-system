@@ -5,6 +5,8 @@
  * Date: 9/13/2016
  * Time: 3:52 PM
  */
+
+session_start();
 include '../config/databaseConnection.php';
 ?>
 
@@ -27,7 +29,7 @@ include '../config/databaseConnection.php';
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title" style="text-align: center;">Modal Header</h4>
+                <h4 class="modal-title" style="text-align: center;"></h4>
             </div>
             <div class="modal-body">
                 <form id="user-form" action="" method="post" enctype="multipart/form-data" class="form form-horizontal">
@@ -59,8 +61,15 @@ include '../config/databaseConnection.php';
                         <label class="col-md-4">Role</label>
                         <div class="col-lg-8">
                             <select class="form-control" name="role" id="role" onchange="checkRole();">
-                                <option value="Admin">Admin</option>
+                                <?php
+                                if($_SESSION['role'] == "sAdmin"){
+                                    ?>
+                                    <option value="Admin">Admin</option>
+                                <?php
+                                }
+                                ?>
                                 <option value="Parents">Parents</option>
+                                <option value="Receptionist">Receptionist</option>
                             </select>
                         </div>
                     </div>
@@ -153,6 +162,7 @@ include '../config/databaseConnection.php';
                 <th>Name</th>
                 <th>Username</th>
                 <th>Email</th>
+                <th>Role</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -170,6 +180,7 @@ include '../config/databaseConnection.php';
                     <td style="vertical-align: middle"><?php echo $user['first_name'] . ' ' . $user['first_name'] ?></td>
                     <td style="vertical-align: middle"><?php echo $user['username'] ?></td>
                     <td style="vertical-align: middle"><?php echo $user['email'] ?></td>
+                    <td style="vertical-align: middle"><?php echo $user['role'] ?></td>
                     <td style="vertical-align: middle">
                         <button class="btn btn-default" onclick="editUser(<?php echo $user['id'] ?>)"><span class="glyphicon glyphicon-edit"></span></button>
                         <button class="btn btn-default" onclick="deleteUser(<?php echo $user['id'] ?>)"><span class="glyphicon glyphicon-trash"></span></button>

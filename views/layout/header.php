@@ -6,7 +6,7 @@
  * Time: 1:33 PM
  */
 
-session_start();
+//session_start();
 if(!isset($_SESSION["email"])){
     header("Location: login.php");
 }
@@ -354,7 +354,7 @@ include "../common/Common.php";
             <?php
             if($_SESSION['role'] == 'teacher'){
                 ?>
-                <li><a href="teacher.php?id=1">Attendance</a></li>
+                <li><a href="teacher.php?id=4">Attendance</a></li>
             <?php
             }
             ?>
@@ -405,7 +405,7 @@ include "../common/Common.php";
                     </li>
                     <?php
                 }
-            if($_SESSION['role'] == 'Admin'){
+            if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
                     echo '<li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Add New<b class="caret"></b></a>
 
@@ -468,6 +468,10 @@ include "../common/Common.php";
                 </div>
             </li>';
                 }
+
+            if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
+                echo '<li><a href="classP.php">Class Performance</a></li>';
+            }
 
             if($_SESSION['role'] == 'teacher'){
                 echo '<li><a href="t_marks.php">Insert Marks</a></li>';
