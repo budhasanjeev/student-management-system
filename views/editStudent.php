@@ -6,6 +6,7 @@
  * Time: 6:05 PM
  */
 session_start();
+if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
 ?>
 
 <!DOCTYPE html>
@@ -75,3 +76,8 @@ session_start();
 
 </body>
 </html>
+<?php
+}else{
+    header('Location: logout.php');
+}
+?>

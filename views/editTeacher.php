@@ -8,6 +8,8 @@
 //include '../config/databaseConnection.php';
 
 session_start();
+if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
+
 ?>
     <!DOCTYPE html>
     <html>
@@ -150,3 +152,8 @@ $class = getClass($connection);
 
     </body>
 </html>
+<?php
+}else{
+    header('Location: logout.php');
+}
+?>

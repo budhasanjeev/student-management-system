@@ -7,6 +7,7 @@
  */
 session_start();
 
+if($_SESSION['role'] == 'teacher'){
 
 $class_id = $_GET['class'];
 $subject_id = $_GET['sub'];
@@ -69,3 +70,8 @@ $subject_id = $_GET['sub'];
 </div>
 </body>
 </html>
+<?php
+}else{
+    header('Location: logout.php');
+}
+?>

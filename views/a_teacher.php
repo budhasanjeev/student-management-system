@@ -6,6 +6,8 @@
  * Time: 7:55 PM
  */
 session_start();
+
+if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
 include '../config/databaseConnection.php';
 ?>
 <!DOCTYPE html>
@@ -58,3 +60,9 @@ include '../config/databaseConnection.php';
     </div>
 </body>
 </html>
+
+<?php
+}else{
+    header('Location: logout.php');
+}
+?>

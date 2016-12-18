@@ -2,16 +2,15 @@
 /**
  * Created by PhpStorm.
  * User: Pratik
- * Date: 9/18/2016
- * Time: 1:32 PM
+ * Date: 12/18/2016
+ * Time: 11:50 AM
  */
-session_start();
 
+session_start();
 
 if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
 
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -26,28 +25,12 @@ if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
 <?php include 'layout/header.php'; ?>
 
 <div class="container">
-    <div class="row">
-        <legend>Class</legend>
+    <h4>Upgrading class will clear all the attendance and results and change all the students current class to next upper class. This is to be done in the beginning of new academic session.
+        <br/><br/>Are you sure you want to upgrade ?</h4>
+
+    <button class="btn btn-block btn-primary">Yes, Upgrade Class</button>
     </div>
 
-    <?php
-    $class = getClass($connection);
-
-    while($row = $class->fetch_assoc()){
-        ?>
-
-        <a href="classPerform.php?id=<?php echo $row["id"]; ?>">
-            <div class="col-lg-3">
-                <div class="box">
-                    <?php echo $row["class"]; ?>
-                </div>
-            </div>
-        </a>
-
-    <?php
-    }
-    ?>
-</div>
 </body>
 </html>
 <?php

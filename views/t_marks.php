@@ -6,7 +6,7 @@
  * Time: 11:05 AM
  */
 session_start();
-
+if($_SESSION['role'] == 'teacher'){
 ?>
 <!DOCTYPE html>
 <html>
@@ -64,3 +64,8 @@ session_start();
 </div>
 </body>
 </html>
+<?php
+}else{
+    header('Location: logout.php');
+}
+?>

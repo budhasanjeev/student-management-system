@@ -471,6 +471,7 @@ include "../common/Common.php";
 
             if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
                 echo '<li><a href="classP.php">Class Performance</a></li>';
+                echo '<li><a href="update.php">Upgrade Class</a></li>';
             }
 
             if($_SESSION['role'] == 'teacher'){

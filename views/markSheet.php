@@ -7,6 +7,8 @@
  */
 session_start();
 
+if($_SESSION['role'] != 'Receptionist'){
+
 $exam = $_POST['exam'];
 $sid = $_POST['sid'];
 
@@ -114,3 +116,8 @@ $student = $studentInfo->fetch_assoc();
 </div>
 </body>
 </html>
+<?php
+}else{
+    header('Location: logout.php');
+}
+?>

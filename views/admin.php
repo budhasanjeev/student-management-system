@@ -97,8 +97,7 @@ if($_SESSION['role'] == "Admin" || $_SESSION['role'] == "sAdmin"){
 
     <?php
     }else{
-        echo "asdf";
-        header("Location: login.php");
+        header("Location: logout.php");
     }
 ?>
 

@@ -7,6 +7,8 @@
  */
 
 session_start();
+
+if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
 include '../config/databaseConnection.php';
 ?>
 
@@ -224,3 +226,9 @@ include '../config/databaseConnection.php';
 </script>
 </body>
 </html>
+
+<?php
+}else{
+    header('Location: logout.php');
+}
+?>

@@ -6,7 +6,7 @@
  * Time: 8:05 PM
  */
 session_start();
-
+if($_SESSION['role'] == 'parents'){
 
 $sid = $_GET['id'];
 ?>
@@ -46,3 +46,8 @@ $sid = $_GET['id'];
 </div>
 </body>
 </html>
+<?php
+}else{
+    header('Location: logout.php');
+}
+?>

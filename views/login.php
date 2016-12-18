@@ -85,7 +85,7 @@ if (isset($_POST["login"])){
     <link rel="stylesheet" href="../css/style.css"/>
     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Ultra" rel="stylesheet">
 </head>
-<body style="background-color: #F5DE9A; font-family: 'Kaushan Script', cursive;">
+<body style="font-family: 'Kaushan Script', cursive;">
 <div style="height: 100%; width: 100%; display: flex; justify-content: center; align-items: center; position: absolute;">
 <div style="text-align: center;">
     <div class="container" style="text-align: center;">

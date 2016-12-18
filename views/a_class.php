@@ -6,6 +6,8 @@
  * Time: 1:32 PM
  */
 session_start();
+
+if($_SESSION['role'] != 'parents'){
 ?>
 
 
@@ -46,3 +48,9 @@ session_start();
 </div>
 </body>
 </html>
+
+<?php
+}else{
+    header('Location: logout.php');
+}
+?>

@@ -142,6 +142,6 @@ if($role == "Receptionist") {
 <?php
 }else{
     session_unset();
-    header("Location: login.php");
+    header("Location: logout.php");
 }
 ?>

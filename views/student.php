@@ -7,7 +7,7 @@
  */
 //include '../common/Common.php'
 session_start();
-
+if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
 
 ?>
 
@@ -116,3 +116,8 @@ include 'layout/header.php';
 
 </body>
 </html>
+<?php
+}else{
+    header('Location: logout.php');
+}
+?>
