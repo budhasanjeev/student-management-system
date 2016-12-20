@@ -54,21 +54,21 @@ if($role == "Receptionist") {
 
 
     <div class="container">
-        <div class="col-md-1">
-            <table class="table table-responsive">
+        <div class="col-md-2 vm">
+            <ul>
                 <?php
                 $class = getClass($connection);
                 while ($row = $class->fetch_assoc()) {
                     ?>
-                    <tr>
-                        <td><a href="teacher.php?id=<?php echo $row["id"]; ?>"><?php echo $row["class"]; ?></a></td>
-                    </tr>
+                    <li>
+                        <a href="teacher.php?id=<?php echo $row["id"]; ?>"><?php echo $row["class"]; ?></a>
+                    </li>
                 <?php
                 }
                 ?>
-            </table>
+            </ul>
         </div>
-        <div class="col-md-11">
+        <div class="col-md-10" style="overflow-x: scroll;">
             <legend>Attendance of <?php echo getClassName($class_id, $connection); ?><span
                     class="pull-right"><?php echo $month . " " . $year; ?></span></legend>
 
