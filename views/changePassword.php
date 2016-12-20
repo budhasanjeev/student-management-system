@@ -5,7 +5,7 @@
  * Date: 12/16/2016
  * Time: 12:46 PM
  */
-include 'layout/header.php';
+
 
 include "../config/databaseConnection.php";
 
@@ -39,7 +39,7 @@ if(isset($_POST['submit'])) {
 <html>
 <head>
 <title>Change Password</title>
-<link rel="stylesheet" type="text/css" href="styles.css" />
+<link rel="stylesheet" type="text/css" href="styles.css"/>
     <script>
         function validatePassword() {
             var currentPassword,newPassword,confirmPassword,output = true;
@@ -75,6 +75,8 @@ if(isset($_POST['submit'])) {
     </script>
 </head>
 <body>
+
+<?php include 'layout/header.php'; ?>
 <form name="frmChange" method="post" action="" onSubmit="return validatePassword()">
 <div style="width:500px;">
 <div class="message"><?php if(isset($message)) { echo $message; } ?></div>
