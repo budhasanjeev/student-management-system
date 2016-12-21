@@ -404,7 +404,7 @@ include "../common/Common.php";
                 </ul>
             </li>
             <?php
-                if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'Parents') {
+                if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin' || $_SESSION['role'] == 'Parents') {
                     ?>
                     <li>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Fee<b class="caret"></b></a>

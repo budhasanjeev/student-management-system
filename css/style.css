@@ -142,3 +142,23 @@ body a:hover{
 .s td{
     font-weight: 900 !important;
 }
+
+.vm ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width:  100%;
+    background-color: #f1f1f1;
+}
+
+.vm ul li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.vm ul li a:hover{
+    background-color: #555;
+    color: white;
+}
