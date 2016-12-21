@@ -27,6 +27,7 @@ include "../common/Common.php";
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script src="../js/bootstrap.min.js" type="text/javascript"></script>
     <script src="../js/custom.js"></script>
+   
 
     <link rel="stylesheet" href="../css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../css/style.css"/>
@@ -155,7 +156,24 @@ include "../common/Common.php";
                 <form class="form" action="../controller/addClass.php" method="post">
                     <div class="form-group">
                         <label for="class">Class: </label>
-                        <input class="form-control" type="text" name="class" required=""/>
+
+                            <input type="checkbox" name="grade[]" value="Nursery">Nursery</input>
+                            <input type="checkbox" name="grade[]" value="LKG">LKG</input>
+                            <input type="checkbox" name="grade[]" value="UKG">UKG</input>
+                            <input type="checkbox" name="grade[]" value="KG">KG</input>
+                            <input type="checkbox" name="grade[]" value="One">One</input>
+                            <input type="checkbox" name="grade[]" value="Two">Two</input>
+                            <input type="checkbox" name="grade[]" value="Three">Three</input>
+                            <input type="checkbox" name="grade[]" value="Four">Four</input>
+                            <input type="checkbox" name="grade[]" value="Five">Five</input>
+                            <input type="checkbox" name="grade[]" value="Six">Six</input>
+                            <input type="checkbox" name="grade[]" value="Seven">Seven</input>
+                            <input type="checkbox" name="grade[]" value="Eight">Eight</input>
+                            <input type="checkbox" name="grade[]" value="Nine">Nine</input>
+                            <input type="checkbox" name="grade[]" value="Ten">Ten</input>
+                            <input type="checkbox" name="grade[]" value="Eleven">Eleven</input>
+                            <input type="checkbox" name="grade[]" value="Twelve">Twelve</input>
+
                     </div>
                     <div style="text-align: right">
                         <button type="submit" class="btn btn-success">Add</button>

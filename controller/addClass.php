@@ -6,11 +6,15 @@
  * Time: 1:26 PM
  */
 
-include "../config/databaseConnection.php";
-include "../common/service.php";
+    include "../config/databaseConnection.php";
+    include "../common/service.php";
 
-$name = $_POST["class"];
-addClass($name, $connection);
+    $gradeList = $_POST["grade"];
 
-header("Location: ../views/a_class.php");
-?>
+    foreach ($gradeList as $grade)
+    {
+        addClass($grade, $connection);
+
+    }
+
+    header("Location: ../views/a_class.php");

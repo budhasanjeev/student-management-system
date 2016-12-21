@@ -17,7 +17,7 @@ if (isset($_POST["login"])){
     $password = $_POST['password'];
     $stored_password = "null";
     $role = "null";
-
+    
     $select_from_user = "SELECT id, password, role FROM user WHERE email = '$email'";
 
     $select_from_teacher = "SELECT id, password FROM teacher WHERE email = '$email'";

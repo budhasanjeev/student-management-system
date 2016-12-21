@@ -346,7 +346,7 @@ class Common{
         global $connection;
 
         $created_date = date("Y-m-d");
-        $password = md5('123');
+        $password = $password = md5("@".$username."123#");
 
         $create_user = "INSERT INTO user(first_name, last_name, username, password, role, email, student_id, photo, created_date) VALUES('$firstName','$lastName','$username','$password','$role','$emailAddress','$student_id','$image','$created_date')";
 

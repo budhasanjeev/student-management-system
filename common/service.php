@@ -25,6 +25,7 @@ if(isset($_POST['actionname'])){
 
 }
 function addClass($name, $connection){
+    //validation of class is needed i.e. check whether class is already entered or not
     $insert = "INSERT INTO `class`(`class`) VALUES ('$name')";
     $connection->query($insert);
 }
@@ -72,6 +73,13 @@ function getStudentInfo($sid, $connection){
     return $student;
 }
 
+function getAllStudent($connection){
+
+    $select = "select * from student";
+    $student = $connection->query($select);
+    return $student;
+    
+}
 function getStudentName($sid, $connection){
     $select = "select * from student where id = '$sid'";
     $name = $connection->query($select);
@@ -259,6 +267,103 @@ function getExamMarks($exam, $sid, $connection){
     return $result;
 }
 
-function getClassPerformance($id, $connection){
+function getClassPerformance($sid, $connection,$exam){
     $select = "SELECT * FROM `marks` WHERE `exam` = '$exam' && `student_id` = $sid";
+}
+
+function upgradeStudents($connection){
+
+    $select_students = getAllStudent($connection);
+    $select_classes = getClass($connection);
+
+    $classes = [];
+
+    $errorCount = 0;
+    $successCount = 0;
+
+    while($row = mysqli_fetch_array($select_classes))
+    {
+        $classes[] = $row['class'];
+    }
+
+    $next_class = null;
+
+    while ($row = mysqli_fetch_assoc($select_students)){
+
+        $student_class = $row['grade'];
+
+        if($student_class == 'Nursery'){
+
+            foreach ($classes as $class){
+                if($class == 'LKG') {
+                    $next_class = 'LKG';
+                }
+                else if ($class == 'UKG'){
+                    $next_class = 'LKG';
+                }
+                else if ($class == 'KG'){
+                    $next_class = 'KG';
+                }
+            }
+        }
+        else if($student_class == 'LKG'){
+            $next_class = 'UKG';
+        }
+        else if($student_class == 'UKG' || $student_class == 'KG' && in_array('One',$classes)){
+            $next_class = 'One';
+        }
+        else if($student_class == 'One' && in_array('Two',$classes)){
+            $next_class = 'Two';
+        }
+        else if($student_class == 'Two' && in_array('Three',$classes)){
+            $next_class = 'Three';
+        }
+        else if($student_class == 'Three'  && in_array('Four',$classes)){
+            $next_class = 'Four';
+        }
+        else if($student_class == 'Four' && in_array('Five',$classes)){
+            $next_class = 'Five';
+        }
+        else if($student_class == 'Five' && in_array('Six ',$classes)){
+            $next_class = 'Six';
+        }
+        else if($student_class == 'Six' && in_array('Seven',$classes)){
+            $next_class = 'Seven';
+        }
+        else if($student_class == 'Seven' && in_array('Eight',$classes)){
+            $next_class = 'Eight';
+        }
+        else if($student_class == 'Eight' && in_array('Nine',$classes)){
+            $next_class = 'Nine';
+        }
+        else if($student_class == 'Nine' && in_array('Ten',$classes)){
+            $next_class = 'Ten';
+        }
+        else if($student_class == 'Ten' && in_array('Eleven',$classes)){
+            $next_class = 'Eleven';
+        }
+        else if($student_class == 'Eleven' && in_array('Twelve',$classes)){
+            $next_class = 'Twelve';
+        }
+        else if($student_class == 'Twelve'){
+            $next_class = 'Completed';
+        }
+        else{
+            $next_class = 'Completed';
+        }
+
+        $upgrade_query = "update student set grade = '$next_class' where grade = '$student_class'";
+
+       if($connection->query($upgrade_query)){
+            $successCount++;
+       }
+        else{
+            $errorCount++;
+        }
+
+    }
+    $data['errorCount'] = $errorCount;
+    $data['successCount'] = $successCount;
+
+    return $data;
 }

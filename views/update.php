@@ -28,9 +28,39 @@ if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
     <h4>Upgrading class will clear all the attendance and results and change all the students current class to next upper class. This is to be done in the beginning of new academic session.
         <br/><br/>Are you sure you want to upgrade ?</h4>
 
-    <button class="btn btn-block btn-primary">Yes, Upgrade Class</button>
+    <button class="btn btn-block btn-primary" onclick="upgrade_class();">Yes, Upgrade Class</button>
     </div>
 
+    <div style="text-align: center" id="updating" hidden>
+        <img src="../img/updating.gif" >
+    </div>
+
+<script>
+
+   function upgrade_class() {
+
+       $('#updating').show();
+
+       $.ajax({
+           type:"POST",
+           cache:false,
+           url:"../controller/updateClass.php",
+           success:function(data){
+               var data = JSON.parse(data);
+               alert("Success Count = " +data.successCount + " \nError Count = " + data.errorCount);
+           },
+           error:function(error){
+
+           },
+           complete: function(){
+               $('#updating').hide();
+           }
+
+
+       })
+   }
+
+</script>
 </body>
 </html>
 <?php
