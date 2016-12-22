@@ -195,6 +195,46 @@ include "../common/Common.php";
 </div>
 
 
+<!--Change Password Modal -->
+<div id="changePasswordModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Change Password</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form" action="" method="post">
+                    <div class="form-group">
+                        <label for="class">Current Password: </label>
+                        <input class="form-control" type="text" name="currentPassword" required=""/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="class">New Password: </label>
+                        <input class="form-control" type="password" name="newPassword" required=""/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="class">Conform Password: </label>
+                        <input class="form-control" type="password" name="conformPassword" required=""/>
+                    </div>
+                    <div style="text-align: right">
+                        <button type="submit" class="btn btn-success">Change</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
 <!--appointment Modal -->
 <div id="appointmentModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -233,7 +273,6 @@ include "../common/Common.php";
 
     </div>
 </div>
-
 
 <!--Subject Modal -->
 <div id="subjectModal" class="modal fade" role="dialog">
@@ -386,6 +425,7 @@ include "../common/Common.php";
             <?php
             if($_SESSION['role'] != 'Parents'){
                 ?>
+                <li><a href="admin.php">Home</a></li>
                 <li>
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Students<b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -608,7 +648,7 @@ include "../common/Common.php";
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">H! User<b class="caret"></b></a>
 
                 <ul class="dropdown-menu ">
-                    <li><a href="../views/changePassword.php">Change Password</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#changePasswordModal">Change Password</a></li>
                     <li><a href="logout.php">Logout</a></li>
                 </ul>
             </li>
