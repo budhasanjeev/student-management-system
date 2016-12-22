@@ -398,3 +398,35 @@ function deleteSubject($id, $connection)
     $delete = "DELETE FROM `subject` WHERE `id` = $id";
     $connection->query($delete);
 }
+
+function validateUsername($username, $connection){
+    $select = "SELECT * FROM `user` WHERE `username` = '$username'";
+    $result = $connection->query($select);
+
+    $data = array();
+
+    if(mysqli_num_rows($result)>0){
+        $data['message']='success';
+    }
+    else{
+        $data['message']='fail';
+    }
+
+    return json_encode($data);
+}
+
+function validateEmail($email, $connection){
+    $select = "SELECT * FROM `user` WHERE `email` = '$email'";
+    $result = $connection->query($select);
+
+    $data = array();
+
+    if(mysqli_num_rows($result)>0){
+        $data['message']='success';
+    }
+    else{
+        $data['message']='fail';
+    }
+
+    return json_encode($data);
+}

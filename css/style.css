@@ -162,3 +162,11 @@ body a:hover{
     background-color: #555;
     color: white;
 }
+
+.error{
+    display: none;
+    background-color: red;
+    color: #ffffff;
+    position: absolute;
+    z-index: 100;
+}
