@@ -252,6 +252,7 @@ include "../common/Common.php";
                         <input class="form-control" type="password" name="newPassword" required=""/>
                     </div>
 
+
                     <div class="form-group">
                         <label for="class">Conform Password: </label>
                         <input class="form-control" type="password" name="conformPassword" required=""/>
