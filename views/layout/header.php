@@ -27,8 +27,40 @@ include "../common/Common.php";
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script src="../js/bootstrap.min.js" type="text/javascript"></script>
     <script src="../js/custom.js"></script>
-   
 
+    <script>
+        function validatePassword() {
+            var currentPassword,newPassword,confirmPassword,output = true;
+
+            currentPassword = document.frmChange.currentPassword;
+            newPassword = document.frmChange.newPassword;
+            confirmPassword = document.frmChange.confirmPassword;
+
+            if(!currentPassword.value) {
+                currentPassword.focus();
+                document.getElementById("currentPassword").innerHTML = "required";
+                output = false;
+            }
+            else if(!newPassword.value) {
+                newPassword.focus();
+                document.getElementById("newPassword").innerHTML = "required";
+                output = false;
+            }
+            else if(!confirmPassword.value) {
+                confirmPassword.focus();
+                document.getElementById("confirmPassword").innerHTML = "required";
+                output = false;
+            }
+            if(newPassword.value != confirmPassword.value) {
+                newPassword.value="";
+                confirmPassword.value="";
+                newPassword.focus();
+                document.getElementById("confirmPassword").innerHTML = "not same";
+                output = false;
+            }
+            return output;
+        }
+    </script>
     <link rel="stylesheet" href="../css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../css/style.css"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
@@ -206,7 +238,9 @@ include "../common/Common.php";
                 <h4 class="modal-title">Change Password</h4>
             </div>
             <div class="modal-body">
-                <form class="form" action="" method="post">
+
+
+                <form class="form" action="changePassword.php" onsubmit="return validatePassword()" method="post">
                     <div class="form-group">
                         <label for="class">Current Password: </label>
                         <input class="form-control" type="text" name="currentPassword" required=""/>
@@ -222,7 +256,7 @@ include "../common/Common.php";
                         <input class="form-control" type="password" name="conformPassword" required=""/>
                     </div>
                     <div style="text-align: right">
-                        <button type="submit" class="btn btn-success">Change</button>
+                        <button type="submit" name="submit" class="btn btn-success">Change</button>
                     </div>
                 </form>
             </div>
@@ -655,6 +689,8 @@ include "../common/Common.php";
         </ul>
     </div>
     <!-- /.navbar-collapse -->
+
+
 </nav>
 <div style="height: 50px;"></div>
 </body>
