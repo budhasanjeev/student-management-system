@@ -155,24 +155,30 @@ include "../common/Common.php";
             <div class="modal-body">
                 <form class="form" action="../controller/addClass.php" method="post">
                     <div class="form-group">
-                        <label for="class">Class: </label>
+                        <legend>Class</legend>
 
-                            <input type="checkbox" name="grade[]" value="Nursery">Nursery</input>
-                            <input type="checkbox" name="grade[]" value="LKG">LKG</input>
-                            <input type="checkbox" name="grade[]" value="UKG">UKG</input>
-                            <input type="checkbox" name="grade[]" value="KG">KG</input>
-                            <input type="checkbox" name="grade[]" value="One">One</input>
-                            <input type="checkbox" name="grade[]" value="Two">Two</input>
-                            <input type="checkbox" name="grade[]" value="Three">Three</input>
-                            <input type="checkbox" name="grade[]" value="Four">Four</input>
-                            <input type="checkbox" name="grade[]" value="Five">Five</input>
-                            <input type="checkbox" name="grade[]" value="Six">Six</input>
-                            <input type="checkbox" name="grade[]" value="Seven">Seven</input>
-                            <input type="checkbox" name="grade[]" value="Eight">Eight</input>
-                            <input type="checkbox" name="grade[]" value="Nine">Nine</input>
-                            <input type="checkbox" name="grade[]" value="Ten">Ten</input>
-                            <input type="checkbox" name="grade[]" value="Eleven">Eleven</input>
-                            <input type="checkbox" name="grade[]" value="Twelve">Twelve</input>
+                        <div class="col-md-6">
+                            <input type="checkbox" name="grade[]" value="Nursery">Nursery</input><br/>
+                            <input type="checkbox" name="grade[]" value="UKG">UKG</input><br/>
+                            <input type="checkbox" name="grade[]" value="One">One</input><br/>
+                            <input type="checkbox" name="grade[]" value="Three">Three</input><br/>
+                            <input type="checkbox" name="grade[]" value="Five">Five</input><br/>
+                            <input type="checkbox" name="grade[]" value="Seven">Seven</input><br/>
+                            <input type="checkbox" name="grade[]" value="Nine">Nine</input><br/>
+                            <input type="checkbox" name="grade[]" value="Eleven">Eleven</input><br/>
+
+                        </div>
+                        <div class="col-md-6">
+                            <input type="checkbox" name="grade[]" value="LKG">LKG</input><br/>
+                            <input type="checkbox" name="grade[]" value="KG">KG</input><br/>
+                            <input type="checkbox" name="grade[]" value="Two">Two</input><br/>
+                            <input type="checkbox" name="grade[]" value="Four">Four</input><br/>
+                            <input type="checkbox" name="grade[]" value="Six">Six</input><br/>
+                            <input type="checkbox" name="grade[]" value="Eight">Eight</input><br/>
+                            <input type="checkbox" name="grade[]" value="Ten">Ten</input><br/>
+                            <input type="checkbox" name="grade[]" value="Twelve">Twelve</input><br/>
+
+                        </div>
 
                     </div>
                     <div style="text-align: right">
@@ -380,14 +386,42 @@ include "../common/Common.php";
             <?php
             if($_SESSION['role'] != 'Parents'){
                 ?>
-                <li><a href="a_class.php">Students</a></li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Students<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <?php
+                        $class = getClass($connection);
+                        while($row = mysqli_fetch_assoc($class)) {
+                            ?>
+                            <li>
+                                <a href="a_student.php?id=<?php echo $row["id"]; ?>">Class <?php echo $row["class"]; ?></a>
+                            </li>
+                        <?php
+                        }
+                        ?>
+                    </ul>
+                </li>
             <?php
             }
             ?>
 
 
             <li><a href="a_teacher.php">Teachers</a></li>
-            <li><a href="a_subject.php">Subjects</a></li>
+            <li>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Subject<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <?php
+                    $class = getClass($connection);
+                    while($row = mysqli_fetch_assoc($class)) {
+                        ?>
+                        <li>
+                            <a href="a_subjectList.php?id=<?php echo $row["id"]; ?>">Class <?php echo $row["class"]; ?></a>
+                        </li>
+                    <?php
+                    }
+                    ?>
+                </ul>
+            </li>
             <li>
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Routine<b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -488,7 +522,23 @@ include "../common/Common.php";
                 }
 
             if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
-                echo '<li><a href="classP.php">Class Performance</a></li>';
+                ?>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Class Performance<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <?php
+                        $class = getClass($connection);
+                        while($row = mysqli_fetch_assoc($class)) {
+                            ?>
+                            <li>
+                                <a href="classPerform.php?id=<?php echo $row["id"]; ?>">Class <?php echo $row["class"]; ?></a>
+                            </li>
+                        <?php
+                        }
+                        ?>
+                    </ul>
+                </li>
+                <?php
                 echo '<li><a href="update.php">Upgrade Class</a></li>';
             }
 

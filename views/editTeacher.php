@@ -8,7 +8,7 @@
 //include '../config/databaseConnection.php';
 
 session_start();
-if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
+if($_SESSION['role'] != "Receptionist"){
 
 ?>
     <!DOCTYPE html>
@@ -64,7 +64,7 @@ $class = getClass($connection);
         <?php
         }else{
             ?>
-            <div class="col-md-9" style="background-color: antiquewhite;">
+            <div class="col-md-5" style="background-color: antiquewhite;">
             <?php
         }
         ?>
@@ -92,7 +92,7 @@ $class = getClass($connection);
 
         </div>
             <?php
-            if($_SESSION['role'] == "Admin") {
+            if($_SESSION['role'] == "Admin" || $_SESSION['role'] == "sAdmin") {
                 ?>
                 <div class="col-md-4">
                     <legend>Add Class and Subjects</legend>

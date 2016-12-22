@@ -6,6 +6,7 @@
  * Time: 9:31 PM
  */
 session_start();
+
 ?>
 
 
@@ -27,6 +28,13 @@ $subject =  getClassSubject($classID, $connection);
             <thead>
             <th>Subject</th>
             <th>Teacher</th>
+            <?php
+            if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
+                ?>
+                <th colspan="">Change/Assign Teacher</th>
+            <?php
+            }
+            ?>
             </thead>
             <?php
             while($row = $subject->fetch_assoc()){
@@ -41,6 +49,37 @@ $subject =  getClassSubject($classID, $connection);
                             echo 'Not Assigned';
                         }
                         ?></td>
+                    <?php
+                    if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin') {
+                        ?>
+
+                        <td>
+                            <form action="../controller/changeTeacher.php" method="post">
+                                <input type="hidden" name="subject_id" value="<?php echo $id; ?>"/>
+                                <input type="hidden" name="class_id" value="<?php echo $classID; ?>"/>
+                                <select name="teacher_id" class="form-control" style="width: 50%; display: inline;">
+                                    <?php
+                                    $teachers = getTeacher($connection);
+                                    while($row = $teachers->fetch_assoc()){
+                                        ?>
+                                        <option value="<?php echo $row['id']; ?>"><?php echo $row['name']; ?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+                                <input type="submit" class="btn btn-primary" value="Change"/>
+                            </form>
+                        </td>
+                        <td>
+                            <a href="../controller/c_deleteSubject.php?id=<?php echo $id; ?>&class=<?php echo $classID; ?>">
+                                <button class="btn btn-danger">
+                                    <span class="glyphicon glyphicon-trash"> </span> Delete
+                                </button>
+                            </a>
+                        </td>
+                    <?php
+                    }
+                    ?>
                 </tr>
             <?php
             }
@@ -48,6 +87,7 @@ $subject =  getClassSubject($classID, $connection);
         </table>
 
     </div>
+
 
     </body>
 </html>

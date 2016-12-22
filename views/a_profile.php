@@ -33,14 +33,6 @@ session_start();
     $attendanceStatus = getAttendanceStatus($sid, $connection);
 
 
-    if($_SESSION['role'] != "Parents"){
-        $lid = $_GET['lid'];
-        ?>
-        <div class="row">
-            <legend><a href="t_marks.php">Class</a>/<a href="a_student.php?id=<?php echo $lid; ?>">students</a>/profile</legend>
-        </div>
-    <?php
-    }
     ?>
         <div class="col-lg-3">
             <?php

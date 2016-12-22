@@ -24,9 +24,6 @@ if($_SESSION['role'] != 'parents'){
 <?php include 'layout/header.php'; ?>
 
 <div class="container">
-    <div class="row">
-        <legend><a href="a_class.php">Class</a>/students</legend>
-    </div>
 
     <?php
     $id = $_GET['id'];
