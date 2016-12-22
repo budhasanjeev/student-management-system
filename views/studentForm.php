@@ -26,7 +26,8 @@ if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
             <h4>Students Detail</h4>
             <input type="hidden" name="mode" id="modes" value="add">
             <div class="col-md-4">
-                <input type="text" name="student_id" id="student_id" class="form-control form-group" placeholder="ID" onkeyup="checkNumeric('student_id')" />
+                <input type="text" name="student_id" id="student_id" class="form-control form-group" placeholder="ID" onkeyup="checkNumeric('student_id')" onchange="checkStudent();"/>
+                <div class="error student">StudentID already exists</div>
             </div>
             <div class="col-md-4">
                 <input type="text" name="firstName" class="form-control form-group" placeholder="First Name" id="firstName" onkeyup="checkAlphabet('firstName')"/>
@@ -77,12 +78,38 @@ if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
             <input type="file" name="photo" class="form-group" id="studentPhoto"/>
         </div>
         <div class="col-md-12">
-            <input class="btn btn-primary btn-block" name="submit"  type="submit"  value="Add"/>
+            <input class="btn btn-primary btn-block" name="submit"  id="registerButton" type="submit"  value="Add"/>
         </div>
     </form>
 
     <?php echo date("Y-m-d") ?>
 </div>
+
+<script>
+    function checkStudent(){
+
+        var username = document.getElementById('student_id').value;
+        $.ajax({
+            type:'POST',
+            url:'../controller/studentIdExists.php',
+            data:'username='+username,
+            success:function(data){
+                var jsonData = JSON.parse(data);
+                if(jsonData.message == "fail"){
+
+                    $("#student_id").attr('style', 'border: 1px solid blue');
+                    $(".student").attr('style', 'display: none;');
+                    $("#registerButton").prop('disabled', false);
+                }else{
+                    $("#student_id").attr('style', 'border: 2px solid red');
+                    $(".student").attr('style', 'display: block;');
+                    $("#registerButton").prop('disabled', true);
+                }
+            }
+        })
+    }
+</script>
+
 
 </body>
 </html>

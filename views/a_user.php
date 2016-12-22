@@ -55,7 +55,8 @@ include '../config/databaseConnection.php';
                     <div class="form-group">
                         <label class="col-md-4">Username</label>
                         <div class="col-lg-8">
-                            <input class="form-control" type="text" id="username" name="username" required=""/>
+                            <input class="form-control" type="text" id="username" name="username" required="" onChange="checkUsername();"/>
+                            <div class="error username">Username already exists</div>
                         </div>
                     </div>
 
@@ -79,7 +80,8 @@ include '../config/databaseConnection.php';
                     <div class="form-group">
                         <label class="col-md-4">Email</label>
                         <div class="col-lg-8">
-                            <input class="form-control" type="email" id="email" name="email" required=""/>
+                            <input class="form-control" type="email" id="email" name="email" required="" onchange="checkEmail();"/>
+                            <div class="error email">Email already exists</div>
                         </div>
                     </div>
 
@@ -116,7 +118,7 @@ include '../config/databaseConnection.php';
                     </div>
 
                     <div style="text-align: right;">
-                        <input class="btn btn-primary" type="submit" id="user-save"/>
+                        <input class="btn btn-primary" id="registerButton" type="submit" id="user-save"/>
                     </div>
                 </form>
             </div>
@@ -219,10 +221,62 @@ include '../config/databaseConnection.php';
         }
     }
 
+
+
+    function checkUsername(){
+
+        var username = document.getElementById('username').value;
+        $.ajax({
+            type:'POST',
+            url:'../controller/usernameExists.php',
+            data:'username='+username,
+            success:function(data){
+                var jsonData = JSON.parse(data);
+                if(jsonData.message == "fail"){
+
+                    $("#username").attr('style', 'border: 1px solid blue');
+                    $(".username").attr('style', 'display: none;');
+                    $("#registerButton").prop('disabled', false);
+                }else{
+                    $("#username").attr('style', 'border: 2px solid red');
+                    $(".username").attr('style', 'display: block;');
+                    $("#registerButton").prop('disabled', true);
+                }
+            }
+        })
+    }
+
+    function checkEmail(){
+
+        var username = document.getElementById('email').value;
+        $.ajax({
+            type:'POST',
+            url:'../controller/emailExists.php',
+            data:'username='+username,
+            success:function(data){
+                var jsonData = JSON.parse(data);
+                if(jsonData.message == "fail"){
+
+                    $("#email").attr('style', 'border: 1px solid blue');
+                    $(".email").attr('style', 'display: none;');
+                    $("#registerButton").prop('disabled', false);
+                }else{
+                    $("#email").attr('style', 'border: 2px solid red');
+                    $(".email").attr('style', 'display: block;');
+                    $("#registerButton").prop('disabled', true);
+                }
+            }
+        })
+    }
+
+
 </script>
 
 <script type="text/javascript">
     $(".js-example-basic-multiple").select2();
+
+
+
 </script>
 </body>
 </html>

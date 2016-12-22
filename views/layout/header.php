@@ -26,6 +26,7 @@ include "../common/Common.php";
     <script src="../js/jquery.noty.packaged.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script src="../js/bootstrap.min.js" type="text/javascript"></script>
+<!--    <script type="application/javascript" src="../dataTable/jquery.js"></script>-->
     <script src="../js/custom.js"></script>
 
     <script>
