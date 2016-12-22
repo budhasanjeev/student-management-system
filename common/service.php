@@ -430,3 +430,35 @@ function validateEmail($email, $connection){
 
     return json_encode($data);
 }
+
+function validateStudentID($id, $connection){
+    $select = "SELECT * FROM `student` WHERE `student_id` = '$id'";
+    $result = $connection->query($select);
+
+    $data = array();
+
+    if(mysqli_num_rows($result)>0){
+        $data['message']='success';
+    }
+    else{
+        $data['message']='fail';
+    }
+
+    return json_encode($data);
+}
+
+function checkAttendance($class, $connection){
+
+    $month = date("F");
+    $year = date("o");
+    $day = date("j");
+
+    $select = "SELECT * FROM `attendance` WHERE `class_id` = $class && `year` = '$year' && `month` = '$month' && `day` = '$day'";
+//    echo $select;
+    $result = $connection->query($select);
+    if(mysqli_num_rows($result) > 0){
+        return "done";
+    }else{
+        return "remain";
+    }
+}

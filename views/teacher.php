@@ -77,7 +77,15 @@ if($role == "Receptionist") {
                     <thead>
                     <th>Roll no.</th>
                     <th></th>
-                    <th><?php echo date("j"); ?></th>
+                    <?php
+                    $status = checkAttendance($class_id, $connection);
+                    if($status != 'done'){
+                        ?>
+                        <th><?php echo date("j"); ?></th>
+                    <?php
+                    }
+                    ?>
+
                     <?php
                     $day = getAttendanceDay($class_id, $month, $year, $connection);
                     $day_array = array();
@@ -101,13 +109,16 @@ if($role == "Receptionist") {
                         ?>
                         <tr>
                             <td><?php
-                                $studentID = $row['id'];
-                                echo $row["roll_number"]; ?></td>
+                        $studentID = $row['id'];
+                        echo $row["roll_number"]; ?></td>
                             <th>
                                 <a href="studentAttendance.php?id=<?php echo $studentID; ?>">
                                 <?php
-                                echo $row["first_name"] . " " . $row["last_name"]; ?></th>
+                        echo $row["first_name"] . " " . $row["last_name"]; ?></th>
                             </a>
+                            <?php
+                            if($status != 'done'){
+                            ?>
                             <td>
                                 <select name="<?php echo $row["id"]; ?>">
                                     <option value="present">Present</option>
@@ -115,6 +126,9 @@ if($role == "Receptionist") {
                                     <option value="leave">Leave</option>
                                 </select>
                             </td>
+                            <?php
+                    }
+                            ?>
                             <?php
                             for ($i = count($day_array) - 1; $i >= 0; $i--) {
                                 $attendance = getAttendance($studentID, $day_array[$i], $month, $year, $connection);
