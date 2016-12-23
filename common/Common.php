@@ -200,17 +200,11 @@ class Common{
     }
 
     public function editStudent($id){
-
         global $connection;
-
         $select_student = "select *from student where id = '$id' ";
-
         $data = array();
-
         $result = mysqli_query($connection,$select_student);
-
         while ($row = mysqli_fetch_assoc($result)){
-
             $data['id'] = $row['id'];
             $data['student_id'] = $row['student_id'];
             $data['first_name'] = $row['first_name'];
@@ -225,7 +219,6 @@ class Common{
             $data['section'] = $row['section'];
             $data['photo'] = $row['photo'];
         }
-
         return $data;
     }
 
@@ -619,4 +612,60 @@ class Common{
         return $data;
     }
 
+
+    public function editTeacher($id){
+
+        global $connection;
+
+        $select_teacher = "select *from teacher where id = '$id' ";
+
+        $data = array();
+
+        $result = mysqli_query($connection,$select_teacher);
+
+        while ($row = mysqli_fetch_assoc($result)){
+
+            $data['id'] = $row['id'];
+            $data['name'] = $row['name'];
+            $data['address'] = $row['address'];
+            $data['contact'] = $row['contact'];
+            $data['email'] = $row['email'];
+            $data['username'] = $row['username'];
+            $data['degree'] = $row['degree'];
+            $data['experience'] = $row['experience'];
+            $data['start_date'] = $row['start_date'];
+        }
+
+        return $data;
+    }
+
+    public function updateTeacher($teacher_id,$name,$contact,$email,$experience,$username,$address,$degree,$join_on,$photo){
+        global $connection;
+
+        $update_teacher = "update teacher set name = '$name', contact = '$contact', email ='$email', experience = '$experience', username = '$username', address = '$address', degree='$degree', start_date = '$join_on', photo = '$photo' where id = '$teacher_id' ";
+
+        $result = mysqli_query($connection,$update_teacher);
+
+        return $update_teacher;
+    }
+
+    public function deleteTeacher($id){
+        global $connection;
+
+        $delete_teacher = "delete from teacher where id = '$id'";
+
+        $result = mysqli_query($connection,$delete_teacher);
+
+        $data = array();
+
+        if($result){
+            $data['message'] = 'success';
+        }
+        else{
+            $data['message'] = 'fail';
+        }
+
+        return $data;
+
+    }
 }

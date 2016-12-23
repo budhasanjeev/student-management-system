@@ -49,19 +49,17 @@ if(isset($_POST['mode'])){
 
         $result = array();
 
-        $result = $objCommon->editStudent($std_id);
+        $result = $objCommon->editTeacher($std_id);
 
-        $_SESSION['student'] = $result;
-
-        header("Location:../views/editStudent.php");
-
+        echo json_encode($result);
+        
     } else if($_POST['mode']=='delete'){
 
-        $student_id = $_POST['id'];
+        $teacher_id = $_POST['id'];
 
         $result = array();
 
-        $result = $objCommon->deleteStudent($student_id);
+        $result = $objCommon->deleteTeacher($teacher_id);
 
         echo json_encode($result);
 
@@ -70,19 +68,16 @@ if(isset($_POST['mode'])){
 
         $_SESSION['student'] = null;
 
-        $id     = $_POST['std_id'];
-        $std_id = $_POST['student_id'];
-        $fname  = $_POST['firstName'];
-        $lname  = $_POST['lastName'];
-        $dob    = $_POST['dob'];
-        $address = $_POST['address'];
+        $id     = $_POST['teacher_id'];
+        $name  = $_POST['name'];
         $contact = $_POST['contact'];
-        $rollNumber = $_POST['rollNumber'];
-        $grade   = $_POST['grade'];
-        $section = $_POST['section'];
-        $fatherName = $_POST['fatherName'];
-        $motherName = $_POST['motherName'];
-
+        $email    = $_POST['email'];
+        $experience = $_POST['experience'];
+        $username = $_POST['username'];
+        $address = $_POST['address'];
+        $degree   = $_POST['degree'];
+        $join_on = $_POST['join_on'];
+        
         $photo = $_FILES['photo']['name'];
         $photo_tmp = $_FILES['photo']['tmp_name'];
 
@@ -90,7 +85,7 @@ if(isset($_POST['mode'])){
 
         $result = array();
 
-        $result = $objCommon->updateStudent($std_id,$fname,$lname,$dob,$address,$contact,$rollNumber,$grade,$section,$fatherName,$motherName,$photo,$id);
+        $result = $objCommon->updateTeacher($id,$name,$contact,$email,$experience,$username,$address,$degree,$join_on,$photo);
 
         if($result){
             $_SESSION['create_student'] = 'success';
@@ -99,7 +94,7 @@ if(isset($_POST['mode'])){
             $_SESSION['create_student'] = 'error';
         }
 
-        header('Location:../views/student.php');
+        header('Location:../views/a_teacher.php');
 
     }
 
