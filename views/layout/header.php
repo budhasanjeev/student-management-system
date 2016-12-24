@@ -26,7 +26,8 @@ include "../common/Common.php";
     <script src="../js/jquery.noty.packaged.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script src="../js/bootstrap.min.js" type="text/javascript"></script>
-    <!--    <script type="application/javascript" src="../dataTable/jquery.js"></script>-->
+    <script type="application/javascript" src="../js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="../css/jquery.dataTables.min.css"/>
     <script src="../js/custom.js"></script>
     <script src="../js/user.js"></script>
     <script>
@@ -66,8 +67,7 @@ include "../common/Common.php";
 
     <link rel="stylesheet" href="../css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../css/style.css"/>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Ultra" rel="stylesheet">
+
 
 
     <script type="text/javascript">
@@ -131,6 +131,11 @@ include "../common/Common.php";
                         $("#tusername").attr('style', 'border: 1px solid blue');
                         $(".username").attr('style', 'display: none;');
                         $("#registerButton").prop('disabled', false);
+
+                        var password = "@"+username+"123#" ;
+
+                        $('#tpassword').val(password);
+
                     } else {
                         $("#tusername").attr('style', 'border: 2px solid red');
                         $(".username").attr('style', 'display: block;');
@@ -518,6 +523,13 @@ include "../common/Common.php";
                             <div class="error username">Username already exist</div>
                         </div>
 
+
+                        <div class="form-group">
+                            <label for="class">Password: </label>
+                            <input class="form-control" type="text" id="tpassword" name="tpassword" disabled/>
+
+                        </div>
+
                         <div class="form-group">
                             <label for="class">Address: </label>
                             <input class="form-control" type="text" name="address" required=""/>
@@ -555,7 +567,7 @@ include "../common/Common.php";
 </div>
 
 <nav class="navbar" role="navigation"
-     style="border-radius: 0px; border-bottom: 2px solid #a07789; background-color: wheat;">
+     style="border-radius: 0px; border-bottom: 2px solid skyblue; background-color: gray;">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -565,7 +577,7 @@ include "../common/Common.php";
             <span style="background-color: #ffffff;" class="icon-bar"></span>
         </button>
         <a class="navbar-brand"
-           style="font-family: 'Kaushan Script', cursive;" <?php if ($_SESSION['role'] == 'Admin') { ?> href="admin.php" <?php } ?><?php if ($_SESSION['role'] == 'Teacher') { ?> href="teacher.php" <?php } ?>>SMS</a>
+           style="font-family: 'Kaushan Script', cursive; color: #ffffff;" <?php if ($_SESSION['role'] == 'Admin') { ?> href="admin.php" <?php } ?><?php if ($_SESSION['role'] == 'Teacher') { ?> href="teacher.php" <?php } ?>>SMS</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -574,7 +586,7 @@ include "../common/Common.php";
 
 
             <?php
-            if ($_SESSION['role'] != 'Parents') {
+            if ($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin') {
                 ?>
                 <li><a href="admin.php">Home</a></li>
                 <li>
@@ -608,7 +620,7 @@ include "../common/Common.php";
             <?php
             if($_SESSION['role'] == 'Receptionist'){
                 ?>
-                <li><a href="teacher.php">Teachers</a></li>
+                <li><a href="a_teacher.php">Teachers</a></li>
             <?php
             }
             ?>
@@ -828,7 +840,7 @@ include "../common/Common.php";
         <!--        </div>-->
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">H! User<b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">H! <?php echo ucfirst($_SESSION['username']); ?><b class="caret"></b></a>
 
                 <ul class="dropdown-menu ">
                     <li><a href="#" data-toggle="modal" data-target="#changePasswordModal">Change Password</a></li>

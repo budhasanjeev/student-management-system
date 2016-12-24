@@ -4,6 +4,10 @@ body{
     font-family: 'Raleway', sans-serif;
 }
 
+.nav li a{
+    color: #ffffff !important;
+}
+
 .navbar a{
     color: #782d3e;
 }
@@ -49,8 +53,9 @@ body{
 .login-div{
     padding: 60px;
     position: relative;
-    background-color: wheat;
+    background-color: #ffffff;
     /*width: 40%;*/
+    border: 3px dashed #000000;
 }
 
 .option-box{

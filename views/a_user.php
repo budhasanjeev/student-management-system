@@ -61,6 +61,13 @@ include '../config/databaseConnection.php';
                     </div>
 
                     <div class="form-group">
+                        <label class="col-md-4">Password</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" type="text" id="upassword" name="upassword" required="" onChange="checkUsername();" disabled/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label class="col-md-4">Role</label>
                         <div class="col-lg-8">
                             <select class="form-control" name="role" id="role" onchange="checkRole();">
@@ -235,6 +242,8 @@ include '../config/databaseConnection.php';
                     $("#username").attr('style', 'border: 1px solid blue');
                     $(".username").attr('style', 'display: none;');
                     $("#registerButton").prop('disabled', false);
+                    var password = '@'+username+'123#';
+                    $('#upassword').val(password);
                 }else{
                     $("#username").attr('style', 'border: 2px solid red');
                     $(".username").attr('style', 'display: block;');

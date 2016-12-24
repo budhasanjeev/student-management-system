@@ -8,7 +8,6 @@
 //include '../config/databaseConnection.php';
 
 session_start();
-if($_SESSION['role'] != "Receptionist"){
 
 ?>
     <!DOCTYPE html>
@@ -152,8 +151,3 @@ $class = getClass($connection);
 
     </body>
 </html>
-<?php
-}else{
-    header('Location: logout.php');
-}
-?>

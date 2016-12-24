@@ -90,9 +90,6 @@ if($_SESSION['role'] == "Admin" || $_SESSION['role'] == "sAdmin"){
         </div>
     </div></a>
 
-    <div class="row" style="padding: 20px; margin-top: 120px;">
-        <img src="../img/ohiocharters1.png" width="100%" height="500px" alt=""/>
-    </div>
 </div>
 
     <?php
