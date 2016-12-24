@@ -33,6 +33,14 @@ session_start();
     $attendanceStatus = getAttendanceStatus($sid, $connection);
 
 
+    if ($_SESSION['role'] == 'Parents') {
+       $AStat = getStudentAttendanceStatus($sid, $connection);
+        if($AStat != 'present'){
+            ?>
+            <div class="notif"><?php echo $AStat; ?> today!</div>
+    <?php
+        }
+    }
     ?>
         <div class="col-lg-3">
             <?php

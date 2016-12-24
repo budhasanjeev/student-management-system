@@ -80,7 +80,7 @@ include '../config/databaseConnection.php';
                     <div class="form-group">
                         <label class="col-md-4">Email</label>
                         <div class="col-lg-8">
-                            <input class="form-control" type="email" id="email" name="email" required="" onchange="checkEmail();"/>
+                            <input class="form-control" type="email" id="uemail" name="email" required="" onchange="checkEmail();"/>
                             <div class="error email">Email already exists</div>
                         </div>
                     </div>
@@ -90,7 +90,6 @@ include '../config/databaseConnection.php';
                         <div class="col-lg-8">
                             <!-- <input class="form-control" type="text" id="student_id" name="student_id" required=""/>-->
                             <select class="form-control js-example-basic-multiple " multiple="multiple" name="student_id[]" id="student_id" style="width: 100%">
-
                                 <?php
                                     $objCommon = new Common();
 
@@ -105,7 +104,6 @@ include '../config/databaseConnection.php';
                                         <?php
                                     }
                                 ?>
-
                             </select>
                         </div>
                     </div>
@@ -248,7 +246,9 @@ include '../config/databaseConnection.php';
 
     function checkEmail(){
 
-        var username = document.getElementById('email').value;
+
+        var username = document.getElementById('uemail').value;
+        alert(username);
         $.ajax({
             type:'POST',
             url:'../controller/emailExists.php',

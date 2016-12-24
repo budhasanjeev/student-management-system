@@ -271,6 +271,19 @@ function getAttendanceStatus($sid, $connection)
     return $count;
 }
 
+
+function getStudentAttendanceStatus($sid, $connection)
+{
+    $month = date("F");
+    $year = date("o");
+    $day = date("j");
+
+    $select = "SELECT status FROM `attendance` WHERE `student_id` = $sid && `year` = '$year' && `month` = '$month' && `day` = '$day'";
+    $count = $connection->query($select);
+    $status = $count->fetch_assoc();
+    return $status['status'];
+}
+
 function getParentsInfo($pid, $connection)
 {
     $select = "select * from user where id = '$pid'";
@@ -461,4 +474,53 @@ function checkAttendance($class, $connection){
     }else{
         return "remain";
     }
+}
+
+function validateClass($class, $connection){
+    $select = "SELECT * FROM `class` WHERE `class` = '$class'";
+    $result = $connection->query($select);
+
+    $data = array();
+
+    if(mysqli_num_rows($result)>0){
+        $data['message']='success';
+    }
+    else{
+        $data['message']='fail';
+    }
+
+    return json_encode($data);
+}
+
+function validateTeacherEmail($email, $connection){
+    $select = "SELECT * FROM `teacher` WHERE `email` = '$email'";
+    $result = $connection->query($select);
+
+    $data = array();
+
+    if(mysqli_num_rows($result)>0){
+        $data['message']='success';
+    }
+    else{
+        $data['message']='fail';
+    }
+
+    return json_encode($data);
+}
+
+
+function  validateTeacherUsername($username, $connection){
+    $select = "SELECT * FROM `teacher` WHERE `username` = '$username'";
+    $result = $connection->query($select);
+
+    $data = array();
+
+    if(mysqli_num_rows($result)>0){
+        $data['message']='success';
+    }
+    else{
+        $data['message']='fail';
+    }
+
+    return json_encode($data);
 }

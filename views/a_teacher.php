@@ -7,7 +7,7 @@
  */
 session_start();
 
-if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
+if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin' || $_SESSION['role'] == 'teacher'){
 include '../config/databaseConnection.php';
 ?>
 <!DOCTYPE html>

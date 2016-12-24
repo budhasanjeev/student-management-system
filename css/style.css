@@ -170,3 +170,11 @@ body a:hover{
     position: absolute;
     z-index: 100;
 }
+
+.notif{
+    color: #000000;
+    background-color: #ffff00;
+    padding: 10px;
+    z-index: 2;
+    float: right;
+}

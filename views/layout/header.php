@@ -7,7 +7,7 @@
  */
 
 //session_start();
-if(!isset($_SESSION["email"])){
+if (!isset($_SESSION["email"])) {
     header("Location: login.php");
 }
 
@@ -26,14 +26,91 @@ include "../common/Common.php";
     <script src="../js/jquery.noty.packaged.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script src="../js/bootstrap.min.js" type="text/javascript"></script>
-<!--    <script type="application/javascript" src="../dataTable/jquery.js"></script>-->
+    <!--    <script type="application/javascript" src="../dataTable/jquery.js"></script>-->
     <script src="../js/custom.js"></script>
-   
+    <script src="../js/user.js"></script>
+
 
     <link rel="stylesheet" href="../css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../css/style.css"/>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Ultra" rel="stylesheet">
+
+
+    <script type="text/javascript">
+        function checkClass(event) {
+            var classd = event.value;
+            if ($(event).is(':checked')) {
+                $.ajax({
+                    type: 'POST',
+                    url: '../controller/classExists.php',
+                    data: 'username=' + classd,
+                    success: function (data) {
+                        var jsonData = JSON.parse(data);
+                        if (jsonData.message == "success") {
+                            alert('asdf');
+                            $( "#one" ).append( "<p>Test</p>" );
+                            $("#registerButton").prop('disabled', true);
+                        }
+
+                    }
+                });
+            } else {
+//                $("#className").attr('style', 'border: 1px solid blue');
+                $(".className").attr('style', 'display: none;');
+                $("#registerButton").prop('disabled', false);
+            }
+        }
+
+        function c() {
+            var classd = document.getElementById('temail').value;
+            $.ajax({
+                type: 'POST',
+                url: '../controller/teacherEmailExists.php',
+                data: 'username=' + classd,
+                success: function (data) {
+                    var jsonData = JSON.parse(data);
+                    if (jsonData.message == "fail") {
+
+                        $("#email").attr('style', 'border: 1px solid blue');
+                        $(".email").attr('style', 'display: none;');
+                        $("#registerButton").prop('disabled', false);
+                    } else {
+                        $("#email").attr('style', 'border: 2px solid red');
+                        $(".email").attr('style', 'display: block;');
+                        $("#registerButton").prop('disabled', true);
+                    }
+                }
+            });
+        }
+
+
+        function checkTeacherUsername() {
+            var username = document.getElementById('tusername').value;
+            $.ajax({
+                type: 'POST',
+                url: '../controller/teacherUsernameExists.php',
+                data: 'username=' + username,
+                success: function (data) {
+                    var jsonData = JSON.parse(data);
+                    if (jsonData.message == "fail") {
+
+                        $("#tusername").attr('style', 'border: 1px solid blue');
+                        $(".username").attr('style', 'display: none;');
+                        $("#registerButton").prop('disabled', false);
+                    } else {
+                        $("#tusername").attr('style', 'border: 2px solid red');
+                        $(".username").attr('style', 'display: block;');
+                        $("#registerButton").prop('disabled', true);
+                    }
+                }
+            });
+        }
+
+        function call() {
+
+        }
+    </script>
 
 </head>
 <body>
@@ -55,16 +132,16 @@ include "../common/Common.php";
                         <select name="class_id" class="form-control" onchange="setTextField()">
                             <?php
                             $class = getClass($connection);
-                            while($row = mysqli_fetch_assoc($class)){
+                            while ($row = mysqli_fetch_assoc($class)) {
                                 ?>
 
-                                <option  value="<?php echo $row["id"]; ?>"><?php echo $row["class"]; ?></option>
+                                <option value="<?php echo $row["id"]; ?>"><?php echo $row["class"]; ?></option>
 
                             <?php
                             }
                             ?>
                         </select>
-                        <input id="class" type = "hidden" name = "class" value = "" />
+                        <input id="class" type="hidden" name="class" value=""/>
                         <script type="text/javascript">
                             function setTextField(ddl) {
                                 document.getElementById('class').value = ddl.options[ddl.selectedIndex].text;
@@ -108,16 +185,16 @@ include "../common/Common.php";
                         <select name="class_id" class="form-control" onchange="setTextField()">
                             <?php
                             $class = getClass($connection);
-                            while($row = mysqli_fetch_assoc($class)){
+                            while ($row = mysqli_fetch_assoc($class)) {
                                 ?>
 
-                                <option  value="<?php echo $row["id"]; ?>"><?php echo $row["class"]; ?></option>
+                                <option value="<?php echo $row["id"]; ?>"><?php echo $row["class"]; ?></option>
 
                             <?php
                             }
                             ?>
                         </select>
-<!--                        <input id="class" type = "hidden" name = "class" value = "" />-->
+                        <!--                        <input id="class" type = "hidden" name = "class" value = "" />-->
                         <script type="text/javascript">
                             function setTextField(ddl) {
                                 document.getElementById('class').value = ddl.options[ddl.selectedIndex].text;
@@ -159,31 +236,61 @@ include "../common/Common.php";
                         <legend>Class</legend>
 
                         <div class="col-md-6">
-                            <input type="checkbox" name="grade[]" value="Nursery">Nursery</input><br/>
-                            <input type="checkbox" name="grade[]" value="UKG">UKG</input><br/>
-                            <input type="checkbox" name="grade[]" value="One">One</input><br/>
-                            <input type="checkbox" name="grade[]" value="Three">Three</input><br/>
-                            <input type="checkbox" name="grade[]" value="Five">Five</input><br/>
-                            <input type="checkbox" name="grade[]" value="Seven">Seven</input><br/>
-                            <input type="checkbox" name="grade[]" value="Nine">Nine</input><br/>
-                            <input type="checkbox" name="grade[]" value="Eleven">Eleven</input><br/>
+                            <input type="checkbox" name="grade[]" value="Nursery"
+                                   onclick="checkClass(this);">Nursery</input><br/>
+                            <input type="checkbox" name="grade[]" value="UKG" onclick="checkClass(this);">UKG</input>
+                            <br/>
+
+                            <input type="checkbox" name="grade[]" value="One" id="one" onclick="checkClass(this);">One</input>
+                            <br/>
+
+                            <input type="checkbox" name="grade[]" value="Three"
+                                   onclick="checkClass(this);">Three</input><br/>
+
+                            <input type="checkbox" name="grade[]" value="Five" onclick="checkClass(this);">Five</input>
+                            <br/>
+                            <input type="checkbox" name="grade[]" value="Seven"
+                                   onclick="checkClass(this);">Seven</input><br/>
+
+                            <input type="checkbox" name="grade[]" value="Nine" onclick="checkClass(this);">Nine</input>
+                            <br/>
+                            <input type="checkbox" name="grade[]" value="Eleven"
+                                   onclick="checkClass(this);">Eleven</input><br/>
+
+
 
                         </div>
                         <div class="col-md-6">
-                            <input type="checkbox" name="grade[]" value="LKG">LKG</input><br/>
-                            <input type="checkbox" name="grade[]" value="KG">KG</input><br/>
-                            <input type="checkbox" name="grade[]" value="Two">Two</input><br/>
-                            <input type="checkbox" name="grade[]" value="Four">Four</input><br/>
-                            <input type="checkbox" name="grade[]" value="Six">Six</input><br/>
-                            <input type="checkbox" name="grade[]" value="Eight">Eight</input><br/>
-                            <input type="checkbox" name="grade[]" value="Ten">Ten</input><br/>
-                            <input type="checkbox" name="grade[]" value="Twelve">Twelve</input><br/>
+                            <input type="checkbox" name="grade[]" value="LKG" onclick="checkClass(this);">LKG</input>
+                            <br/>
+
+                            <input type="checkbox" name="grade[]" value="KG" onclick="checkClass(this);">KG</input><br/>
+
+                            <input type="checkbox" name="grade[]" value="Two" onclick="checkClass(this);">Two</input>
+                            <br/>
+
+                            <input type="checkbox" name="grade[]" value="Four" onclick="checkClass(this);">Four</input>
+                            <br/>
+
+                            <input type="checkbox" name="grade[]" value="Six" onclick="checkClass(this);">Six</input>
+                            <br/>
+
+                            <input type="checkbox" name="grade[]" value="Eight"
+                                   onclick="checkClass(this);">Eight</input><br/>
+
+                            <input type="checkbox" name="grade[]" value="Ten" onclick="checkClass(this);">Ten</input>
+                            <br/>
+
+                            <input type="checkbox" name="grade[]" value="Twelve"
+                                   onclick="checkClass(this);">Twelve</input><br/>
+
 
                         </div>
 
                     </div>
+
                     <div style="text-align: right">
-                        <button type="submit" class="btn btn-success">Add</button>
+                        <button type="submit" id="registerButton" class="btn btn-success">Add</button>
                     </div>
                 </form>
             </div>
@@ -288,19 +395,19 @@ include "../common/Common.php";
             <div class="modal-body">
                 <form class="form" action="../controller/addSubject.php" method="post">
 
-                        <div class="form-group">
-                            <lable>Class:</lable>
-                            <select class="form-control" name="classID">
-                                <?php
-                                $class = getClass($connection);
-                                while($r = $class->fetch_assoc()){
-                                    ?>
-                                    <option value="<?php echo $r['id']; ?>"><?php echo $r['class']; ?></option>
-                                <?php
-                                }
+                    <div class="form-group">
+                        <lable>Class:</lable>
+                        <select class="form-control" name="classID">
+                            <?php
+                            $class = getClass($connection);
+                            while ($r = $class->fetch_assoc()) {
                                 ?>
-                            </select>
-                        </div>
+                                <option value="<?php echo $r['id']; ?>"><?php echo $r['class']; ?></option>
+                            <?php
+                            }
+                            ?>
+                        </select>
+                    </div>
 
                     <div class="form-group">
                         <lable>Subject:</lable>
@@ -331,9 +438,11 @@ include "../common/Common.php";
                 <h4 class="modal-title">Add Teacher</h4>
             </div>
             <div class="modal-body">
-                <form class="form" action="../controller/teacherController.php" method="post" enctype="multipart/form-data">
+                <form class="form" action="../controller/teacherController.php" method="post"
+                      enctype="multipart/form-data">
 
                     <input type="hidden" name="mode" value="add">
+
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="class">Name: </label>
@@ -342,12 +451,15 @@ include "../common/Common.php";
 
                         <div class="form-group">
                             <label for="class">Contact: </label>
-                            <input class="form-control" placeholder="98********, 98********" type="text" name="contact" required=""/>
+                            <input class="form-control" placeholder="98********, 98********" type="text" name="contact"
+                                   required=""/>
                         </div>
 
                         <div class="form-group">
                             <label for="class">Email: </label>
-                            <input class="form-control" type="email" name="email"/>
+                            <input class="form-control" type="text" id="temail" name="email" onchange="c()"/>
+
+                            <div class="error email">Email already exist</div>
                         </div>
 
                         <div class="form-group">
@@ -361,7 +473,10 @@ include "../common/Common.php";
 
                         <div class="form-group">
                             <label for="class">Username: </label>
-                            <input class="form-control" type="text" name="username" required=""/>
+                            <input class="form-control" type="text" name="username" id="tusername" required=""
+                                   onchange="checkTeacherUsername();"/>
+
+                            <div class="error username">Username already exist</div>
                         </div>
 
                         <div class="form-group">
@@ -388,7 +503,7 @@ include "../common/Common.php";
                     </div>
 
                     <div style="text-align: right">
-                        <button type="submit" class="btn btn-success">Add</button>
+                        <button type="submit" id="registerButton" class="btn btn-success">Add</button>
                     </div>
                 </form>
             </div>
@@ -400,7 +515,8 @@ include "../common/Common.php";
     </div>
 </div>
 
-<nav class="navbar" role="navigation" style="border-radius: 0px; border-bottom: 2px solid #a07789; background-color: wheat;">
+<nav class="navbar" role="navigation"
+     style="border-radius: 0px; border-bottom: 2px solid #a07789; background-color: wheat;">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -409,22 +525,23 @@ include "../common/Common.php";
             <span style="background-color: #ffffff;" class="icon-bar"></span>
             <span style="background-color: #ffffff;" class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" style="font-family: 'Kaushan Script', cursive;" <?php if($_SESSION['role'] == 'Admin'){ ?> href="admin.php" <?php } ?><?php if($_SESSION['role'] == 'Teacher'){ ?> href="teacher.php" <?php } ?>>SMS</a>
+        <a class="navbar-brand"
+           style="font-family: 'Kaushan Script', cursive;" <?php if ($_SESSION['role'] == 'Admin') { ?> href="admin.php" <?php } ?><?php if ($_SESSION['role'] == 'Teacher') { ?> href="teacher.php" <?php } ?>>SMS</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
             <?php
-            if($_SESSION['role'] == 'teacher'){
+            if ($_SESSION['role'] == 'teacher') {
                 ?>
-                <li><a href="teacher.php?id=4">Attendance</a></li>
+                <li><a href="a_teacher.php?id=4">Teachers</a></li>
             <?php
             }
             ?>
 
             <?php
-            if($_SESSION['role'] != 'Parents'){
+            if ($_SESSION['role'] != 'Parents') {
                 ?>
                 <li><a href="admin.php">Home</a></li>
                 <li>
@@ -432,7 +549,7 @@ include "../common/Common.php";
                     <ul class="dropdown-menu">
                         <?php
                         $class = getClass($connection);
-                        while($row = mysqli_fetch_assoc($class)) {
+                        while ($row = mysqli_fetch_assoc($class)) {
                             ?>
                             <li>
                                 <a href="a_student.php?id=<?php echo $row["id"]; ?>">Class <?php echo $row["class"]; ?></a>
@@ -447,13 +564,21 @@ include "../common/Common.php";
             ?>
 
 
-            <li><a href="a_teacher.php">Teachers</a></li>
+            <?php
+            if($_SESSION['role'] == 'Receptionist'){
+                ?>
+                <li><a href="a_teacher.php">Teachers</a></li>
+            <?php
+            }
+            ?>
+
+
             <li>
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Subject<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <?php
                     $class = getClass($connection);
-                    while($row = mysqli_fetch_assoc($class)) {
+                    while ($row = mysqli_fetch_assoc($class)) {
                         ?>
                         <li>
                             <a href="a_subjectList.php?id=<?php echo $row["id"]; ?>">Class <?php echo $row["class"]; ?></a>
@@ -468,7 +593,7 @@ include "../common/Common.php";
                 <ul class="dropdown-menu">
                     <?php
                     $class = getClass($connection);
-                    while($row = mysqli_fetch_assoc($class)) {
+                    while ($row = mysqli_fetch_assoc($class)) {
                         ?>
                         <li>
                             <a href="routine.php?id=<?php echo $row["id"]; ?>">Class <?php echo $row["class"]; ?></a>
@@ -479,27 +604,27 @@ include "../common/Common.php";
                 </ul>
             </li>
             <?php
-                if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin' || $_SESSION['role'] == 'Parents') {
-                    ?>
-                    <li>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Fee<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <?php
-                            $class = getClass($connection);
-                            while($row = mysqli_fetch_assoc($class)) {
-                                ?>
-                                <li>
-                                    <a href="fee.php?id=<?php echo $row["id"]; ?>">Class <?php echo $row["class"]; ?></a>
-                                </li>
-                            <?php
-                            }
+            if ($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin' || $_SESSION['role'] == 'Parents') {
+                ?>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Fee<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <?php
+                        $class = getClass($connection);
+                        while ($row = mysqli_fetch_assoc($class)) {
                             ?>
-                        </ul>
-                    </li>
-                    <?php
-                }
-            if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
-                    echo '<li class="dropdown">
+                            <li>
+                                <a href="fee.php?id=<?php echo $row["id"]; ?>">Class <?php echo $row["class"]; ?></a>
+                            </li>
+                        <?php
+                        }
+                        ?>
+                    </ul>
+                </li>
+            <?php
+            }
+            if ($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin') {
+                echo '<li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Add New<b class="caret"></b></a>
 
                 <div class="dropdown-menu" style="padding: 4px;">
@@ -560,16 +685,17 @@ include "../common/Common.php";
                     </a>
                 </div>
             </li>';
-                }
+            }
 
-            if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
+            if ($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin') {
                 ?>
                 <li>
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Class Performance<b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Class Performance<b
+                            class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <?php
                         $class = getClass($connection);
-                        while($row = mysqli_fetch_assoc($class)) {
+                        while ($row = mysqli_fetch_assoc($class)) {
                             ?>
                             <li>
                                 <a href="classPerform.php?id=<?php echo $row["id"]; ?>">Class <?php echo $row["class"]; ?></a>
@@ -583,24 +709,24 @@ include "../common/Common.php";
                 echo '<li><a href="update.php">Upgrade Class</a></li>';
             }
 
-            if($_SESSION['role'] == 'teacher'){
+            if ($_SESSION['role'] == 'teacher') {
                 echo '<li><a href="t_marks.php">Insert Marks</a></li>';
             }
 
-            if(isset($_SESSION['multiChild'])){
+            if (isset($_SESSION['multiChild'])) {
                 $pid = $_SESSION['user_id'];
                 $parentsInfo = getParentsInfo($pid, $connection);
-                while($row = mysqli_fetch_assoc($parentsInfo)) {
+                while ($row = mysqli_fetch_assoc($parentsInfo)) {
                     $student_id = $row["student_id"];
-                    $student_ids = explode(",",$student_id);
+                    $student_ids = explode(",", $student_id);
                     $number_child = sizeof($student_ids);
                 }
                 ?>
                 <li>
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Select Child<b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Child Profile<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <?php
-                        for($i = 0; $i < $number_child; $i++){
+                        for ($i = 0; $i < $number_child; $i++) {
                             ?>
                             <li>
                                 <a href="a_profile.php?sid=<?php echo $student_ids[$i]; ?>"><?php echo getStudentName($student_ids[$i], $connection); ?></a>
@@ -611,39 +737,54 @@ include "../common/Common.php";
                     </ul>
                 </li>
 
-<!--                <li><a href="studentAttendance.php?id=--><?php //echo $student_ids[$i]; ?><!--">Attendance</a></li>-->
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Attendance<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <?php
+                        for ($i = 0; $i < $number_child; $i++) {
+                            ?>
+                            <li>
+                                <a href="studentAttendance.php?id=<?php echo $student_ids[$i]; ?>"><?php echo getStudentName($student_ids[$i], $connection); ?></a>
+                            </li>
+                        <?php
+                        }
+                        ?>
+                    </ul>
+                </li>
+
+                <!--                <li><a href="studentAttendance.php?id=--><?php //echo $student_ids[$i];
+                ?><!--">Attendance</a></li>-->
 
             <?php
             }
 
-            if(isset($_SESSION['sid'])){
+            if (isset($_SESSION['sid'])) {
                 ?>
                 <li><a href="a_profile.php?sid=<?php echo $_SESSION['sid']; ?>">Profile</a></li>
                 <li><a href="studentAttendance.php?id=<?php echo $_SESSION['sid']; ?>">Attendance</a></li>
             <?php
             }
 
-            if($_SESSION['role'] == 'Parents'){
+            if ($_SESSION['role'] == 'Parents') {
                 echo '<li><a href="#" data-toggle="modal" data-target="#appointmentModal">Make Appointment</a></li>';
             }
 
             ?>
 
 
-
         </ul>
-<!--        <div class="col-sm-3 col-md-3">-->
-<!--            <form class="navbar-form" role="search">-->
-<!--                <div class="input-group">-->
-<!--                    <input type="text" class="form-control" placeholder="Search" name="q">-->
-<!---->
-<!--                    <div class="input-group-btn">-->
-<!--                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i>-->
-<!--                        </button>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </form>-->
-<!--        </div>-->
+        <!--        <div class="col-sm-3 col-md-3">-->
+        <!--            <form class="navbar-form" role="search">-->
+        <!--                <div class="input-group">-->
+        <!--                    <input type="text" class="form-control" placeholder="Search" name="q">-->
+        <!---->
+        <!--                    <div class="input-group-btn">-->
+        <!--                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i>-->
+        <!--                        </button>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </form>-->
+        <!--        </div>-->
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">H! User<b class="caret"></b></a>
@@ -658,5 +799,7 @@ include "../common/Common.php";
     <!-- /.navbar-collapse -->
 </nav>
 <div style="height: 50px;"></div>
+
+
 </body>
 </html>

@@ -6,7 +6,7 @@
  * Time: 11:05 AM
  */
 session_start();
-if($_SESSION['role'] == 'parents'){
+if($_SESSION['role'] == 'Parents'){
 ?>
 <!DOCTYPE html>
 <html>
