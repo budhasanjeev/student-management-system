@@ -24,15 +24,17 @@ if($_SESSION['role'] == "Admin" || $_SESSION['role'] == "sAdmin"){
 
 <div class="container" style="padding: 10px;">
     <div class="col-lg-4">
-        <div class="info-box" style="background-color: #a07789">
-            <div class="col-md-4" style="font-size: 50px;"><span class="glyphicon glyphicon-user"></span></div>
-            <div class="col-md-8">
+        <div class="info-box" style="background-image: url('../img/image.gif');">
+<!--            <div class="col-md-4" style="font-size: 50px;"><span class="glyphicon glyphicon-user"></span></div>-->
+            <div class="overlay-back">
                 <div class="row" style="font-size: 20px;">
-                    Total Students
+                   <h1>Total Students</h1>
                 </div>
                 <div class="row" style="font-size: 18px;"><?php $total = getTotalStudent($connection);
                     while($row = $total->fetch_assoc()){
-                        echo $row['COUNT(*)'];
+                        ?>
+                        <span class="data"><?php echo $row['COUNT(*)']; ?></span>
+                    <?php
                     }
                     ?>
                 </div>
@@ -41,18 +43,19 @@ if($_SESSION['role'] == "Admin" || $_SESSION['role'] == "sAdmin"){
     </div>
 
     <a href="absent.php"><div class="col-lg-4">
-        <div class="info-box" style="background-color: #533443">
-            <div class="col-md-4" style="font-size: 50px;"><span class="glyphicon glyphicon-user"></span></div>
-            <div class="col-md-8">
+        <div class="info-box" style="background-image: url('../img/RESTRICTED_AP51712149_xru65d.jpg');">
+            <div class="overlay-back">
                 <div class="row" style="font-size: 20px;">
-                    Absent Today
+                    <h1>Absent Today</h1>
                 </div>
                 <div class="row" style="font-size: 18px;"><?php $total = getAbsentCount($connection);
 
                         while($row = $total->fetch_assoc()){
                             $count = $row['COUNT(*)'];
                             if($count != 0){
-                                echo $count;
+                                ?>
+                                <span class="data"><?php echo $count; ?></span>
+                                <?php
                             }else{
                                 ?>
                                 <span style="color: red">Attendance not taken</span>
@@ -66,18 +69,19 @@ if($_SESSION['role'] == "Admin" || $_SESSION['role'] == "sAdmin"){
 
 
     <a href="a_appoints.php"><div class="col-lg-4">
-        <div class="info-box" style="background-color: #47666b">
-            <div class="col-md-4" style="font-size: 50px;"><span class="glyphicon glyphicon-user"></span></div>
-            <div class="col-md-8">
+        <div class="info-box" style="background-image: url('../img/appoint.JPG');">
+            <div class="overlay-back">
                 <div class="row" style="font-size: 20px;">
-                    Appoints today
+                    <h1>Appoints today</h1>
                 </div>
                 <div class="row" style="font-size: 18px;">
                     <?php $total = getTodayAppointCount($connection);
                     while($row = $total->fetch_assoc()){
                         $count = $row['COUNT(*)'];
                         if($count != 0){
-                            echo $count;
+                            ?>
+                            <span class="data"><?php echo $count; ?></span>
+                            <?php
                         }else{
                             ?>
                             <span style="color: red">No Appointments Today</span>
@@ -90,9 +94,6 @@ if($_SESSION['role'] == "Admin" || $_SESSION['role'] == "sAdmin"){
         </div>
     </div></a>
 
-    <div class="row" style="padding: 20px; margin-top: 120px;">
-        <img src="../img/ohiocharters1.png" width="100%" height="500px" alt=""/>
-    </div>
 </div>
 
     <?php

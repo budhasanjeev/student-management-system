@@ -4,6 +4,10 @@ body{
     font-family: 'Raleway', sans-serif;
 }
 
+.nav li a{
+    color: #ffffff !important;
+}
+
 .navbar a{
     color: #782d3e;
 }
@@ -49,8 +53,13 @@ body{
 .login-div{
     padding: 60px;
     position: relative;
-    background-color: wheat;
+    background-color: #ffffff;
     /*width: 40%;*/
+    border: 3px dashed #000000;
+}
+
+.dropdown-menu li a{
+    color: #000000 !important;
 }
 
 .option-box{
@@ -107,7 +116,7 @@ body{
 
 
 .info-box{
-    height: 100px;
+    height: 400px;
     padding: 20px;
 }
 
@@ -177,4 +186,15 @@ body a:hover{
     padding: 10px;
     z-index: 2;
     float: right;
+}
+
+.data{
+    font-size: 150px;
+}
+
+.overlay-back{
+    background-color: rgba(121, 85, 72, 0.31);
+    position: relative;
+    width: 100%;
+    padding-left: 20px;
 }

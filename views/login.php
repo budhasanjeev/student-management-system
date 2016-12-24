@@ -18,9 +18,9 @@ if (isset($_POST["login"])){
     $stored_password = "null";
     $role = "null";
     
-    $select_from_user = "SELECT id, password, role FROM user WHERE email = '$email'";
+    $select_from_user = "SELECT id, password, role, username FROM user WHERE email = '$email'";
 
-    $select_from_teacher = "SELECT id, password FROM teacher WHERE email = '$email'";
+    $select_from_teacher = "SELECT id, password, username FROM teacher WHERE email = '$email'";
 
     $result_from_user = $connection->query($select_from_user);
 
@@ -31,13 +31,14 @@ if (isset($_POST["login"])){
         $stored_password = $row['password'];
         $role = $row['role'];
         $user_id = $row['id'];
+        $username = $row['username'];
 
     }else if(mysqli_num_rows($result_from_teacher) > 0){
-
         $row = $result_from_teacher->fetch_assoc();
         $stored_password = $row['password'];
         $role = 'teacher';
         $teacher_id = $row['id'];
+        $username = $row['username'];
     }
 
     if(md5($password) == $stored_password){
@@ -47,25 +48,28 @@ if (isset($_POST["login"])){
             $_SESSION['email'] = $email;
             $_SESSION['role'] = $role;
             $_SESSION['user_id'] = $user_id;
+            $_SESSION['username'] = $username;
             header("Location: admin.php");
         }
         else if($role == "Parents"){
             $_SESSION['email'] = $email;
             $_SESSION['role'] = $role;
             $_SESSION['user_id'] = $user_id;
+            $_SESSION['username'] = $username;
             header("Location: ../controller/c_checkChildren.php");
         }
         else if($role == "Receptionist"){
             $_SESSION['email'] = $email;
             $_SESSION['role'] = $role;
             $_SESSION['user_id'] = $user_id;
-            header("Location: teacher.php");
+            $_SESSION['username'] = $username;
+            header("Location: attendance.php");
         }
         else if($role == "teacher") {
             $_SESSION['email'] = $email;
             $_SESSION['role'] = $role;
             $_SESSION['teacher_id'] = $teacher_id;
-            echo $_SESSION['role'];
+            $_SESSION['username'] = $username;
             header("Location: a_class.php");
 
         }
@@ -83,17 +87,16 @@ if (isset($_POST["login"])){
     <title>Student Management</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../css/style.css"/>
-    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Ultra" rel="stylesheet">
 </head>
 <body style="font-family: 'Kaushan Script', cursive;">
-<div style="height: 100%; width: 100%; display: flex; justify-content: center; align-items: center; position: absolute;">
+<div style="height: 100%; width: 100%; display: flex; justify-content: center; align-items: center; position: absolute; background-color: #f5f5f5;">
 <div style="text-align: center;">
     <div class="container" style="text-align: center;">
 
     </div>
 
     <div style="width: 50%; display: inline-block;">
-        <div class="highlight login-div">
+        <div class="login-div">
             <h3 style="font-family: 'Ultra', serif;">Student Management Portal</h3>
 
             <hr/><br/>
@@ -102,7 +105,7 @@ if (isset($_POST["login"])){
                 <div class="form-group">
                     <label class="glyphicon glyphicon-user col-md-2 login-glyphicon"></label>
                     <div class="col-md-10">
-                        <input type="email" class="form-control" name="email" required="" placeholder="email address"/>
+                        <input type="email" class="form-control" name="email" required="" placeholder="e-mail address"/>
                     </div>
                 </div>
 
@@ -113,7 +116,7 @@ if (isset($_POST["login"])){
                     </div>
                 </div>
 
-                <input class="btn btn-primary btn-block" name="login" type="submit" value="login"/>
+                <input class="btn btn-primary btn-block" style="background-color: #080808"  name="login" type="submit" value="login"/>
             </form>
         </div>
     </div>

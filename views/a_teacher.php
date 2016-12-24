@@ -7,10 +7,10 @@
  */
 session_start();
 
-if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin' || $_SESSION['role'] == 'teacher'){
+if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin' || $_SESSION['role'] == 'teacher' || $_SESSION['role'] == 'Receptionist'){
 include '../config/databaseConnection.php';
 ?>
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html>
 <head lang="en">
     <meta charset="UTF-8">
@@ -26,10 +26,11 @@ include '../config/databaseConnection.php';
     <legend>All teachers</legend>
 
     <?php
-        $objCommon = new Common();
-        $teacherList = $objCommon->getAllTeacher();
+    $objCommon = new Common();
+    $teacherList = $objCommon->getAllTeacher();
     ?>
-    <table class="table table-responsive table-striped table-bordered">
+    <table class="table table-responsive table-striped table-bordered display" id="teacher-table" cellspacing="0"
+           width="100%">
         <thead>
         <th>Photo</th>
         <th>Name</th>
@@ -37,7 +38,14 @@ include '../config/databaseConnection.php';
         <th>Contact</th>
         <th>Address</th>
         <th>Degree</th>
-        <th>Actions</th>
+        <?php
+        if ($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
+            ?>
+            <th>Actions</th>
+        <?php
+        }
+        ?>
+
         </thead>
         <tbody>
 
@@ -51,7 +59,13 @@ include '../config/databaseConnection.php';
                     <td><a href="editTeacher.php?id=<?php echo $teacher['id']; ?>"><?php echo $teacher['contact'] ?></a></td>
                     <td><a href="editTeacher.php?id=<?php echo $teacher['id']; ?>"><?php echo $teacher['address'] ?></a></td>
                     <td><a href="editTeacher.php?id=<?php echo $teacher['id']; ?>"><?php echo $teacher['degree'] ?></a></td>
-                    <td><button class="btn btn-primary" onclick="editTeacher(<?php echo $teacher['id'] ?>);">Edit</button>&nbsp;&nbsp;<button class="btn btn-danger" onclick="deleteTeacher(<?php echo $teacher['id'] ?>);">Delete</button></td>
+                    <?php
+                    if ($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
+                    ?>
+                        <td><button class="btn btn-primary" onclick="editTeacher(<?php echo $teacher['id'] ?>);">Edit</button>&nbsp;&nbsp;<button class="btn btn-danger" onclick="deleteTeacher(<?php echo $teacher['id'] ?>);">Delete</button></td>
+                    <?php
+                    }
+                    ?>
                 </tr>
 
                 <?php
@@ -201,6 +215,8 @@ include '../config/databaseConnection.php';
         }
 
     }
+
+    $('#teacher-table').dataTable();
 </script>
 </body>
 </html>

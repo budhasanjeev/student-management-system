@@ -73,7 +73,7 @@ if($role == "Receptionist") {
                     class="pull-right"><?php echo $month . " " . $year; ?></span></legend>
 
             <form action="../controller/attendanceController.php?id=<?php echo $class_id; ?>" method="post">
-                <table class="table table table-responsive table-bordered table-striped table-fixed">
+                <table class="table table table-responsive table-bordered table-striped table-fixed" id="attendance-table">
                     <thead>
                     <th>Roll no.</th>
                     <th></th>
@@ -150,6 +150,9 @@ if($role == "Receptionist") {
         </div>
     </div>
 
+    <script>
+        $('#attendance-table').dataTable();
+    </script>
     </body>
     </html>
 
