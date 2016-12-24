@@ -60,7 +60,15 @@ if($_SESSION['role'] != 'Receptionist'){
 
     $class = getClassName($class_id, $connection);
     ?>
-    <legend>Fee of Class <?php echo $class; ?><span class="btn btn-success pull-right" data-toggle="modal" data-target="#updateFeeModal"><i class="glyphicon glyphicon-upload"> Update</i></span></legend>
+    <legend>Fee of Class <?php echo $class; ?>
+        <?php
+        if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
+            ?>
+            <span class="btn btn-success pull-right" data-toggle="modal" data-target="#updateFeeModal"><i class="glyphicon glyphicon-upload"> Update</i></span>
+            <?php
+        }
+        ?>
+        </legend>
     <?php
     $objCommon = new Common();
     $fee = $objCommon->getFee($class_id);
@@ -68,7 +76,7 @@ if($_SESSION['role'] != 'Receptionist'){
 //    print_r($fee);
 
     ?>
-    <embed src="../img/<?php echo $fee ?>" style="width:1000px !important; height: 600px"></embed>
+    <embed src="../img/<?php echo $fee ?>" style="width: 100% !important; height: 100%"></embed>
 
 </div>
 
