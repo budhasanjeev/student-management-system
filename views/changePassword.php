@@ -33,5 +33,6 @@ if(isset($_POST['submit'])) {
             $message = "Password Changed";
         } else $message = "Current Password is not correct";
     }
+
     header("Location: admin.php");
 }
