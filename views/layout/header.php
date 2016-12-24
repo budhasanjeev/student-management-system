@@ -354,26 +354,24 @@ include "../common/Common.php";
             <div class="modal-body">
 
 
-                <form name="frmChange" method="post" action="changePassword.php" onSubmit="return validatePassword()">
+                <form class="form" name="frmChange" method="post" action="changePassword.php" onSubmit="return validatePassword()">
                     <div style="width:500px;">
                     <div class="message"><?php if(isset($message)) { echo $message; } ?></div>
                     <table border="0" cellpadding="10" cellspacing="0" width="500" align="center" class="tblSaveForm">
-                        <tr class="tableheader">
-                            <td colspan="2">Change Password</td>
-                        </tr>
-                        <tr>
+                        <tr class="form-group">
                             <td width="40%"><label>Current Password</label></td>
-                            <td width="60%"><input type="password" name="currentPassword" class="txtField"/><span id="currentPassword"  class="required"></span></td>
+                            <td width="60%"><input type="password" name="currentPassword" class="txtField form-control"/><span id="currentPassword"  class="required"></span></td>
                         </tr>
-                        <tr>
+                        <tr class="form-group">
                             <td><label>New Password</label></td>
-                            <td><input type="password" name="newPassword" class="txtField"/><span id="newPassword" class="required"></span></td>
+                            <td><input type="password" name="newPassword" class="txtField form-control"/><span id="newPassword" class="required"></span></td>
                         </tr>
+                        <tr class="form-group">
                         <td><label>Confirm Password</label></td>
-                        <td><input type="password" name="conformPassword" class="txtField"/><span id="conformPassword" class="required"></span></td>
+                        <td><input type="password" name="conformPassword" class="txtField form-control"/><span id="conformPassword" class="required"></span></td>
                         </tr>
-                        <tr>
-                            <td colspan="2"><input type="submit" name="submit" value="Submit" class="btnSubmit"></td>
+                        <tr style="text-align: right;">
+                            <td colspan="2"><input type="submit" name="submit" value="Change" class="btnSubmit btn btn-primary"></td>
                         </tr>
                     </table>
                     </div>

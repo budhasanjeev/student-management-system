@@ -58,6 +58,10 @@ body{
     border: 3px dashed #000000;
 }
 
+.dropdown-menu li a{
+    color: #000000 !important;
+}
+
 .option-box{
     height: 100px;
     display: flex;
@@ -112,7 +116,7 @@ body{
 
 
 .info-box{
-    height: 100px;
+    height: 400px;
     padding: 20px;
 }
 
@@ -182,4 +186,15 @@ body a:hover{
     padding: 10px;
     z-index: 2;
     float: right;
+}
+
+.data{
+    font-size: 150px;
+}
+
+.overlay-back{
+    background-color: rgba(121, 85, 72, 0.31);
+    position: relative;
+    width: 100%;
+    padding-left: 20px;
 }
