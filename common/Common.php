@@ -303,7 +303,7 @@ class Common{
         global $connection;
         $created_date = date("Y-m-d");
         $password = md5('123');
-        $sql = "SELECT class_id FROM routine WHERE class_id='$class_id'";
+        $sql = "SELECT class_id FROM fee WHERE class_id='$class_id'";
         $result1 = mysqli_query($connection,$sql);
 
         if(mysqli_num_rows($result1) >0)

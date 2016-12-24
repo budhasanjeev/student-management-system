@@ -6,7 +6,7 @@
  * Time: 6:39 PM
  */
 session_start();
-
+if($_SESSION['role'] != 'Receptionist'){
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +56,7 @@ session_start();
 
 <div class="container">
     <?php
-    echo $_SESSION['role'];
+
     $class_id = $_GET["id"];
     $class = getClassName($class_id, $connection);
     ?>
@@ -77,3 +77,8 @@ session_start();
 
 </body>
 </html>
+<?php
+}else{
+    header('Location: logout.php');
+}
+?>

@@ -9,7 +9,7 @@ $uploads_dir = '../img';
 
 if(isset($_POST['submit']))
 {
-    $class_id = $_POST["class_id"];
+    $class_id = $_POST['class_id'];
   //  $class = $_POST["class"];
 
     $file = $_FILES['file']['name'];
@@ -58,5 +58,5 @@ else if(isset($_POST['mode'])){
 
 
          <?php
-     }    
+     }
 }
