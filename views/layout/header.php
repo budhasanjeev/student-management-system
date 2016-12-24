@@ -571,13 +571,7 @@ include "../common/Common.php";
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-            <?php
-            if ($_SESSION['role'] == 'teacher') {
-                ?>
-                <li><a href="a_teacher.php?id=4">Teachers</a></li>
-            <?php
-            }
-            ?>
+
 
             <?php
             if ($_SESSION['role'] != 'Parents') {
@@ -602,11 +596,19 @@ include "../common/Common.php";
             }
             ?>
 
+            <?php
+            if ($_SESSION['role'] == 'teacher' || $_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin') {
+                ?>
+                <li><a href="a_teacher.php">Teachers</a></li>
+            <?php
+            }
+            ?>
+
 
             <?php
             if($_SESSION['role'] == 'Receptionist'){
                 ?>
-                <li><a href="a_teacher.php">Teachers</a></li>
+                <li><a href="teacher.php">Teachers</a></li>
             <?php
             }
             ?>

@@ -56,10 +56,11 @@ if($_SESSION['role'] != 'Receptionist'){
 
 <div class="container">
     <?php
+    echo $_SESSION['role'];
     $class_id = $_GET["id"];
     $class = getClassName($class_id, $connection);
     ?>
-        <legend>Routine of Class <?php echo $class; ?><?php if($_SESSION['role'] == "Admin"){
+        <legend>Routine of Class <?php echo $class; ?><?php if($_SESSION['role'] == "Admin" || $_SESSION['role'] == "sAdmin"){
                 ?>
                 <span class="btn btn-success pull-right" data-toggle="modal" data-target="#updateRoutineModal"><i class="glyphicon glyphicon-update"> Update</i></span>
             <?php
