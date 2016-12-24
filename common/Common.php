@@ -316,6 +316,7 @@ class Common{
 
             $add_fee = "INSERT INTO fee (class_id, file) VALUES('$class_id','$file')";
 
+
             $result = mysqli_query($connection, $add_fee);
 
             return $result;
@@ -416,6 +417,7 @@ class Common{
         {
 //        $data['id'] = $row["id"];
 //        $data['class'] = $row["class"];
+
             $data = $row["file"];
 
         }

@@ -75,6 +75,7 @@ if($_SESSION['role'] != 'Receptionist'){
 //    print_r("asdf");
 //    print_r($fee);
 
+
     ?>
     <embed src="../img/<?php echo $fee ?>" style="width: 100% !important; height: 100%"></embed>
 
