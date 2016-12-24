@@ -314,7 +314,9 @@ include "../common/Common.php";
                 <h4 class="modal-title">Change Password</h4>
             </div>
             <div class="modal-body">
-                <form class="form" action="" method="post">
+
+
+                <form class="form" action="changePassword.php" onsubmit="return validatePassword()" method="post">
                     <div class="form-group">
                         <label for="class">Current Password: </label>
                         <input class="form-control" type="text" name="currentPassword" required=""/>
@@ -325,12 +327,13 @@ include "../common/Common.php";
                         <input class="form-control" type="password" name="newPassword" required=""/>
                     </div>
 
+
                     <div class="form-group">
                         <label for="class">Conform Password: </label>
                         <input class="form-control" type="password" name="conformPassword" required=""/>
                     </div>
                     <div style="text-align: right">
-                        <button type="submit" class="btn btn-success">Change</button>
+                        <button type="submit" name="submit" class="btn btn-success">Change</button>
                     </div>
                 </form>
             </div>
@@ -341,7 +344,6 @@ include "../common/Common.php";
 
     </div>
 </div>
-
 
 <!--appointment Modal -->
 <div id="appointmentModal" class="modal fade" role="dialog">
