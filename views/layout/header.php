@@ -29,6 +29,39 @@ include "../common/Common.php";
     <!--    <script type="application/javascript" src="../dataTable/jquery.js"></script>-->
     <script src="../js/custom.js"></script>
     <script src="../js/user.js"></script>
+    <script>
+        function validatePassword() {
+            var currentPassword,newPassword,conformPassword,output = true;
+
+            currentPassword = document.frmChange.currentPassword;
+            newPassword = document.frmChange.newPassword;
+            conformPassword= document.frmChange.conformPassword;
+
+            if(!currentPassword.value) {
+                currentPassword.focus();
+                document.getElementById("currentPassword").innerHTML = "required";
+                output = false;
+            }
+            else if(!newPassword.value) {
+                newPassword.focus();
+                document.getElementById("newPassword").innerHTML = "required";
+                output = false;
+            }
+            else if(!conformPassword.value) {
+                conformPassword.focus();
+                document.getElementById("conformPassword").innerHTML = "required";
+                output = false;
+            }
+            if(newPassword.value != conformPassword.value) {
+                newPassword.value="";
+                conformPassword.value="";
+                newPassword.focus();
+                document.getElementById("conformPassword").innerHTML = "not same";
+                output = false;
+            }
+            return output;
+        }
+    </script>
 
 
     <link rel="stylesheet" href="../css/bootstrap.min.css"/>
@@ -314,25 +347,32 @@ include "../common/Common.php";
                 <h4 class="modal-title">Change Password</h4>
             </div>
             <div class="modal-body">
-                <form class="form" action="" method="post">
-                    <div class="form-group">
-                        <label for="class">Current Password: </label>
-                        <input class="form-control" type="text" name="currentPassword" required=""/>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="class">New Password: </label>
-                        <input class="form-control" type="password" name="newPassword" required=""/>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="class">Conform Password: </label>
-                        <input class="form-control" type="password" name="conformPassword" required=""/>
+                <form name="frmChange" method="post" action="" onSubmit="return validatePassword()">
+                    <div style="width:500px;">
+                    <div class="message"><?php if(isset($message)) { echo $message; } ?></div>
+                    <table border="0" cellpadding="10" cellspacing="0" width="500" align="center" class="tblSaveForm">
+                        <tr class="tableheader">
+                            <td colspan="2">Change Password</td>
+                        </tr>
+                        <tr>
+                            <td width="40%"><label>Current Password</label></td>
+                            <td width="60%"><input type="password" name="currentPassword" class="txtField"/><span id="currentPassword"  class="required"></span></td>
+                        </tr>
+                        <tr>
+                            <td><label>New Password</label></td>
+                            <td><input type="password" name="newPassword" class="txtField"/><span id="newPassword" class="required"></span></td>
+                        </tr>
+                        <td><label>Confirm Password</label></td>
+                        <td><input type="password" name="conformPassword" class="txtField"/><span id="conformPassword" class="required"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input type="submit" name="submit" value="Submit" class="btnSubmit"></td>
+                        </tr>
+                    </table>
                     </div>
-                    <div style="text-align: right">
-                        <button type="submit" class="btn btn-success">Change</button>
-                    </div>
-                </form>
+                    </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -341,7 +381,6 @@ include "../common/Common.php";
 
     </div>
 </div>
-
 
 <!--appointment Modal -->
 <div id="appointmentModal" class="modal fade" role="dialog">
