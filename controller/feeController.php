@@ -55,6 +55,8 @@ else if(isset($_POST['mode'])){
              window.location.href='../views/fee.php?id=<?php echo $class_id ?>';
          </script>
 
+
+
          <?php
      }    
 }
