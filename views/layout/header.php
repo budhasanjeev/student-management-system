@@ -73,6 +73,7 @@ include "../common/Common.php";
     <script type="text/javascript">
         function checkClass(event) {
             var classd = event.value;
+            var class_d = '#'+classd;
             if ($(event).is(':checked')) {
                 $.ajax({
                     type: 'POST',
@@ -80,18 +81,25 @@ include "../common/Common.php";
                     data: 'username=' + classd,
                     success: function (data) {
                         var jsonData = JSON.parse(data);
-                        if (jsonData.message == "success") {
-                            alert('asdf');
-                            $( "#one" ).append( "<p>Test</p>" );
-                            $("#registerButton").prop('disabled', true);
-                        }
 
+                        if (jsonData.message == "success") {
+//                            var pTag = '<p id="someMessage">Test</p>';
+//                            $(event).after(pTag);
+//                            $("#registerButton").prop('disabled', true);
+//                            $("#option").prop('disabled', true);
+                            alert('Class already exists');
+                            $(class_d).attr('checked',false);
+                        }
                     }
                 });
             } else {
-//                $("#className").attr('style', 'border: 1px solid blue');
+                $("#className").attr('style', 'border: 1px solid blue');
                 $(".className").attr('style', 'display: none;');
-                $("#registerButton").prop('disabled', false);
+                if($("#someMessage").length != 0){
+                    $("#registerButton").prop('disabled', false);
+                    $("#option").prop('disabled', false);
+                }
+                $("#someMessage").remove();
             }
         }
 
@@ -274,53 +282,52 @@ include "../common/Common.php";
                         <legend>Class</legend>
 
                         <div class="col-md-6">
-                            <input type="checkbox" name="grade[]" value="Nursery"
-                                   onclick="checkClass(this);">Nursery</input><br/>
-                            <input type="checkbox" name="grade[]" value="UKG" onclick="checkClass(this);">UKG</input>
+                            Nursery <input type="checkbox" name="grade[]" value="Nursery" onclick="checkClass(this);" id="Nursery"/>
                             <br/>
-
-                            <input type="checkbox" name="grade[]" value="One" id="one" onclick="checkClass(this);">One</input>
+                            UKG <input type="checkbox" name="grade[]" value="UKG" onclick="checkClass(this);" id="UKG"/>
                             <br/>
-
-                            <input type="checkbox" name="grade[]" value="Three"
-                                   onclick="checkClass(this);">Three</input><br/>
-
-                            <input type="checkbox" name="grade[]" value="Five" onclick="checkClass(this);">Five</input>
+                            One
+                            <input type="checkbox" name="grade[]" value="One" id="One" onclick="checkClass(this);"/>
                             <br/>
-                            <input type="checkbox" name="grade[]" value="Seven"
-                                   onclick="checkClass(this);">Seven</input><br/>
-
-                            <input type="checkbox" name="grade[]" value="Nine" onclick="checkClass(this);">Nine</input>
+                            Three
+                            <input type="checkbox" name="grade[]" value="Three" onclick="checkClass(this);" id="Three"/><br/>
+                            Five
+                            <input type="checkbox" name="grade[]" value="Five" onclick="checkClass(this);" id="Five"/>
                             <br/>
-                            <input type="checkbox" name="grade[]" value="Eleven"
-                                   onclick="checkClass(this);">Eleven</input><br/>
+                            Seven
+                            <input type="checkbox" name="grade[]" value="Seven" onclick="checkClass(this);" id="Seven"><br/>
+                            Nine
+                            <input type="checkbox" name="grade[]" value="Nine" onclick="checkClass(this);" id="Nine" />
+                            <br/>
+                            Eleven
+                            <input type="checkbox" name="grade[]" value="Eleven" onclick="checkClass(this);" id="Eleven"/><br/>
 
 
 
                         </div>
                         <div class="col-md-6">
-                            <input type="checkbox" name="grade[]" value="LKG" onclick="checkClass(this);">LKG</input>
+                            LKG
+                            <input type="checkbox" name="grade[]" value="LKG" onclick="checkClass(this);" id="LKG"/>
                             <br/>
-
-                            <input type="checkbox" name="grade[]" value="KG" onclick="checkClass(this);">KG</input><br/>
-
-                            <input type="checkbox" name="grade[]" value="Two" onclick="checkClass(this);">Two</input>
+                            KG
+                            <input type="checkbox" name="grade[]" value="KG" onclick="checkClass(this);" id="KG"/>
                             <br/>
-
-                            <input type="checkbox" name="grade[]" value="Four" onclick="checkClass(this);">Four</input>
+                            Two
+                            <input type="checkbox" name="grade[]" value="Two" onclick="checkClass(this);" id="Two"/>
                             <br/>
-
-                            <input type="checkbox" name="grade[]" value="Six" onclick="checkClass(this);">Six</input>
+                            Four
+                            <input type="checkbox" name="grade[]" value="Four" onclick="checkClass(this);" id="Four"/>
                             <br/>
-
-                            <input type="checkbox" name="grade[]" value="Eight"
-                                   onclick="checkClass(this);">Eight</input><br/>
-
-                            <input type="checkbox" name="grade[]" value="Ten" onclick="checkClass(this);">Ten</input>
+                            Six
+                            <input type="checkbox" name="grade[]" value="Six" onclick="checkClass(this);" id="Six"/>
                             <br/>
-
-                            <input type="checkbox" name="grade[]" value="Twelve"
-                                   onclick="checkClass(this);">Twelve</input><br/>
+                            Eight
+                            <input type="checkbox" name="grade[]" value="Eight" onclick="checkClass(this);" id="Eight"/><br/>
+                            Ten
+                            <input type="checkbox" name="grade[]" value="Ten" onclick="checkClass(this);" id="Ten"/>
+                            <br/>
+                            Twelve
+                            <input type="checkbox" name="grade[]" value="Twelve" onclick="checkClass(this);" id="Twelve"/><br/>
 
 
                         </div>
