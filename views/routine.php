@@ -69,7 +69,7 @@ if($_SESSION['role'] != 'Receptionist'){
     $objCommon = new Common();
     $routine = $objCommon->getRoutine($class_id);
     ?>
-    <embed src="../img/<?php echo $routine['file'] ?>" style="width:1000px !important; height: 600px"></embed>
+    <embed src="../img/<?php echo $routine['file'] ?>" style="width:85% !important; height: 100%; position: absolute;"></embed>
 
 
 

@@ -77,7 +77,7 @@ if($_SESSION['role'] != 'Receptionist'){
 
 
     ?>
-    <embed src="../img/<?php echo $fee ?>" style="width: 100% !important; height: 100%; position: absolute;"></embed>
+    <embed src="../img/<?php echo $fee ?>" style="width: 85% !important; height: 100%; position: absolute;"></embed>
 
 </div>
 

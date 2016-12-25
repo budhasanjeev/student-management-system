@@ -86,8 +86,8 @@ session_start();
 
     <div class="col-md-9" style="padding-left: 50px;">
         <ul class="nav nav-tabs nav-justified">
-            <li class="active"><a data-toggle="tab" href="#perform">Performance</a></li>
-            <li><a data-toggle="tab" href="#Attendance">Attendance</a></li>
+            <li class="active"><a data-toggle="tab" href="#perform" style="color: #000000 !important;">Performance</a></li>
+            <li><a data-toggle="tab" href="#Attendance" style="color: #000000 !important;">Attendance</a></li>
         </ul>
 
         <div class="tab-content">
