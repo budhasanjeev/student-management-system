@@ -51,7 +51,7 @@ class Common{
         try{
             include '../Classes/PHPExcel/IOFactory.php';
 
-            $objPHPExcel = PHPExcel_IOFactory::load("../excel_files/$file_name");
+            $objPHPExcel = PHPExcel_IOFactory::load("../excelFiles/$file_name");
         }catch (Exception $e) {
             die('Error loading file "' . pathinfo($student_record_temp, PATHINFO_BASENAME) . '": ' . $e->getMessage());
         }

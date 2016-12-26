@@ -16,6 +16,7 @@ if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
 <head lang="en">
     <meta charset="UTF-8">
     <title>Student Management</title>
+
     <script src="../js/student.js"></script>
 </head>
 <body>
@@ -33,31 +34,31 @@ include 'layout/header.php';
         <a href="../controller/downloadController.php?link=sample_excel.xlsx" class="btn btn-block btn-primary">Download Excel Sample</a>
     </div>
     <div class="col-md-4">
-        <a href="" class="btn btn-block btn-primary">Upload Excel</a>
+        <button class="btn btn-block btn-primary" onclick="uploadExcel();">Upload Excel</button>
     </div>
     </div>
 
-    <?php
-    $email = $_SESSION['email'];
-    $role = $_SESSION['role'];
-
-    if(isset($_SESSION['create_student'])){
-        if($_SESSION['create_student'] == 'success'){
-            echo '<script>
-                    displayMessage("Successfully completed","success");
-                </script>';
-        }
-        else if($_SESSION['create_student'] == 'error'){
-            echo '<script>
-                    displayMessage("failed to complete","error");
-                </script>';
-        }
-    }
-    session_unset();
-    $_SESSION['email'] = $email;
-    $_SESSION['role'] = $role;
-
-    ?>
+<!--    --><?php
+//    $email = $_SESSION['email'];
+//    $role = $_SESSION['role'];
+//
+//    if(isset($_SESSION['create_student'])){
+//        if($_SESSION['create_student'] == 'success'){
+//            echo '<script>
+//                    displayMessage("Successfully completed","success");
+//                </script>';
+//        }
+//        else if($_SESSION['create_student'] == 'error'){
+//            echo '<script>
+//                    displayMessage("failed to complete","error");
+//                </script>';
+//        }
+//    }
+//    session_unset();
+//    $_SESSION['email'] = $email;
+//    $_SESSION['role'] = $role;
+//
+//    ?>
 
     <table class="table table-responsive table-bordered table-striped">
         <thead  style="font-size: 15px;">
@@ -117,7 +118,46 @@ include 'layout/header.php';
     </table>
 </div>
 
+<div id="upload-excel" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Upload Excel</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form" action="../controller/studentController.php" method="post" enctype="multipart/form-data">
+
+                    <input type="hidden" name="mode" value="excel">
+                    <div class="form-group">
+                        <label for="class">File : </label>
+                        <input class="form-control" type="file" name="student_excel" required=""/>
+                    </div>
+
+                    <div style="text-align: right">
+                        <button type="submit" class="btn btn-success">Save Changes</button>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 </body>
+<script>
+    function uploadExcel(){
+
+        $('#upload-excel').modal();
+
+    }
+</script>
 </html>
 <?php
 }else{
