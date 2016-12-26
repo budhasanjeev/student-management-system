@@ -26,11 +26,14 @@ include 'layout/header.php';
 <div class="container">
 
     <div class="add-btn-div">
-    <div class="col-md-6">
-        <a href="studentForm.php" class="btn btn-block btn-primary">Form to add student</a>
+    <div class="col-md-4">
+        <a href="studentForm.php" class="btn btn-block btn-primary">Add Student Form</a>
     </div>
-    <div class="col-md-6">
-        <a href="" class="btn btn-block btn-primary">Excell to add student</a>
+    <div class="col-md-4">
+        <a href="../controller/downloadController.php?link=sample_excel.xlsx" class="btn btn-block btn-primary">Download Excel Sample</a>
+    </div>
+    <div class="col-md-4">
+        <a href="" class="btn btn-block btn-primary">Upload Excel</a>
     </div>
     </div>
 
