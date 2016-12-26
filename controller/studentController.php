@@ -21,11 +21,13 @@ if(isset($_POST['mode'])){
         $ext = pathinfo($student_record, PATHINFO_EXTENSION);
 
         $file_name = rand(0,9).'.'.$ext;
-        move_uploaded_file($student_record_temp, "../excel_files/$file_name");
+        move_uploaded_file($student_record_temp, "../excelFiles/$file_name");
 
         $result = $objCommon->createStudentList($file_name,$student_record_temp);
 
-        
+
+        header('Location:../views/student.php');
+
     } else if($_POST['mode']=='add'){
 
         $std_id = $_POST['student_id'];
