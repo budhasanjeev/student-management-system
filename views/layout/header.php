@@ -282,53 +282,83 @@ include "../common/Common.php";
                         <legend>Class</legend>
 
                         <div class="col-md-6">
-                            Nursery <input type="checkbox" name="grade[]" value="Nursery" onclick="checkClass(this);" id="Nursery"/>
-                            <br/>
-                            UKG <input type="checkbox" name="grade[]" value="UKG" onclick="checkClass(this);" id="UKG"/>
-                            <br/>
-                            One
-                            <input type="checkbox" name="grade[]" value="One" id="One" onclick="checkClass(this);"/>
-                            <br/>
-                            Three
-                            <input type="checkbox" name="grade[]" value="Three" onclick="checkClass(this);" id="Three"/><br/>
-                            Five
-                            <input type="checkbox" name="grade[]" value="Five" onclick="checkClass(this);" id="Five"/>
-                            <br/>
-                            Seven
-                            <input type="checkbox" name="grade[]" value="Seven" onclick="checkClass(this);" id="Seven"><br/>
-                            Nine
-                            <input type="checkbox" name="grade[]" value="Nine" onclick="checkClass(this);" id="Nine" />
-                            <br/>
-                            Eleven
-                            <input type="checkbox" name="grade[]" value="Eleven" onclick="checkClass(this);" id="Eleven"/><br/>
+                            <table>
+                            <tr>
+                                <td><input type="checkbox" name="grade[]" value="Nursery" onclick="checkClass(this);" id="Nursery"/></td>
+                                <td>Nursery</td>
+                            </tr>
+                                <tr>
+                                    <td><input type="checkbox" name="grade[]" value="UKG" onclick="checkClass(this);" id="UKG"/></td>
+                                    <td>UKG</td>
+                                </tr>
 
+                                <tr>
+                                    <td><input type="checkbox" name="grade[]" value="One" id="One" onclick="checkClass(this);"/></td>
+                                    <td>One</td>
+                                </tr>
 
+                                <tr>
+                                    <td><input type="checkbox" name="grade[]" value="Three" onclick="checkClass(this);" id="Three"/></td>
+                                    <td>Three</td>
+                                </tr>
+
+                                <tr>
+                                    <td><input type="checkbox" name="grade[]" value="Five" onclick="checkClass(this);" id="Five"/></td>
+                                    <td>Five</td>
+                                </tr>
+
+                                <tr>
+                                    <td><input type="checkbox" name="grade[]" value="Seven" onclick="checkClass(this);" id="Seven"><br/></td>
+                                    <td>Seven</td>
+                                </tr>
+
+                                <tr>
+                                    <td><input type="checkbox" name="grade[]" value="Nine" onclick="checkClass(this);" id="Nine" /></td>
+                                    <td>Nine</td>
+                                </tr>
+
+                                <tr>
+                                    <td><input type="checkbox" name="grade[]" value="Eleven" onclick="checkClass(this);" id="Eleven"/><br/></td>
+                                    <td>Eleven</td>
+                                </tr>
+                            </table>
 
                         </div>
                         <div class="col-md-6">
-                            LKG
-                            <input type="checkbox" name="grade[]" value="LKG" onclick="checkClass(this);" id="LKG"/>
-                            <br/>
-                            KG
-                            <input type="checkbox" name="grade[]" value="KG" onclick="checkClass(this);" id="KG"/>
-                            <br/>
-                            Two
-                            <input type="checkbox" name="grade[]" value="Two" onclick="checkClass(this);" id="Two"/>
-                            <br/>
-                            Four
-                            <input type="checkbox" name="grade[]" value="Four" onclick="checkClass(this);" id="Four"/>
-                            <br/>
-                            Six
-                            <input type="checkbox" name="grade[]" value="Six" onclick="checkClass(this);" id="Six"/>
-                            <br/>
-                            Eight
-                            <input type="checkbox" name="grade[]" value="Eight" onclick="checkClass(this);" id="Eight"/><br/>
-                            Ten
-                            <input type="checkbox" name="grade[]" value="Ten" onclick="checkClass(this);" id="Ten"/>
-                            <br/>
-                            Twelve
-                            <input type="checkbox" name="grade[]" value="Twelve" onclick="checkClass(this);" id="Twelve"/><br/>
-
+                            <table>
+                                <tr>
+                                    <td><input type="checkbox" name="grade[]" value="LKG" onclick="checkClass(this);" id="LKG"/></td>
+                                    <td>LKG</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" name="grade[]" value="KG" onclick="checkClass(this);" id="KG"/></td>
+                                    <td>UKG</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" name="grade[]" value="Two" onclick="checkClass(this);" id="Two"/></td>
+                                    <td>Two</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" name="grade[]" value="Four" onclick="checkClass(this);" id="Four"/></td>
+                                    <td>Four</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" name="grade[]" value="Six" onclick="checkClass(this);" id="Six"/></td>
+                                    <td>Six</td>
+                                </tr>
+                                <tr>
+                                <td><input type="checkbox" name="grade[]" value="Eight" onclick="checkClass(this);" id="Eight"/></td>
+                                    <td>Eight</td>
+                                </tr>
+                                <tr>
+                                <td><input type="checkbox" name="grade[]" value="Ten" onclick="checkClass(this);" id="Ten"/></td>
+                                    <td>Ten</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" name="grade[]" value="Twelve" onclick="checkClass(this);" id="Twelve"/></td>
+                                    <td>Twelve</td>
+                                </tr>
+                            </table>
 
                         </div>
 
@@ -517,6 +547,13 @@ include "../common/Common.php";
                         </div>
 
 
+                        <div class="form-group">
+                            <label for="class">Joined on: </label>
+                            <input class="form-control" type="date" name="join_on" required=""/>
+                        </div>
+
+
+
                     </div>
                     <div class="col-md-6">
 
@@ -547,16 +584,13 @@ include "../common/Common.php";
                         </div>
 
                         <div class="form-group">
-                            <label for="class">Joined on: </label>
-                            <input class="form-control" type="date" name="join_on" required=""/>
+                            <label for="class">Photo: </label>
+                            <input type="file" name="photo" required=""/>
                         </div>
 
                     </div>
 
-                    <div class="form-group">
-                        <label for="class">Photo: </label>
-                        <input type="file" name="photo" required=""/>
-                    </div>
+
 
                     <div style="text-align: right">
                         <button type="submit" id="registerButton" class="btn btn-success">Add</button>

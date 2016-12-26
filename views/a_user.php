@@ -144,6 +144,7 @@ include '../config/databaseConnection.php';
     <?php
     $email = $_SESSION['email'];
     $role = $_SESSION['role'];
+    $username = $_SESSION['username'];
 
     if(isset($_SESSION['create_user'])){
         if($_SESSION['create_user'] == 'success'){
@@ -161,6 +162,7 @@ include '../config/databaseConnection.php';
 
     $_SESSION['email'] = $email;
     $_SESSION['role'] = $role;
+    $_SESSION['username'] = $username;
     ?>
 
     <div>

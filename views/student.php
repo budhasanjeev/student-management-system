@@ -7,8 +7,8 @@
  */
 //include '../common/Common.php'
 session_start();
-if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
 
+if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
 ?>
 
 <!DOCTYPE html>
@@ -37,6 +37,7 @@ include 'layout/header.php';
     <?php
     $email = $_SESSION['email'];
     $role = $_SESSION['role'];
+    $username = $_SESSION['username'];
 
     if(isset($_SESSION['create_student'])){
         if($_SESSION['create_student'] == 'success'){
@@ -53,6 +54,7 @@ include 'layout/header.php';
     session_unset();
     $_SESSION['email'] = $email;
     $_SESSION['role'] = $role;
+    $_SESSION['username'] = $username;
 
     ?>
 
