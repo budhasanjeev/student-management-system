@@ -410,6 +410,10 @@ function deleteSubject($id, $connection)
 {
     $delete = "DELETE FROM `subject` WHERE `id` = $id";
     $connection->query($delete);
+    $delete = "DELETE FROM `teacher_subject` WHERE `subject_id` = $id";
+    $connection->query($delete);
+    $delete = "DELETE FROM `marks` WHERE `subject_id` = $id";
+    $connection->query($delete);
 }
 
 function validateUsername($username, $connection){

@@ -32,6 +32,9 @@ while($row = $classStudent->fetch_assoc()){
 for($i = 0; $i < count($student_array); $i++){
     $status = $_POST["$student_array[$i]"];
 //    echo $student_array[$i]." ".$status;
+    if($status == ''){
+        $status = 'present';
+    }
     addAttendance($return_class, $student_array[$i], $month, $day, $year, $status, $connection);
 }
 

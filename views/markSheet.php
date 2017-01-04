@@ -109,7 +109,7 @@ $student = $studentInfo->fetch_assoc();
                 }
                 ?></strong></td>
             <td colspan="2"><strong>Percentage</strong></td>
-            <td><?php echo $per."%"; ?></td>
+            <td><?php echo round($per,2)."%"; ?></td>
         </tr>
         </tbody>
     </table>

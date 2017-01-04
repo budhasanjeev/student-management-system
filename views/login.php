@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Student Management</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body style="font-family: 'Kaushan Script', cursive;">
 
 <?php
 /**
@@ -63,7 +72,7 @@ if (isset($_POST["login"])){
             $_SESSION['role'] = $role;
             $_SESSION['user_id'] = $user_id;
             $_SESSION['username'] = $username;
-            header("Location: attendance.php");
+            header("Location: recp.php");
         }
         else if($role == "teacher") {
             $_SESSION['email'] = $email;
@@ -74,21 +83,20 @@ if (isset($_POST["login"])){
 
         }
     }else{
-        echo "<h5 style='text-align: center; background-color: red; color: #ffffff;'>user not found</h5>";
+        ?>
+        <script>
+
+            alert('sadf');
+            span.style.display="block"
+
+
+        </script>
+<?php
     }
 }
 
 ?>
 
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>Student Management</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="../css/style.css"/>
-</head>
-<body style="font-family: 'Kaushan Script', cursive;">
 <div style="height: 100%; width: 100%; display: flex; justify-content: center; align-items: center; position: absolute; background-color: #f5f5f5;">
 <div style="text-align: center;">
     <div class="container" style="text-align: center;">
@@ -99,7 +107,8 @@ if (isset($_POST["login"])){
         <div class="login-div">
             <h3 style="font-family: 'Ultra', serif;">Student Management Portal</h3>
 
-            <hr/><br/>
+            <hr/>
+            <span class="error" id="err" style="z-index: 100;">Username Not Found</span><br/>
             <form class="form-horizontal"  method="post" action="">
                 <!--        <legend><h2>System Login</h2></legend>-->
                 <div class="form-group">
@@ -123,5 +132,7 @@ if (isset($_POST["login"])){
     </div>
 </div>
 
+
 </body>
+
 </html>

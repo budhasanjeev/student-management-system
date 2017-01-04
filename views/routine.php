@@ -6,7 +6,7 @@
  * Time: 6:39 PM
  */
 session_start();
-if($_SESSION['role'] != 'Receptionist'){
+if(1){
 ?>
 
 <!DOCTYPE html>

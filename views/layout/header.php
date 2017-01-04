@@ -650,6 +650,21 @@ include "../common/Common.php";
             <?php
             if ($_SESSION['role'] == 'teacher' || $_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin') {
                 ?>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Class<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <?php
+                        $class = getClass($connection);
+                        while ($row = mysqli_fetch_assoc($class)) {
+                            ?>
+                            <li>
+                                <a href="a_student.php?id=<?php echo $row["id"]; ?>">Class <?php echo $row["class"]; ?></a>
+                            </li>
+                        <?php
+                        }
+                        ?>
+                    </ul>
+                </li>
                 <li><a href="a_teacher.php">Teachers</a></li>
             <?php
             }

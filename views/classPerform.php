@@ -66,7 +66,7 @@ $student_id = $_GET['id'];
             }
             $per = ($totalObtained/$totalFull)*100;
             $stdArray[$std['id']] = $per;
-            echo $per;
+            echo round($per,2);
             ?>
             </td>
             <?php
@@ -95,9 +95,9 @@ $student_id = $_GET['id'];
         <th>Lowest</th>
         </thead>
         <tr>
-            <td><?php echo $max ?></td>
-            <td><?php echo $avg ?></td>
-            <td><?php echo $min ?></td>
+            <td><?php echo round($max,2); ?></td>
+            <td><?php echo round($avg,2); ?></td>
+            <td><?php echo round($min,2); ?></td>
         </tr>
     </table>
 </div>

@@ -203,3 +203,7 @@ body a:hover{
 .nav{
     font-size: 15px;
 }
+
+.dis{
+    display: block !important;
+}

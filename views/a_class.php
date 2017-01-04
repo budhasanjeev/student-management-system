@@ -7,7 +7,7 @@
  */
 session_start();
 
-if($_SESSION['role'] != 'parents'){
+if($_SESSION['role'] != 'parents' || $_SESSION['role'] != 'Receptionist'){
 ?>
 
 

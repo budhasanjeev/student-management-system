@@ -60,8 +60,21 @@ if($role == "Receptionist") {
                 $class = getClass($connection);
                 while ($row = $class->fetch_assoc()) {
                     ?>
-                    <li>
-                        <a href="teacher.php?id=<?php echo $row["id"]; ?>"><?php echo $row["class"]; ?></a>
+                    <li style="position: relative">
+                        <a href="teacher.php?id=<?php echo $row["id"]; ?>">
+                            <?php
+                            $status = checkAttendance($row["id"], $connection);
+                            if($status == "done"){
+                                ?>
+                                <div style="left: 0; top: 0; height: 35px; width: 10px; position: absolute; color: #ffffff; background-color: green;"></div>
+                            <?php
+                            }else{
+                                ?>
+                                <div style="left: 0; top: 0; height: 35px;  width: 10px; position: absolute; color: #ffffff; background-color: red;"></div>
+                            <?php
+                            }
+                            ?>
+                            <?php echo $row["class"]; ?></a>
                     </li>
                 <?php
                 }
