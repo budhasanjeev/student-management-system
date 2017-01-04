@@ -39,6 +39,13 @@ if($_SESSION['role'] != 'parents'){
             <th>Address</th>
             <th>Contact Number</th>
             <th>roll.no</th>
+            <?php
+            if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
+                ?>
+                <th>Action</th>
+                <?php
+            }
+            ?>
         </tr>
         </thead>
         <tbody>
@@ -54,6 +61,20 @@ if($_SESSION['role'] != 'parents'){
                     <td style="vertical-align: middle"><?php echo $row["address"] ?></td>
                     <td style="vertical-align: middle"><?php echo $row["contact_number"] ?></td>
                     <td style="vertical-align: middle"><?php echo $row["roll_number"]; ?></td>
+                    <?php
+                    if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
+                        ?>
+                        <td style="vertical-align: middle">
+                            <form action="../controller/studentController.php" method="post">
+                                <input type="hidden" name="mode" value="edit">
+                                <input type="hidden" name="id" value="<?php echo $row['id'] ?>">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-edit"></span></button>
+                            </form>
+                            <button class="btn btn-default" onclick="deleteStudent(<?php echo $row['id'] ?>)"><span class="glyphicon glyphicon-trash"></span></button>
+                        </td>
+                        <?php
+                    }
+                    ?>
                 </tr>
 
             <?php

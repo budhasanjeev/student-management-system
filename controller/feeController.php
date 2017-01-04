@@ -22,7 +22,7 @@ if(isset($_POST['submit']))
         ?>
 
         <script>
-            alert('successfully uploaded');
+//            alert('successfully uploaded');
             window.location.href='../views/admin.php?success';
         </script>
 
@@ -51,7 +51,7 @@ else if(isset($_POST['mode'])){
          ?>
 
          <script>
-             alert('successfully updated');
+//             alert('successfully updated');
              window.location.href='../views/fee.php?id=<?php echo $class_id ?>';
          </script>
 

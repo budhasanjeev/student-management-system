@@ -72,12 +72,9 @@ if($_SESSION['role'] != 'Receptionist'){
     <?php
     $objCommon = new Common();
     $fee = $objCommon->getFee($class_id);
-//    print_r("asdf");
-//    print_r($fee);
-
 
     ?>
-    <embed src="../img/<?php echo $fee ?>" style="width: 85% !important; height: 100%; position: absolute;"></embed>
+    <embed src="../img/<?php echo $fee ?>" style="width: 85% !important; background-color: #ffffff !important; height: 100%; position: absolute;"></embed>
 
 </div>
 
