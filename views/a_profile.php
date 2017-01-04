@@ -35,7 +35,7 @@ session_start();
 
     if ($_SESSION['role'] == 'Parents') {
        $AStat = getStudentAttendanceStatus($sid, $connection);
-        if($AStat != 'present'){
+        if($AStat == 'absent' || $AStat == 'leave'){
             ?>
             <div class="notif"><?php echo $AStat; ?> today!</div>
     <?php

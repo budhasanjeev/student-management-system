@@ -335,6 +335,7 @@ class Common{
         return $result;
     }
 
+
     public function createUser($firstName,$lastName,$username,$role,$emailAddress,$student_id,$image){
 
         global $connection;

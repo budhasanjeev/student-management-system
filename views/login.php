@@ -5,6 +5,7 @@
     <title>Student Management</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../css/style.css"/>
+    <script src="../js/jquery-1.12.4.min.js"></script>
 </head>
 <body style="font-family: 'Kaushan Script', cursive;">
 
@@ -26,7 +27,7 @@ if (isset($_POST["login"])){
     $password = $_POST['password'];
     $stored_password = "null";
     $role = "null";
-    
+
     $select_from_user = "SELECT id, password, role, username FROM user WHERE email = '$email'";
 
     $select_from_teacher = "SELECT id, password, username FROM teacher WHERE email = '$email'";
@@ -85,50 +86,49 @@ if (isset($_POST["login"])){
     }else{
         ?>
         <script>
-
-            alert('sadf');
-            span.style.display="block"
-
-
+            $(function(){
+                $("#err").removeClass("hide");
+            });
         </script>
-<?php
+    <?php
     }
 }
 
 ?>
 
 <div style="height: 100%; width: 100%; display: flex; justify-content: center; align-items: center; position: absolute; background-color: #f5f5f5;">
-<div style="text-align: center;">
-    <div class="container" style="text-align: center;">
+    <div style="text-align: center;">
+        <div class="container" style="text-align: center;">
 
-    </div>
-
-    <div style="width: 50%; display: inline-block;">
-        <div class="login-div">
-            <h3 style="font-family: 'Ultra', serif;">Student Management Portal</h3>
-
-            <hr/>
-            <span class="error" id="err" style="z-index: 100;">Username Not Found</span><br/>
-            <form class="form-horizontal"  method="post" action="">
-                <!--        <legend><h2>System Login</h2></legend>-->
-                <div class="form-group">
-                    <label class="glyphicon glyphicon-user col-md-2 login-glyphicon"></label>
-                    <div class="col-md-10">
-                        <input type="email" class="form-control" name="email" required="" placeholder="e-mail address"/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="glyphicon glyphicon-pencil col-md-2 login-glyphicon" for=""></label>
-                    <div class="col-md-10">
-                        <input type="password" class="form-control" name="password" required="" placeholder="password"/>
-                    </div>
-                </div>
-
-                <input class="btn btn-primary btn-block" style="background-color: #080808"  name="login" type="submit" value="login"/>
-            </form>
         </div>
-    </div>
+
+        <div style="width: 50%; display: inline-block;">
+            <div class="login-div">
+                <h3 style="font-family: 'Ultra', serif;">Student Management Portal</h3>
+
+                <hr/>
+                <span class="hide" id="err" style="z-index: 100;">Username Not Found</span><br/>
+                <form class="form-horizontal"  method="post" action="">
+                    <!--        <legend><h2>System Login</h2></legend>-->
+                    <div class="form-group">
+                        <label class="glyphicon glyphicon-user col-md-2 login-glyphicon"></label>
+                        <div class="col-md-10">
+                            <input type="email" class="form-control" name="email" required="" placeholder="e-mail address"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="glyphicon glyphicon-pencil col-md-2 login-glyphicon" for=""></label>
+                        <div class="col-md-10">
+                            <input type="password" class="form-control" name="password" required="" placeholder="password"/>
+                        </div>
+                    </div>
+
+                    <input class="btn btn-primary btn-block" style="background-color: #080808"  name="login" type="submit" value="login"/>
+                    <a href="change_Password.php" name="change">Forgot Password</a>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 

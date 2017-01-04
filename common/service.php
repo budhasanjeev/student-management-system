@@ -284,6 +284,30 @@ function getStudentAttendanceStatus($sid, $connection)
     return $status['status'];
 }
 
+
+function random_password($connection,$email,$flag) {
+
+    $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-=+;:,.?";
+
+    $password = substr(str_shuffle($chars),0,8);
+    $hashPassword = md5($password);
+
+    if($flag == 'u'){
+        $insert_product = "update user set password='".$hashPassword."' where email='$email'";
+    }
+    else if($flag == 't'){
+        $insert_product = "update teacher set password='".$hashPassword."' where email='$email'";
+    }
+
+    $insert_pro = mysqli_query($connection,$insert_product);
+
+    if($insert_pro){
+        return $password;
+    }else{
+        return "Not Inserted.";
+    }
+}
+
 function getParentsInfo($pid, $connection)
 {
     $select = "select * from user where id = '$pid'";
@@ -448,6 +472,19 @@ function validateEmail($email, $connection){
     return json_encode($data);
 }
 
+function validateEmailR($email, $connection){
+    $select = "SELECT * FROM `user` WHERE `email` = '$email'";
+    $result = $connection->query($select);
+
+    if(mysqli_num_rows($result)>0){
+        return true;
+    }
+    else{
+        return false;
+    }
+
+}
+
 function validateStudentID($id, $connection){
     $select = "SELECT * FROM `student` WHERE `student_id` = '$id'";
     $result = $connection->query($select);
@@ -510,6 +547,28 @@ function validateTeacherEmail($email, $connection){
     }
 
     return json_encode($data);
+}
+
+function validateTeacherEmailR($email, $connection){
+
+    $select = "SELECT * FROM `teacher` WHERE `email` = '$email'";
+    $result = $connection->query($select);
+
+    if(mysqli_num_rows($result)>0){
+       return true;
+    }
+    else{
+       return false;
+    }
+
+}
+
+function getAdminEmail($connection){
+
+    $select = "SELECT *FROM `office_mail` ";
+    $result = $connection->query($select);
+
+    return $result;
 }
 
 
