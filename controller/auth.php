@@ -40,17 +40,17 @@ if(isset($_POST['formType'])=='change'){
        $mail->SMTPAuth = true;
 //$mail->SMTPDebug = 1;
 // GMAIL username
-       $mail->Username = "sanjeev.budha@deerwalk.edu.np";
+       $mail->Username = $row['email'];
 // GMAIL password
-       $mail->Password = "iam@Ktm36";
+       $mail->Password = $row['password'];
        $mail->SMTPSecure = "ssl";
 // sets GMAIL as the SMTP server
        $mail->Host = "smtp.gmail.com";
 // set the SMTP port for the GMAIL server
        $mail->Port = "465";
-       $mail->From="sanjeev.budha@deerwalk.edu.np";
+       $mail->From=$row['email'];
        $mail->FromName='Student Management System';
-       $mail->AddAddress('sanjeev.budha@deerwalk.edu.np');
+       $mail->AddAddress($user_email);
        $mail->Subject  =  'Password Has Been Changed';
        $mail->IsHTML(true);
        $mail->Body    = 'Hello! Don\'t worry about forgetting your password, following is your <br><br>Email:'.$user_email.'<br>Password: '.$password.' <br><br>Best Wishes,<br>Student Management System.';

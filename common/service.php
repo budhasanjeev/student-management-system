@@ -565,10 +565,19 @@ function validateTeacherEmailR($email, $connection){
 
 function getAdminEmail($connection){
 
-    $select = "SELECT *FROM `office_mail` ";
+    $select = "SELECT * FROM `office_mail` ";
     $result = $connection->query($select);
-
     return $result;
+}
+
+function setAdminEmail($email, $password, $connection){
+    $r = getAdminEmail($connection);
+    if(isset($r)){
+        $delete = "DELETE FROM `office_mail` WHERE 1";
+        $connection->query($delete);
+    }
+    $insert = "INSERT INTO `office_mail`(`email`, `password`) VALUES ('$email','$password')";
+    $connection->query($insert);
 }
 
 

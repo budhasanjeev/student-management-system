@@ -378,6 +378,41 @@ include "../common/Common.php";
 </div>
 
 
+
+<!--Change Password Modal -->
+<div id="adminEmailModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Set Admin Email</h4>
+            </div>
+            <div class="modal-body">
+
+                <h5>This email address will be used to send mail for password reset. Enter the valid email address and corresponding valid password</h5>
+
+                <form class="form" method="post" action="../controller/adminEmail.php">
+                    <div class="form-group">
+                        <label>Email: </label>
+                        <input type="email" name="email" class="form-control" required/>
+                    </div>
+                <div class="form-group">
+                    <label>Password: </label>
+                    <input type="password" name="password" class="form-control" required/>
+                </div>
+                <input type="submit" class="btn btn-primary btn-block" value="Set Email"/>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 <!--Change Password Modal -->
 <div id="changePasswordModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -897,6 +932,13 @@ include "../common/Common.php";
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">H! <?php echo ucfirst($_SESSION['username']); ?><b class="caret"></b></a>
 
                 <ul class="dropdown-menu ">
+                    <?php
+                    if ($_SESSION['role'] == 'sAdmin') {
+                        ?>
+                        <li><a href="#" data-toggle="modal" data-target="#adminEmailModal">Set Admin Email</a></li>
+                    <?php
+                    }
+                    ?>
                     <li><a href="#" data-toggle="modal" data-target="#changePasswordModal">Change Password</a></li>
                     <li><a href="logout.php">Logout</a></li>
                 </ul>
