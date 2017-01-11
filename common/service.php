@@ -596,3 +596,36 @@ function  validateTeacherUsername($username, $connection){
 
     return json_encode($data);
 }
+
+
+function addNotice($visible, $title, $date, $notice, $connection)
+{
+
+    // prepare and bind
+    $stmt = $connection->prepare("INSERT INTO `notice`(`title`, `date`, `notice`, `visible`) VALUES (?,?,?,?)");
+    $stmt->bind_param("ssss", $title, $date, $notice, $visible);
+
+    $stmt->execute();
+
+
+    $stmt->close();
+    $connection->close();
+}
+
+function getNotice($role, $connection){
+    if($role == 'Parents'){
+        $select="SELECT * FROM `notice` WHERE `visible` = 'parents' OR `visible` = 'all'";
+    }elseif($role == 'teacher'){
+        $select="SELECT * FROM `notice` WHERE `visible` = 'teachers' OR `visible` = 'all'";
+    }else{
+        $select="SELECT * FROM `notice`";
+    }
+
+    $result = $connection->query($select);
+    return $result;
+}
+
+function deleteNotice($id, $connection){
+    $delete = "DELETE FROM `notice` WHERE `id` = $id";
+    $connection->query($delete);
+}

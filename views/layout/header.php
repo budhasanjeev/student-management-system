@@ -912,6 +912,7 @@ include "../common/Common.php";
             }
 
             ?>
+            <li><a href="notice.php">Notice</a></li>
 
 
         </ul>

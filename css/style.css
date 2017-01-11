@@ -207,3 +207,21 @@ body a:hover{
 .dis{
     display: block !important;
 }
+
+.notice{
+    margin: 20px;
+    padding: 20px;
+    border: 1px double cadetblue;
+}
+
+.notice h2{
+    text-align: center;
+}
+
+.notice h5{
+    text-align: center;
+}
+
+.notice p{
+    text-align: justify;
+}
