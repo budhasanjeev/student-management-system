@@ -35,7 +35,6 @@ include '../config/databaseConnection.php';
             </div>
             <div class="modal-body">
                 <form id="user-form" action="" method="post" enctype="multipart/form-data" class="form form-horizontal">
-
                     <input type="hidden" name="mode" id="modes">
                     <input type="hidden" name="user_id" id="user_id">
                     <div class="form-group">

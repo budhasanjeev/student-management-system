@@ -7,7 +7,7 @@
  */
 session_start();
 
-if($_SESSION['role'] == 'teacher'){
+if($_SESSION['role'] == 'teacher' || $_SESSION['role'] == 'Receptionist'){
 
 $class_id = $_GET['class'];
 $subject_id = $_GET['sub'];

@@ -30,22 +30,22 @@ if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
                 <div class="error student">StudentID already exists</div>
             </div>
             <div class="col-md-4">
-                <input type="text" name="firstName" class="form-control form-group" placeholder="First Name" id="firstName" onkeyup="checkAlphabet('firstName')"/>
+                <input type="text" name="firstName" class="form-control form-group" placeholder="First Name" id="firstName" onkeyup="checkAlphabet('firstName')" required=""/>
             </div>
             <div class="col-md-4">
-                <input type="text" name="lastName" placeholder="last Name" class="form-control form-group" id="lastName" onkeyup="checkAlphabet('lastName')"/>
+                <input type="text" name="lastName" placeholder="last Name" class="form-control form-group" id="lastName" onkeyup="checkAlphabet('lastName')" required=""/>
             </div>
             <div class="col-md-4">
-                <input type="text" name="dob" placeholder="Date of Birth" class="form-control form-group" onfocus="(this.type='date')" id="dob" />
+                <input type="text" name="dob" placeholder="Date of Birth" class="form-control form-group" onfocus="(this.type='date')" id="dob" required=""/>
             </div>
             <div class="col-md-4">
-                <input type="text" name="address" placeholder="address" class="form-control form-group" id="address" onkeyup="checkAlphabet('address')"/>
+                <input type="text" name="address" placeholder="address" class="form-control form-group" id="address" onkeyup="checkAlphabet('address')" required=""/>
             </div>
             <div class="col-md-4">
-                <input type="tel" name="contact" placeholder="contact" class="form-control form-group" id="contact" onkeyup="checkNumeric('contact')"/>
+                <input type="tel" name="contact" placeholder="contact" class="form-control form-group" id="contact" onkeyup="checkNumeric('contact')" required=""/>
             </div>
             <div class="col-md-4">
-                <input type="number" name="rollNumber" placeholder="roll no." class="form-control form-group" id="roll"  onkeyup="checkNumeric('roll')"  />
+                <input type="number" name="rollNumber" placeholder="roll no." class="form-control form-group" id="roll"  onkeyup="checkNumeric('roll')" required=""/>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
@@ -68,10 +68,10 @@ if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
         </fieldset>
         <h4>Parents Detail</h4>
         <div class="col-md-6">
-            <input type="text" name="fatherName" class="form-control form-group" placeholder="Father Name" id="fatherName"  onkeyup="checkAlphabet('fathername')" />
+            <input type="text" name="fatherName" class="form-control form-group" placeholder="Father Name" id="fatherName"  onkeyup="checkAlphabet('fathername')" required=""/>
         </div>
         <div class="col-md-6">
-            <input type="text" name="motherName" class="form-control form-group" placeholder="Mother Name" id="motherName" onkeyup="checkAlphabet('mothername')" />
+            <input type="text" name="motherName" class="form-control form-group" placeholder="Mother Name" id="motherName" onkeyup="checkAlphabet('mothername')" required=""/>
         </div>
         <h4>Photo</h4>
         <div class="col-md-4">

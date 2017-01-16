@@ -710,6 +710,7 @@ include "../common/Common.php";
             if($_SESSION['role'] == 'Receptionist'){
                 ?>
                 <li><a href="a_teacher.php">Teachers</a></li>
+                <li><a href="repClass.php">Insert marks</a></li>
             <?php
             }
             ?>

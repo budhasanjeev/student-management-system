@@ -6,6 +6,7 @@
  * Time: 8:33 PM
  */
 
+session_start();
 include "../config/databaseConnection.php";
 include  '../common/service.php';
 
@@ -24,4 +25,8 @@ while($row = $students->fetch_assoc()){
 
 }
 
-header("Location: ../views/t_marks.php");
+if($_SESSION['role'] == 'teacher'){
+    header("Location: ../views/t_marks.php");
+}elseif ($_SESSION['role'] == 'Receptionist'){
+    header("Location: ../views/repSubject.php?id=$class_id");
+}
