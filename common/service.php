@@ -629,3 +629,17 @@ function deleteNotice($id, $connection){
     $delete = "DELETE FROM `notice` WHERE `id` = $id";
     $connection->query($delete);
 }
+
+
+function addFee($class_id, $fee, $connection){
+    $select = "SELECT * FROM `fee` WHERE `class_id` = $class_id";
+    $result = $connection->query($select);
+
+    if(isset($result)){
+        $delete = "DELETE FROM `fee` WHERE `class_id` = $class_id";
+        $connection->query($delete);
+    }
+
+    $insert = "INSERT INTO `fee`(`class_id`, `total`) VALUES ($class_id, $fee)";
+    $connection->query($insert);
+}

@@ -98,10 +98,10 @@ session_start();
                 $class = getExam($connection);
                 while($row = $class->fetch_assoc()){
                 ?>
-                    <form action="markSheet.php" method="post" id="marks">
+                    <form action="markSheet.php" method="post" id="<?php echo $row['exam']; ?>">
                         <input type="hidden" name="exam" value="<?php echo $row['exam']; ?>"/>
                         <input type="hidden" name="sid" value="<?php echo $sid; ?>"/>
-                    <div class="col-lg-3" onclick="submitForm('#marks')">
+                    <div class="col-lg-3" onclick="submitForm('#<?php echo $row['exam']; ?>')">
                         <div class="box"  style="height: 150px;">
                             <?php echo $row['exam']; ?>
                         </div>

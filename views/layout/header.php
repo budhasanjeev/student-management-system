@@ -240,21 +240,14 @@ include "../common/Common.php";
                             }
                             ?>
                         </select>
-                        <!--                        <input id="class" type = "hidden" name = "class" value = "" />-->
-                        <script type="text/javascript">
-                            function setTextField(ddl) {
-                                document.getElementById('class').value = ddl.options[ddl.selectedIndex].text;
-                            }
-                        </script>
-
                     </div>
 
                     <div class="form-group">
-                        <label for="routine">Fee: </label>
-                        <input type="file" name="file"/>
+                        <label for="routine">Total Annual Fee: </label>
+                        <input class="form-control" type="number" name="fee" required=""/>
                     </div>
                     <div style="text-align: right">
-                        <input type="submit" value="submit" name="submit"/>
+                        <input type="submit" value="submit" class="btn btn-primary" name="submit"/>
                     </div>
                 </form>
             </div>

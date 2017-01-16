@@ -49,24 +49,28 @@ $student_id = $_GET['id'];
         <tr>
             <td><?php echo $std['first_name']." ".$std['last_name']; ?></td>
         <?php
-        $totalFull = 0;
-        $totalPass = 0;
-        $totalObtained = 0;
         $exam = getExam($connection);
         while($e = $exam->fetch_assoc()){
+            $totalFull = 0;
+            $totalPass = 0;
+            $totalObtained = 0;
             ?>
             <td>
             <?php
             $marks = getExamMarks($e['exam'], $std['id'], $connection);
+            if($marks->num_rows > 0){
             while($m = $marks->fetch_assoc()){
                 $totalFull = $totalFull + $m['fullmarks'];
                 $totalPass = $totalPass + $m['passmarks'];
                 $totalObtained = $totalObtained + $m['marks'];
-
             }
             $per = ($totalObtained/$totalFull)*100;
             $stdArray[$std['id']] = $per;
             echo round($per,2);
+            }else{
+                echo 'N\A';
+            }
+
             ?>
             </td>
             <?php
