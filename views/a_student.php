@@ -31,11 +31,12 @@ if($_SESSION['role'] != 'parents'){
     $student = getClassStudents($class, $connection);
     ?>
 
-    <table class="table">
+    <table class="table" id="student-table">
         <thead>
         <tr>
             <th>Photo</th>
             <th>Name</th>
+            <th>Section</th>
             <th>Address</th>
             <th>Contact Number</th>
             <th>roll.no</th>
@@ -58,6 +59,8 @@ if($_SESSION['role'] != 'parents'){
 
                     <td> <a href="a_profile.php?sid=<?php echo $row['id']; ?>&lid=<?php echo $id; ?>" ><img class="img-thumbnail" width="60px" src="../img/<?php echo $row["photo"] ?>"></a></td>
                     <td style="vertical-align: middle"><?php echo $row["first_name"]." ". $row["last_name"]; ?></td>
+
+                    <td style="vertical-align: middle"><?php echo $row["section"] ?></td>
                     <td style="vertical-align: middle"><?php echo $row["address"] ?></td>
                     <td style="vertical-align: middle"><?php echo $row["contact_number"] ?></td>
                     <td style="vertical-align: middle"><?php echo $row["roll_number"]; ?></td>
@@ -83,6 +86,10 @@ if($_SESSION['role'] != 'parents'){
         </tbody>
     </table>
 </div>
+<script>
+    $('#student-table').dataTable();
+</script>
+
 </body>
 </html>
 
