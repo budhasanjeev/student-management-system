@@ -225,3 +225,29 @@ body a:hover{
 .notice p{
     text-align: justify;
 }
+
+.adjust{
+    font-size: 30px;
+    text-align: center;
+    font-weight: 900;
+}
+
+#myProgress {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    background-color: #ddd;
+}
+
+#label {
+    text-align: center;
+    line-height: 30px;
+    color: white;
+}
+
+
+#myBar {
+    position: absolute;
+    height: 100%;
+    background-color: #4CAF50;
+}

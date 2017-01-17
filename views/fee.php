@@ -56,25 +56,33 @@ if($_SESSION['role'] != 'Receptionist'){
 
 <div class="container">
     <?php
-    $class_id = $_GET["id"];
 
-    $class = getClassName($class_id, $connection);
+
+    $class = getAllFee($connection);
     ?>
-    <legend>Fee of Class <?php echo $class; ?>
         <?php
         if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
             ?>
-            <span class="btn btn-success pull-right" data-toggle="modal" data-target="#updateFeeModal"><i class="glyphicon glyphicon-upload"> Update</i></span>
+            <span class="btn btn-success pull-right" data-toggle="modal" data-target="#feeModal"><i class="glyphicon glyphicon-upload"> Update</i></span>
             <?php
         }
         ?>
-        </legend>
-    <?php
-    $objCommon = new Common();
-    $fee = $objCommon->getFee($class_id);
-
-    ?>
-    <embed src="../img/<?php echo $fee ?>" style="width: 85% !important; background-color: #ffffff !important; height: 100%; position: absolute;"></embed>
+    <table class="table table-responsive table-bordered">
+        <thead>
+        <th>Class</th>
+        <th>Total Fee</th>
+        </thead>
+        <?php
+        while($row = $class->fetch_assoc()){
+            ?>
+            <tr>
+                <td><?php echo getClassName($row['class_id'], $connection); ?></td>
+                <td><?php echo $row['total']; ?></td>
+            </tr>
+            <?php
+        }
+        ?>
+    </table>
 
 </div>
 

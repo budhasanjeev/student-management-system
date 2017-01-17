@@ -77,8 +77,8 @@ include '../config/databaseConnection.php';
                                 <?php
                                 }
                                 ?>
-                                <option value="Parents">Parents</option>
                                 <option value="Receptionist">Receptionist</option>
+                                <option value="Parents">Parents</option>
                             </select>
                         </div>
                     </div>
@@ -101,10 +101,10 @@ include '../config/databaseConnection.php';
 
                                     $studentList = $objCommon->getStudent();
 
-                                    foreach ($studentList as $student ){
+                                    foreach ($studentList as $student){
                                         ?>
-                                        <option value="<?php echo $student["id"] ; ?>">
-                                            <?php echo $student["first_name"].' '.$student["last_name"] ?>
+                                        <option value="<?php echo $student['id']; ?>">
+                                            <?php echo $student["first_name"].' '.$student["last_name"]; ?>
                                         </option>
 
                                         <?php
@@ -165,7 +165,7 @@ include '../config/databaseConnection.php';
     ?>
 
     <div>
-        <table class="table table-responsive">
+        <table class="table table-responsive" id="userTable">
             <thead>
             <tr>
                 <th>Photo</th>
@@ -207,6 +207,9 @@ include '../config/databaseConnection.php';
 
 <script>
 
+    $('#userTable').dataTable();
+
+
     $('#add-user').on('click',function () {
         $('#addUser').modal('show');
         $('#addUser .modal-title').html("ADD USER");
@@ -220,7 +223,6 @@ include '../config/databaseConnection.php';
     function checkRole(){
         var role = document.getElementById('role').value;
         if(role == "Parents"){
-            alert(role);
             $(".children").css('display','block');
         }else{
             $(".children").css('display','none');

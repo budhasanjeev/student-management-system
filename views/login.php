@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/style.css"/>
     <script src="../js/jquery-1.12.4.min.js"></script>
 </head>
-<body style="font-family: 'Kaushan Script', cursive;">
+<body>
 
 <?php
 /**
@@ -107,7 +107,7 @@ if (isset($_POST["login"])){
                 <h3 style="font-family: 'Ultra', serif;">Student Management Portal</h3>
 
                 <hr/>
-                <span class="hide" id="err" style="z-index: 100;">Username Not Found</span><br/>
+                <span class="hide" id="err" style="z-index: 100; background-color: red; color: white; display: block;">Username Not Found</span><br/>
                 <form class="form-horizontal"  method="post" action="">
                     <!--        <legend><h2>System Login</h2></legend>-->
                     <div class="form-group">
@@ -125,7 +125,8 @@ if (isset($_POST["login"])){
                     </div>
 
                     <input class="btn btn-primary btn-block" style="background-color: #080808"  name="login" type="submit" value="login"/>
-                    <a href="change_Password.php" name="change">Forgot Password</a>
+                    <br>
+                    <a href="change_Password.php" name="change" style="float: right;">Forgot Password</a>
                 </form>
             </div>
         </div>

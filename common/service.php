@@ -643,3 +643,26 @@ function addFee($class_id, $fee, $connection){
     $insert = "INSERT INTO `fee`(`class_id`, `total`) VALUES ($class_id, $fee)";
     $connection->query($insert);
 }
+
+function getTotalFee($classID, $connection){
+    $select = "SELECT * FROM `fee` WHERE `class_id` = $classID";
+    $result = $connection->query($select);
+    return $result;
+}
+
+function getPayedFee($sid, $connection){
+    $select = "SELECT * FROM `feestat` WHERE `student_id` = $sid";
+    $result = $connection->query($select);
+    return $result;
+}
+
+function addPayedFee($sid, $date, $amount, $connection){
+    $insert = "INSERT INTO `feestat`(`student_id`, `date`, `paid`) VALUES ($sid, '$date', $amount)";
+    $connection->query($insert);
+}
+
+function getAllFee($connection){
+    $select = "SELECT * FROM `fee`";
+    $result = $connection->query($select);
+    return $result;
+}

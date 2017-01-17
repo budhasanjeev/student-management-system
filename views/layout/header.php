@@ -372,6 +372,7 @@ include "../common/Common.php";
 
 
 
+
 <!--Change Password Modal -->
 <div id="adminEmailModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -740,22 +741,10 @@ include "../common/Common.php";
                 </ul>
             </li>
             <?php
-            if ($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin' || $_SESSION['role'] == 'Parents') {
+            if ($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin') {
                 ?>
                 <li>
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Fee<b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <?php
-                        $class = getClass($connection);
-                        while ($row = mysqli_fetch_assoc($class)) {
-                            ?>
-                            <li>
-                                <a href="fee.php?id=<?php echo $row["id"]; ?>">Class <?php echo $row["class"]; ?></a>
-                            </li>
-                        <?php
-                        }
-                        ?>
-                    </ul>
+                    <a href="fee.php">Fee</a>
                 </li>
             <?php
             }
