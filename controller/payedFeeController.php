@@ -13,4 +13,4 @@ $amount = $_POST['amount'];
 
 addPayedFee($sid, $date, $amount, $connection);
 
-header("Location: ../views/a_profile?sid=$sid");
+header("Location: ../views/a_profile.php?sid=$sid");
