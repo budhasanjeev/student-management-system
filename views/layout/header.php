@@ -28,6 +28,7 @@ include "../common/Common.php";
     <script src="../js/bootstrap.min.js" type="text/javascript"></script>
     <script type="application/javascript" src="../js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="../css/jquery.dataTables.min.css"/>
+    <link rel="stylesheet" href="../css/select2.min.css"/>
     <script src="../js/custom.js"></script>
     <script src="../js/user.js"></script>
     <script>
