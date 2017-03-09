@@ -27,6 +27,40 @@ session_start();
 
 <div class="container">
 
+    <!--edit fee Modal -->
+    <div id="editFeeModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Edit Payed Fee</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form" action="../controller/c_editNews.php" method="post">
+
+                        <input type="hidden" name="id" id="feeID">
+                        <input type="hidden" name="sid" value="<?php echo $_GET['sid']; ?>">
+
+                        <div class="form-group">
+                            <label for="class">Change Amount: </label>
+                            <input class="form-control" type="text" name="newAmount" required=""/>
+                        </div>
+                        <div style="text-align: right">
+                            <button type="submit" class="btn btn-success">Change</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
 
     <!--Payed Fee Modal -->
     <div id="payedFeeModal" class="modal fade" role="dialog">
@@ -186,7 +220,14 @@ session_start();
                         ?>
 
                         <div id="myProgress">
-                            <div id="myBar" style="width: <?php echo $per; ?>%;">
+                            <?php
+                            if($per > 100){
+                                $p = 100;
+                            }else{
+                                $p = $per;
+                            }
+                            ?>
+                            <div id="myBar" style="width: <?php echo $p; ?>%;">
                                 <div id="label"> Payed  <?php echo round($per,2); ?>%</div>
                             </div>
                         </div>
@@ -204,7 +245,20 @@ session_start();
                            ?>
                             <tr>
                                 <td><?php echo $row['date']; ?></td>
-                                <td>Rs <?php echo $row['paid']; ?>/-</td>
+                                <td>Rs <?php echo $row['paid']; ?>/- &nbsp;
+                                    <?php
+                                    if ($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin') {
+                                        ?>
+                                        <span style="float: right;">
+                                        <a data-toggle="modal" data-target="#editFeeModal" onclick="setModelInId('<?php echo $row['id']; ?>')" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"> </span> Edit</a>
+                                        <a href="../controller/deleteFee.php?id=<?php echo $row['id']; ?>&sid=<?php echo $_GET['sid']; ?>&lid=<?php echo $_GET['lid']; ?>" class="btn btn-primary"><span class="glyphicon glyphicon-trash"> </span> Delete</a>
+                                        </span>
+                                        <?php
+                                    }
+                                    ?>
+
+                                </td>
+
                             </tr>
                             <?php
                         }
@@ -232,7 +286,14 @@ session_start();
         </div>
     </div>
 
+
+
     <script type="text/javascript">
+
+        function setModelInId(id) {
+            $('#feeID').val(id);
+        }
+
         google.charts.load('current', {'packages': ['corechart']});
         google.charts.setOnLoadCallback(drawChart);
         function drawChart() {

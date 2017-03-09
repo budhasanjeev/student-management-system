@@ -666,3 +666,14 @@ function getAllFee($connection){
     $result = $connection->query($select);
     return $result;
 }
+
+function deletePayFee($id, $connection){
+    $delete = "DELETE FROM `feestat` WHERE `id` =  $id";
+    $connection->query($delete);
+}
+
+function editFee($id, $amount, $connection){
+    $update = "UPDATE `feestat` SET `paid`= $amount WHERE `id` = $id";
+    echo $update;
+    $connection->query($update);
+}
