@@ -15,6 +15,8 @@ session_start();
     <head lang="en">
         <meta charset="UTF-8">
         <title>Student Management</title>
+                <script type="text/javascript"  src="../js/jquery-1.12.4.min.js"></script>
+
         <script src="../js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="../css/bootstrap.min.css"/>
         <link rel="stylesheet" href="../css/style.css"/>
@@ -111,7 +113,6 @@ $class = getClass($connection);
                         <div class="form-group">
                             <label>subject</label>
                             <select class="form-control" name="subject" id="subjectClass">
-
                             </select>
                         </div>
                         <input type="submit" class="btn btn-block btn-primary" value="ADD"/>
@@ -134,7 +135,7 @@ $class = getClass($connection);
         subject.empty();
         $.ajax({
             type:'POST',
-            url:'http://localhost/student-management-system/common/service.php',
+            url:'../common/service.php',
             data:data,
             success:function(data){
                 final = JSON.parse(data);
