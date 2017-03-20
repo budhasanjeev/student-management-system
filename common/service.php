@@ -395,7 +395,7 @@ function upgradeStudents($connection)
             $next_class = 'Four';
         } else if ($student_class == 'Four' && in_array('Five', $classes)) {
             $next_class = 'Five';
-        } else if ($student_class == 'Five' && in_array('Six ', $classes)) {
+        } else if ($student_class == 'Five' && in_array('Six', $classes)) {
             $next_class = 'Six';
         } else if ($student_class == 'Six' && in_array('Seven', $classes)) {
             $next_class = 'Seven';
@@ -411,7 +411,7 @@ function upgradeStudents($connection)
             $next_class = 'Twelve';
         } else if ($student_class == 'Twelve') {
             $next_class = 'Completed';
-        } else {
+        } else if ($student_class == 'Completed'){
             $next_class = 'Completed';
         }
 
