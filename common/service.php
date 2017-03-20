@@ -411,7 +411,7 @@ function upgradeStudents($connection)
             $next_class = 'Twelve';
         } else if ($student_class == 'Twelve') {
             $next_class = 'Completed';
-        } else if ($student_class == 'Completed'){
+        } else {
             $next_class = 'Completed';
         }
 
