@@ -47,13 +47,12 @@ if($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'sAdmin'){
            url:"../controller/updateClass.php",
            success:function(data){
                var data = JSON.parse(data);
-               alert("Success Count = " +data.successCount + " \nError Count = " + data.errorCount);
-           },
-           error:function(error){
-
            },
            complete: function(){
-               $('#updating').hide();
+               setTimeout(function () {
+                   $('#updating').hide();
+               },1000)
+
            }
 
 
