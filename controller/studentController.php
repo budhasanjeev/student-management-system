@@ -20,11 +20,14 @@ if(isset($_POST['mode'])){
 
         $ext = pathinfo($student_record, PATHINFO_EXTENSION);
 
-        $file_name = rand(0,9).'.'.$ext;
+        do{
+            $file_name = rand(0,1000).'.'.$ext;
+        }while(file_exists('../excelFiles/'.$file_name));
+
+
         move_uploaded_file($student_record_temp, "../excelFiles/$file_name");
 
-        $result = $objCommon->createStudentList($file_name,$student_record_temp);
-
+        $objCommon->createStudentList($file_name,$student_record_temp);
 
         header('Location:../views/student.php');
 
@@ -50,7 +53,6 @@ if(isset($_POST['mode'])){
         $result = array();
 
         $result = $objCommon->createStudent($std_id,$fname,$lname,$dob,$address,$contact,$rollNumber,$grade,$section,$fatherName,$motherName,$photo);
-
 
 
         if($result){

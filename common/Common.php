@@ -43,10 +43,7 @@ class Common{
 
     public function createStudentList($file_name,$student_record_temp){
 
-
         global $connection;
-
-        $data = array();
 
         try{
             include '../Classes/PHPExcel/IOFactory.php';
@@ -62,41 +59,32 @@ class Common{
         $arrayCount = count($allDataInSheet);
 
         for($i = 2; $i <= $arrayCount; $i++){
+
             $student_id = trim($allDataInSheet[$i]['A']);
             $first_name = trim($allDataInSheet[$i]['B']);
             $last_name = trim($allDataInSheet[$i]['C']);
             $dob = trim($allDataInSheet[$i]['D']);
             $address = trim($allDataInSheet[$i]['E']);
             $contact_number = trim($allDataInSheet[$i]['F']);
-            $father_name = trim($allDataInSheet[$i]['G']);
-            $mother_name = trim($allDataInSheet[$i]['H']);
-            $roll_number = trim($allDataInSheet[$i]['I']);
-            $grade = trim($allDataInSheet[$i]['J']);
-            $section = trim($allDataInSheet[$i]['K']);
+            $roll_number = trim($allDataInSheet[$i]['G']);
+            $grade = trim($allDataInSheet[$i]['H']);
+            $section = trim($allDataInSheet[$i]['I']);
+            $father_name = trim($allDataInSheet[$i]['J']);
+            $mother_name = trim($allDataInSheet[$i]['K']);
 
-            $duplicate_check_query = "select student_id from student where student_id = '$student_id'";
+            $duplicate_check_query = "select *from student where student_id = '$student_id'";
 
             $result = mysqli_query($connection,$duplicate_check_query);
 
-            $row = mysqli_fetch_assoc($result);
-
-            $std_id = $row['student_id'];
-
-            if($std_id == ''){
+            if($result->num_rows == 0){
                 $created_date = date("Y-m-d");
 
-                $insert_query = "insert into student(student_id,first_name,last_name,dob,address,contact_number,father_name,mother_name,roll_number,grade,section,created_date) values('$student_id','$first_name','$last_name','$dob','$address','$contact_number','$father_name','$mother_name','$roll_number','$grade','$section','$created_date')";
+                $insert_query = "insert into student values(NULL ,'$student_id','$first_name','$last_name','$dob','$address','$contact_number','$father_name','$mother_name','$roll_number','$grade','$section','user.png' ,1,'$created_date',NULL )";
 
-                if(mysqli_query($connection,$insert_query)>0){
-                    $data['message'] = 'success';
-                }
-            }
-            else{
-                $data['message'] = 'fail';
+                mysqli_query($connection,$insert_query);
+
             }
         }
-
-        return $data;
     }
 
     public function attendanceExcel($file_name,$file_temp){
@@ -104,7 +92,6 @@ class Common{
         global $connection;
 
         $data = array();
-        print("test");
 
         try{
             include '../Classes/PHPExcel/IOFactory.php';

@@ -55,6 +55,7 @@ include 'layout/header.php';
                 </script>';
         }
     }
+
     session_unset();
     $_SESSION['email'] = $email;
     $_SESSION['role'] = $role;
